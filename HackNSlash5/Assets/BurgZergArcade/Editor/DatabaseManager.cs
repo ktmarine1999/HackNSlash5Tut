@@ -39,7 +39,7 @@ namespace BurgZergArcade.Editor
 		const string DATABASE_FOLDER_NAME = "BZADatabase";
 
 		/// <summary>
-		/// Create  a menue to open this editor window useing cntrl+shift+m
+		/// Create  a menue to open this editor window using cntrl+shift+m
 		/// </summary>
 		[MenuItem("BZA/Database/Database Manager %#m")]
 		public static void Init()
@@ -91,7 +91,7 @@ namespace BurgZergArcade.Editor
 				}
 				// create A ScriptableObject Instance and set it to the _settings variable
 				_settings = ScriptableObject.CreateInstance<DatabaseSettings>();
-				// set the database folder name to the one we are useing;
+				// set the database folder name to the one we are using;
 				_settings.databaseFolder = DATABASE_FOLDER_NAME;
 				// since the database didn't exist create it
 				AssetDatabase.CreateAsset(settings, databaseFullPath);
