@@ -54,6 +54,8 @@ namespace BurgZergArcade.Editor
 		static void SetQualityDBActive()
 		{
 			settings.itemQualityDatabase = Selection.activeObject.name;
+			// write the changes to disk
+			EditorUtility.SetDirty(_settings);
 		}
 
 		/// <summary>
@@ -65,6 +67,10 @@ namespace BurgZergArcade.Editor
 		{
 			settings.databaseFolder = EditorGUILayout.TextField("Database Folder", settings.databaseFolder);
 			settings.itemQualityDatabase = EditorGUILayout.TextField("Item Quality Database", settings.itemQualityDatabase);
+
+			// if the user made changes then write the database to disk
+			if(GUI.changed)
+				EditorUtility.SetDirty(_settings);
 		}
 
 		/// <summary>
@@ -93,6 +99,8 @@ namespace BurgZergArcade.Editor
 				_settings = ScriptableObject.CreateInstance<DatabaseSettings>();
 				// set the database folder name to the one we are using;
 				_settings.databaseFolder = DATABASE_FOLDER_NAME;
+				// write the database to disk
+				EditorUtility.SetDirty(_settings);
 				// since the database didn't exist create it
 				AssetDatabase.CreateAsset(settings, databaseFullPath);
 				// save the asset to the assetdatabase
@@ -126,6 +134,10 @@ namespace BurgZergArcade.Editor
 
 			//Display a text field for the user to edit the Item Quality database that they want to use
 			_settings.itemQualityDatabase = EditorGUILayout.TextField("Item Quality Database:", settings.itemQualityDatabase);
+
+			// if the user made changes then write the database to disk
+			if(GUI.changed)
+				EditorUtility.SetDirty(_settings);
 		}
 	}
 }

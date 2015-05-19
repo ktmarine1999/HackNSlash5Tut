@@ -38,7 +38,7 @@ namespace BurgZergArcade.Editor
 			return InitEditorWindow<T>(new Vector2(400, 300), typeof(T).Name);
 		}
 
-		public static T CreateDatabase<T>(string databaseName) where T : ScriptableObject
+		public static T InitDatabase<T>(string databaseName) where T : ScriptableObject
 		{
 			string databaseFullPath = @"Assets/" + DatabaseManager.settings.databaseFolder + "/" + databaseName + ".asset";
 			

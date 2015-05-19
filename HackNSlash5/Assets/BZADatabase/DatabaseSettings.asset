@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd9850a46ee39048b26d5d6c0470ad2, type: 3}
   m_Name: DatabaseSettings
   m_EditorClassIdentifier: 
-  databaseFolder: 
+  databaseFolder: BZADatabase
   itemQualityDatabase: ItemQualityDB
