@@ -28,11 +28,11 @@ namespace BurgZergArcade.ItemSystem.Editor
 		void OnGUI()
 		{
 			AddQualityToDatabase();
-			if(qualityDatabase.database.Count > 0)
+			if(qualityDatabase.Count > 0)
 			{
-				for(int cnt = 0; cnt < qualityDatabase.database.Count; cnt++)
+				for(int cnt = 0; cnt < qualityDatabase.Count; cnt++)
 				{
-					EditorGUILayout.TextField("Quality Name", qualityDatabase.database[cnt].Name, GUILayout.ExpandWidth(false));
+					EditorGUILayout.TextField("Quality Name", qualityDatabase.Get(cnt).Name, GUILayout.ExpandWidth(false));
 				}
 			}
 		}
@@ -64,7 +64,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 				if(selectedItem == null)
 					return;
 
-				qualityDatabase.database.Add(selectedItem);
+				qualityDatabase.Add(selectedItem);
 
 				selectedItem = new ItemQuality();
 			}
