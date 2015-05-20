@@ -4,7 +4,7 @@ using BurgZergArcade.Editor;
 
 namespace BurgZergArcade.ItemSystem.Editor
 {
-	public class ItemQualtiyDatabaseEditor : EditorWindow
+	public partial class ItemQualtiyDatabaseEditor : EditorWindow
 	{
 		/// <summary>
 		/// The asset database this editor is for.
@@ -20,8 +20,19 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// The selected item's texture.
 		/// </summary>
 		Texture2D selectedTexture;
+
+		/// <summary>
+		/// The scroll position.
+		/// Used in ListView when display the List;
+		/// </summary>
+		Vector2 _scrollPos;
+
+		/// <summary>
+		/// The index of the selectedItem.
+		/// </summary>
+		int _selectedIndex = -1;
 	
-		const int SPRITE_BUTTON_SIZE = 46;
+		const int SPRITE_BUTTON_SIZE = 92;
 
 		/// <summary>
 		/// Create  a menue to open this editor window using cntrl+shift+i
@@ -49,14 +60,8 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// </summary>
 		void OnGUI()
 		{
-			AddQualityToDatabase();
-			if(qualityDatabase.Count > 0)
-			{
-				for(int cnt = 0; cnt < qualityDatabase.Count; cnt++)
-				{
-					EditorGUILayout.TextField("Quality Name", qualityDatabase.Get(cnt).Name, GUILayout.ExpandWidth(false));
-				}
-			}
+			ListView();
+			//AddQualityToDatabase();
 		}
 
 		/// <summary>
