@@ -51,7 +51,12 @@ namespace BurgZergArcade.ItemSystem.Editor
 						Repaint();
 					}
 
-					GUILayout.Button("x");
+					if(GUILayout.Button("x"))
+						qualityDatabase.Remove(cnt);
+
+					if(GUI.changed)
+						qualityDatabase.Replace(cnt, selectedItem);
+
 				}
 			}
 		}
