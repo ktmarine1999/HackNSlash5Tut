@@ -11,8 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5abcbce97076c4783756b1dd07229f, type: 3}
   m_Name: ItemQualityDB
   m_EditorClassIdentifier: 
-  database:
-  - _name: Common
-    _icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  - _name: b
-    _icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  database: []

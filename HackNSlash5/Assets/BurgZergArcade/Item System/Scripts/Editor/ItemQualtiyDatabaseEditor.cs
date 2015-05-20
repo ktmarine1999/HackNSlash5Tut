@@ -93,9 +93,11 @@ namespace BurgZergArcade.ItemSystem.Editor
 			// Display a button so the user can save the Quality to the Database
 			if(GUILayout.Button("Save"))
 			{
-				// if the selectedItem is null no need to do anything return
+				// if the selectedItem is null 
+				// or the Item's name is null or empty 
+				// no need to do anything return
 				// this prevents null refrences when using this database
-				if(selectedItem == null)
+				if(selectedItem == null || string.IsNullOrEmpty(selectedItem.Name))
 					return;
 
 				// add the selectedItem to the database

@@ -44,7 +44,7 @@ namespace BurgZergArcade.ItemSystem
 
 		public ItemQuality()
 		{
-			_name = "Common";
+			_name = string.Empty;
 			_icon = new Sprite();
 		}
 	}
