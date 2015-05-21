@@ -18,7 +18,5 @@ MonoBehaviour:
     _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   - _name: Epic
     _icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  - _name: Legendaries
+  - _name: Legendary
     _icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  - _name: Epic 2
-    _icon: {fileID: 0}
