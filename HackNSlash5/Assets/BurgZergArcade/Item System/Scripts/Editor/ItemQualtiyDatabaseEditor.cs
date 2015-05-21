@@ -106,7 +106,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 				// if the last item's name in the database is not null or empty add a new one to the end
 				if(!string.IsNullOrEmpty(qualityDatabase.Get(qualityDatabase.Count - 1).Name))
 					qualityDatabase.Add(new ItemQuality());
-			}
+			}//Gui.changed
 
 		}//OnGUI()
 
