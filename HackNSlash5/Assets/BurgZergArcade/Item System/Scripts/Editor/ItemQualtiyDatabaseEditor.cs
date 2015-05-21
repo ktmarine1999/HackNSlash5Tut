@@ -40,6 +40,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 		[MenuItem("BZA/Database/Quality Editor %#i")]
 		public static void Init()
 		{
+			//Initalize this editor window easily with the DatabaseEditor class
 			DatabaseEditor.InitEditorWindow<ItemQualtiyDatabaseEditor>();
 		}
 
@@ -60,8 +61,32 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// </summary>
 		void OnGUI()
 		{
+			// Display the Quality database in a list
 			ListView();
 			//AddQualityToDatabase();
+
+			//Contain the bottom bar in a box style at the end
+			EditorGUILayout.BeginHorizontal("Box", GUILayout.ExpandWidth(true));
+			BottomBar();
+			// End the bottom bar group
+			EditorGUILayout.EndHorizontal();
+		}
+
+		/// <summary>
+		/// The bottom bar.
+		/// Contains the count and an add button
+		/// </summary>
+		void BottomBar()
+		{
+			//Display a label that tell's us how many items we have in the quality database
+			EditorGUILayout.LabelField("Qualities: " + qualityDatabase.Count);
+
+			//Display an add button so the user can add another a new quality to the list
+			if(GUILayout.Button("Add"))
+			{
+				// add a new quality to the List
+				qualityDatabase.Add(new ItemQuality());
+			}
 		}
 
 		/// <summary>
