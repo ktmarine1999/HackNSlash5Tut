@@ -70,6 +70,10 @@ namespace BurgZergArcade.ItemSystem.Editor
 			BottomBar();
 			// End the bottom bar group
 			EditorGUILayout.EndHorizontal();
+
+			//if the GUI has been changed then write the database to disk
+			if(GUI.changed)
+				EditorUtility.SetDirty(this);
 		}
 
 		/// <summary>
