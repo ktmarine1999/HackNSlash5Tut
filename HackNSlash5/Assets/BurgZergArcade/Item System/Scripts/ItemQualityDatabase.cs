@@ -31,8 +31,6 @@ namespace BurgZergArcade.ItemSystem
 		{
 			// Add the item to the database
 			database.Add(item);
-			// write the database to disk
-			EditorUtility.SetDirty(this);
 		}
 
 		/// <summary>
@@ -43,8 +41,6 @@ namespace BurgZergArcade.ItemSystem
 		public void Insert(int index, ItemQuality item)
 		{
 			database.Insert(index, item);
-			// write the database to disk
-			EditorUtility.SetDirty(this);
 		}
 
 		/// <summary>
@@ -55,8 +51,6 @@ namespace BurgZergArcade.ItemSystem
 		{
 			// remove the item from the database
 			database.Remove(item);
-			// write the database to disk
-			EditorUtility.SetDirty(this);
 		}
 
 		/// <summary>
@@ -67,8 +61,6 @@ namespace BurgZergArcade.ItemSystem
 		{
 			// remove the item from the database
 			database.RemoveAt(index);
-			// write the database to disk
-			EditorUtility.SetDirty(this);
 		}
 
 		/// <summary>
@@ -79,8 +71,6 @@ namespace BurgZergArcade.ItemSystem
 		public void Replace(int index, ItemQuality item)
 		{
 			database[index] = item;
-			// write the database to disk
-			EditorUtility.SetDirty(this);
 		}
 
 		/// <summary>
