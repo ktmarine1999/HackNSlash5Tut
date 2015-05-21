@@ -16,7 +16,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 			DisplayQualities();	
 			// end the Scroll view
 			EditorGUILayout.EndScrollView();
-		}
+		}//ListView()
 
 		/// <summary>
 		/// Displays the qualities.
@@ -69,7 +69,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 			else
 				selectedTexture = null;
 
-			// Display a button to change the selected items sprite, use the selectedTexture as the bakground image for the button
+			// Display a button to change the selected items sprite, use the selectedTexture as the background image for the button
 			if(GUILayout.Button(selectedTexture, GUILayout.Width(SPRITE_BUTTON_SIZE), GUILayout.Height(SPRITE_BUTTON_SIZE)))
 			{
 				// Display an item picker so the user can select what sprite to use
@@ -90,15 +90,14 @@ namespace BurgZergArcade.ItemSystem.Editor
 				selectedItem.Icon = (Sprite)EditorGUIUtility.GetObjectPickerObject();
 				// Repaint the window so the objects are Displayed with their updated values
 				Repaint();
-			}
-			//selected object was changed for the current Item
+			}//selected object was changed for the current Item
 			// if the user closed the object picker window
 			if(commandName == "ObjectSelectorClosed ")
 			{
 				// reset the _selectedIndex to -1
 				_selectedIndex = -1;
 			}//the user closed the object picker window
-		}//QualityIcon
+		}//QualityIcon()
 
 		/// <summary>
 		/// Deletes the current quality.
@@ -124,6 +123,6 @@ namespace BurgZergArcade.ItemSystem.Editor
 
 			// The user did not delete the current quality so retrun the current index
 			return currentIndex;
-		}// DeleteCurrentQuality
+		}//DeleteCurrentQuality()
 	}//class
 }//Nnamespace
