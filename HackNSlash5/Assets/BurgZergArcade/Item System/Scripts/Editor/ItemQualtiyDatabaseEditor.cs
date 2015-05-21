@@ -32,7 +32,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// </summary>
 		int _selectedIndex = -1;
 	
-		const int SPRITE_BUTTON_SIZE = 92;
+		const int SPRITE_BUTTON_SIZE = 46;
 
 		/// <summary>
 		/// Create  a menue to open this editor window using cntrl+shift+i
