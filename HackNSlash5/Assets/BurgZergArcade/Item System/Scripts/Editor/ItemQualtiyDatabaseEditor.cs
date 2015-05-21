@@ -117,7 +117,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 		void BottomBar()
 		{
 			//Display a label that tell's us how many items we have in the quality database
-			EditorGUILayout.LabelField("Qualities: " + qualityDatabase.Count - 1);
+			EditorGUILayout.LabelField("Qualities: " + (qualityDatabase.Count - 1).ToString());
 		}//BottomBar()
 	}//class
 }//namespace
