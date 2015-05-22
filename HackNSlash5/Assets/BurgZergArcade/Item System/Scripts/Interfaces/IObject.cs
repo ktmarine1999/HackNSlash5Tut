@@ -35,11 +35,7 @@ namespace BurgZergArcade.ItemSystem
 		/// <value>The quality of the Item</value>
 		ItemQuality Quality { get; set; }
 
-		//quilitylevel
-		//equip
 		//questItem flag
-		//durability
-		//takedamage
 		//prefab
 	}
 }
