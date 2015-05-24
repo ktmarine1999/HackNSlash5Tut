@@ -31,6 +31,8 @@ namespace BurgZergArcade
 		{
 			// Add the item to the database
 			database.Add(item);
+			// Write the database to disk
+			EditorUtility.SetDirty(this);
 		}
 		
 		/// <summary>
@@ -41,6 +43,8 @@ namespace BurgZergArcade
 		public void Insert(int index, T item)
 		{
 			database.Insert(index, item);
+			// Write the database to disk
+			EditorUtility.SetDirty(this);
 		}
 		
 		/// <summary>
@@ -51,6 +55,8 @@ namespace BurgZergArcade
 		{
 			// remove the item from the database
 			database.Remove(item);
+			// Write the database to disk
+			EditorUtility.SetDirty(this);
 		}
 		
 		/// <summary>
@@ -61,6 +67,8 @@ namespace BurgZergArcade
 		{
 			// remove the item from the database
 			database.RemoveAt(index);
+			// Write the database to disk
+			EditorUtility.SetDirty(this);
 		}
 		
 		/// <summary>
@@ -71,6 +79,8 @@ namespace BurgZergArcade
 		public void Replace(int index, T item)
 		{
 			database[index] = item;
+			// Write the database to disk
+			EditorUtility.SetDirty(this);
 		}
 		
 		/// <summary>
@@ -80,6 +90,30 @@ namespace BurgZergArcade
 		public T Get(int index)
 		{
 			return database.ElementAt(index);
+		}
+
+		public U GetDatabase<U>(string databasePath, string databaseName) where U : ScriptableObject
+		{
+			string databaseFullPath = @"Assets/" + databasePath + "/" + databaseName + ".asset";
+
+			U db = AssetDatabase.LoadAssetAtPath<U>(databaseFullPath) as U;
+			
+			if(db == null)
+			{
+				if(!AssetDatabase.IsValidFolder(@"Assets/" + databasePath))
+				{
+					AssetDatabase.CreateFolder("Assets", databasePath);
+				}
+				
+				db = ScriptableObject.CreateInstance<U>() as U;
+				AssetDatabase.CreateAsset(db, databaseFullPath);
+				AssetDatabase.SaveAssets();
+				AssetDatabase.Refresh();
+				EditorUtility.FocusProjectWindow();
+				Selection.activeObject = db;
+			}
+			
+			return db;
 		}
 	}
 }
