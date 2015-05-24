@@ -45,8 +45,10 @@ namespace BurgZergArcade.ItemSystem.Editor
 				// Display a text field for the user to edit the Name of the quality
 				selectedItem.Name = EditorGUILayout.TextField("Name:", selectedItem.Name);
 
-				// Display Delete quality and reset cnt to keep it in range of the list
-				cnt = DeleteCurrentQuality(cnt);
+				// If the Quality isn't the new blank quality (the last one in the database
+				//Display Delete quality and reset cnt to keep it in range of the list
+				if(cnt != qualityDatabase.Count - 1)
+					cnt = DeleteCurrentQuality(cnt);
 
 				//End the name and delete button group
 				EditorGUILayout.EndVertical();
