@@ -5,8 +5,16 @@ namespace BurgZergArcade.ItemSystem
 {
 	public interface IISEquipable
 	{
-		ISEequipmentSlot eqipmentSlot { get; }
+		/// <summary>
+		/// Gets the eqipment slot.
+		/// </summary>
+		/// <value>The eqipment slot to equip this item in.</value>
+		ISEquipmentSlot eqipmentSlot { get; }
 
+		/// <summary>
+		/// Equip this item.
+		/// </summary>
+		/// <returns>true if this item equiped scusessfully.</returns>
 		bool Equip();
 	}
 }

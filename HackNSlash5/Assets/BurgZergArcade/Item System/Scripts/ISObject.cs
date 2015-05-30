@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 namespace BurgZergArcade.ItemSystem
@@ -46,7 +46,7 @@ namespace BurgZergArcade.ItemSystem
 		/// Gets or sets the name of the Item.
 		/// </summary>
 		/// <value>The name of the Item.</value>
-		public string Name
+		public string name
 		{
 			get { return _name; }
 			set { _name = value; }
@@ -56,7 +56,7 @@ namespace BurgZergArcade.ItemSystem
 		/// Gets or sets the Item value.
 		/// </summary>
 		/// <value>The gold value of the Item.</value>
-		public int Value
+		public int itemValue
 		{
 			get { return _value; }
 			set { _value = value; }
@@ -66,7 +66,7 @@ namespace BurgZergArcade.ItemSystem
 		/// Gets or sets the Item icon.
 		/// </summary>
 		/// <value>The icon to use to display the Item.</value>
-		public Sprite Icon
+		public Sprite icon
 		{
 			get { return _icon; }
 			set { _icon = value; }
@@ -76,7 +76,7 @@ namespace BurgZergArcade.ItemSystem
 		/// Gets or sets the Items burden.
 		/// </summary>
 		/// <value>How much of a burden is this Item on the player.</value>
-		public int Burden
+		public int burden
 		{
 			get { return _burden; }
 			set { _burden = value; }
@@ -86,7 +86,7 @@ namespace BurgZergArcade.ItemSystem
 		/// Gets or sets the Item quality.
 		/// </summary>
 		/// <value>The quality of the Item</value>
-		public ISQuality Quality
+		public ISQuality quality
 		{
 			get { return _quality; }
 			set { _quality = value; }

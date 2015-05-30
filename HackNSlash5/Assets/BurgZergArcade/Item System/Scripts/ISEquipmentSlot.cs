@@ -4,7 +4,7 @@ using System.Collections;
 namespace BurgZergArcade.ItemSystem
 {
 	[System.Serializable]
-	public class ISEequipmentSlot : IISEquipmentSlot
+	public class ISEquipmentSlot : IISEquipmentSlot
 	{
 		/// <summary>
 		/// The name of the equipment slot.
@@ -20,12 +20,18 @@ namespace BurgZergArcade.ItemSystem
 		Sprite
 			_icon;
 
+		public ISEquipmentSlot()
+		{
+			_name = "Name Me";
+			_icon = new Sprite();
+		}
+
 		#region IEquipmentSlot implementation
 		/// <summary>
 		/// Gets or sets the equipment slots name.
 		/// </summary>
 		/// <value>The name of the equipment slot.</value>
-		public string Name
+		public string name
 		{
 			get { return _name; }
 			set { _name = value; }
@@ -35,7 +41,7 @@ namespace BurgZergArcade.ItemSystem
 		/// Gets or sets the icon.
 		/// </summary>
 		/// <value>The icon representation of the equipment slot.</value>
-		public Sprite Icon
+		public Sprite icon
 		{
 			get { return _icon; }
 			set { _icon = value; }

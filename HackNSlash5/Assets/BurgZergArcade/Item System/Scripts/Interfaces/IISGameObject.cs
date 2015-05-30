@@ -5,6 +5,10 @@ namespace BurgZergArcade.ItemSystem
 {
 	public interface IISGameObject
 	{
-		GameObject Prefab{ get; set; }
+		/// <summary>
+		/// Gets the prefab.
+		/// </summary>
+		/// <value>The prefab to display this item in the game world.</value>
+		GameObject prefab{ get; }
 	}
 }

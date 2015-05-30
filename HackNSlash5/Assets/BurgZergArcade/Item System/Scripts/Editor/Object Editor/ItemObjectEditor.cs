@@ -52,7 +52,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 				
 				// if the selectedItem is null or the Item's name is not valid
 				// remove the item from the database, this prevents null refrences when using this database
-				if(selectedItem == null || !NameValid(selectedItem.Name))
+				if(selectedItem == null || !NameValid(selectedItem.name))
 					objectDatabase.Remove(cnt);
 				
 			}//for loop
@@ -113,7 +113,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 				EditorUtility.SetDirty(objectDatabase);
 				
 				// if the last item's name in the database is valid then add a new one to the end
-				if(NameValid(objectDatabase.Get(objectDatabase.Count - 1).Name))
+				if(NameValid(objectDatabase.Get(objectDatabase.Count - 1).name))
 					objectDatabase.Add(new ISObject());
 			}//if GUI.changed
 		}//GUIChanged

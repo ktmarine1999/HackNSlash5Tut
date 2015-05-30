@@ -9,31 +9,31 @@ namespace BurgZergArcade.ItemSystem
 		/// Gets or sets the name of the Item.
 		/// </summary>
 		/// <value>The name of the Item.</value>
-		string Name { get; set; }
+		string name { get; set; }
 
 		/// <summary>
 		/// Gets or sets the Item value.
 		/// </summary>
 		/// <value>The gold value of the Item.</value>
-		int Value { get; set; }
+		int itemValue { get; set; }
 
 		/// <summary>
 		/// Gets or sets the Item icon.
 		/// </summary>
 		/// <value>The icon to use to display the Item.</value>
-		Sprite Icon { get; set; }
+		Sprite icon { get; set; }
 
 		/// <summary>
 		/// Gets or sets the Items burden.
 		/// </summary>
 		/// <value>How much of a burden is this Item on the player.</value>
-		int Burden { get; set; }
+		int burden { get; set; }
 
 		/// <summary>
 		/// Gets or sets the Item quality.
 		/// </summary>
 		/// <value>The quality of the Item</value>
-		ISQuality Quality { get; set; }
+		ISQuality quality { get; set; }
 
 		//questItem flag
 		//prefab

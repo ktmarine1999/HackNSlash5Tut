@@ -5,8 +5,16 @@ namespace BurgZergArcade.ItemSystem
 {
 	public interface IISEquipmentSlot
 	{
-		string Name { get; set; }
+		/// <summary>
+		/// Gets or sets the name.
+		/// </summary>
+		/// <value>The name of the equipment slot.</value>
+		string name { get; set; }
 
-		Sprite Icon { get; set; }
+		/// <summary>
+		/// Gets or sets the icon.
+		/// </summary>
+		/// <value>The icon to use to display the equipment slot.</value>
+		Sprite icon { get; set; }
 	}
 }
