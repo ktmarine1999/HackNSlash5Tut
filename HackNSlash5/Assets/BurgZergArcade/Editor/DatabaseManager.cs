@@ -48,44 +48,6 @@ namespace BurgZergArcade.Editor
 		}
 
 		/// <summary>
-		/// Sets the selected database as the database to use.
-		/// </summary>
-		[MenuItem("Assets/BZA/Set Active/Quality Database")]
-		static void SetQualityDBActive()
-		{
-			settings.itemQualityDatabase = Selection.activeObject.name;
-			// write the changes to disk
-			EditorUtility.SetDirty(_settings);
-		}
-
-		/// <summary>
-		/// Sets the selected database as the database to use.
-		/// </summary>
-		[MenuItem("Assets/BZA/Set Active/Quality Database")]
-		static void SetItemObjectDBActive()
-		{
-			settings.itemObjectDatabase = Selection.activeObject.name;
-			// write the changes to disk
-			EditorUtility.SetDirty(_settings);
-		}
-
-		/// <summary>
-		/// Just a fun way to change the settings for the database by going to Edit/Preferences in unity
-		/// Displays a new prefrence called BZA Prefernces
-		/// </summary>
-		[PreferenceItem("BZA Preferences")]
-		static void PreferencesGUI()
-		{
-			settings.databaseFolder = EditorGUILayout.TextField("Database Folder", settings.databaseFolder);
-			settings.itemQualityDatabase = EditorGUILayout.TextField("Item Quality Database", settings.itemQualityDatabase);
-			settings.itemObjectDatabase = EditorGUILayout.TextField("Item Object Database", settings.itemObjectDatabase);
-
-			// if the user made changes then write the database to disk
-			if(GUI.changed)
-				EditorUtility.SetDirty(_settings);
-		}
-
-		/// <summary>
 		/// Try's to load the setting scriptable object.
 		/// If there is none it will create one.
 		/// Uses the const string DATABASE_FOLDER_NAME to load since the settings scriptable object my not yet be loaded.
@@ -151,6 +113,22 @@ namespace BurgZergArcade.Editor
 			_settings.itemQualityDatabase = EditorGUILayout.TextField("Item Object Database:", settings.itemObjectDatabase);
 
 
+			// if the user made changes then write the database to disk
+			if(GUI.changed)
+				EditorUtility.SetDirty(_settings);
+		}
+
+		/// <summary>
+		/// Just a fun way to change the settings for the database by going to Edit/Preferences in unity
+		/// Displays a new prefrence called BZA Prefernces
+		/// </summary>
+		[PreferenceItem("BZA Preferences")]
+		static void PreferencesGUI()
+		{
+			settings.databaseFolder = EditorGUILayout.TextField("Database Folder", settings.databaseFolder);
+			settings.itemQualityDatabase = EditorGUILayout.TextField("Item Quality Database", settings.itemQualityDatabase);
+			settings.itemObjectDatabase = EditorGUILayout.TextField("Item Object Database", settings.itemObjectDatabase);
+			
 			// if the user made changes then write the database to disk
 			if(GUI.changed)
 				EditorUtility.SetDirty(_settings);
