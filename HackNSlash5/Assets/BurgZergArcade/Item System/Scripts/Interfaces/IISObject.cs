@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace BurgZergArcade.ItemSystem
 {
-	public interface IObject
+	public interface IISObject
 	{
 		/// <summary>
 		/// Gets or sets the name of the Item.

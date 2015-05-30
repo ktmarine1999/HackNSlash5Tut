@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace BurgZergArcade.ItemSystem
 {
-	public interface IDestructable
+	public interface IISDestructable
 	{
 		//durability
 		int Durability { get; }

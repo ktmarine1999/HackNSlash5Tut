@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace BurgZergArcade.ItemSystem
 {
-	public interface IEquipable
+	public interface IISEquipable
 	{
 		ItemEequipmentSlot eqipmentSlot { get; }
 

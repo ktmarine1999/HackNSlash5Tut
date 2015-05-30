@@ -4,7 +4,7 @@ using System.Collections;
 namespace BurgZergArcade.ItemSystem
 {
 	[System.Serializable]
-	public class ItemObject : IObject
+	public class ItemObject : IISObject
 	{
 		/// <summary>
 		/// The name of the Item.

@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 namespace BurgZergArcade.ItemSystem
 {
 	[System.Serializable]
-	public class ItemQuality : IQuality
+	public class ItemQuality : IISQuality
 	{
 		/// <summary>
 		/// The name of the qulity.

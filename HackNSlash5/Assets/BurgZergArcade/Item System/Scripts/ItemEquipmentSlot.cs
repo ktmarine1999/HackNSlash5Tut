@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 namespace BurgZergArcade.ItemSystem
 {
 	[System.Serializable]
-	public class ItemEequipmentSlot : IEquipmentSlot
+	public class ItemEequipmentSlot : IISEquipmentSlot
 	{
 		/// <summary>
 		/// The name of the equipment slot.
