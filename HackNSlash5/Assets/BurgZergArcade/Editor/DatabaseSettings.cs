@@ -19,5 +19,10 @@ namespace BurgZergArcade.Editor
 		/// The name of the item quality database
 		/// </summary>
 		public string itemQualityDatabase = "ItemQualityDB";
+
+		/// <summary>
+		/// The name of the item object database.
+		/// </summary>
+		public string itemObjectDatabase = "ItemObjectDB";
 	}
 }

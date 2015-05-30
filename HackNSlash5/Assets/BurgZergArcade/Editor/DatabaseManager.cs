@@ -9,7 +9,7 @@ namespace BurgZergArcade.Editor
 	/// If you want to use a different folder for holding your databases 
 	/// change the DATABASE_FOLDER_NAME to be your folder.
 	/// </summary>
-	public class DatabaseManager : EditorWindow
+	public partial class DatabaseManager : EditorWindow
 	{
 		/// <summary>
 		/// The settings, contains all of the settings for database creation.
@@ -59,6 +59,17 @@ namespace BurgZergArcade.Editor
 		}
 
 		/// <summary>
+		/// Sets the selected database as the database to use.
+		/// </summary>
+		[MenuItem("Assets/BZA/Set Active/Quality Database")]
+		static void SetItemObjectDBActive()
+		{
+			settings.itemObjectDatabase = Selection.activeObject.name;
+			// write the changes to disk
+			EditorUtility.SetDirty(_settings);
+		}
+
+		/// <summary>
 		/// Just a fun way to change the settings for the database by going to Edit/Preferences in unity
 		/// Displays a new prefrence called BZA Prefernces
 		/// </summary>
@@ -67,6 +78,7 @@ namespace BurgZergArcade.Editor
 		{
 			settings.databaseFolder = EditorGUILayout.TextField("Database Folder", settings.databaseFolder);
 			settings.itemQualityDatabase = EditorGUILayout.TextField("Item Quality Database", settings.itemQualityDatabase);
+			settings.itemObjectDatabase = EditorGUILayout.TextField("Item Object Database", settings.itemObjectDatabase);
 
 			// if the user made changes then write the database to disk
 			if(GUI.changed)
@@ -134,6 +146,10 @@ namespace BurgZergArcade.Editor
 
 			//Display a text field for the user to edit the Item Quality database that they want to use
 			_settings.itemQualityDatabase = EditorGUILayout.TextField("Item Quality Database:", settings.itemQualityDatabase);
+
+			//Display a text field for the user to edit the Item Object database that they want to use
+			_settings.itemQualityDatabase = EditorGUILayout.TextField("Item Object Database:", settings.itemObjectDatabase);
+
 
 			// if the user made changes then write the database to disk
 			if(GUI.changed)
