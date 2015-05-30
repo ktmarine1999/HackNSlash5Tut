@@ -24,7 +24,7 @@ namespace BurgZergArcade.ItemSystem
 		/// <summary>
 		/// The eqipment slot to equip this item in.
 		/// </summary>
-		ISEequipmentSlot _eqipmentSlot;
+		ISEquipmentSlot _eqipmentSlot;
 
 		/// <summary>
 		/// The prefab to display this item in the game world.
@@ -37,7 +37,7 @@ namespace BurgZergArcade.ItemSystem
 			_prefab = new GameObject();
 		}
 
-		public ISWeapon(int durability, int maxDurability, ISEequipmentSlot slot, GameObject gamePrefab)
+		public ISWeapon(int durability, int maxDurability, ISEquipmentSlot slot, GameObject gamePrefab)
 		{
 			_durability = durability;
 			_maxDurability = maxDurability;
@@ -132,6 +132,7 @@ namespace BurgZergArcade.ItemSystem
 			// if max durability is greater then 0 then reduce the max durability this prevents the item from becoming industructable
 			if(_maxDurability > 0)
 				_maxDurability--;
+		}
 		#endregion
 
 		#region IISEquipable implementation
@@ -139,7 +140,7 @@ namespace BurgZergArcade.ItemSystem
 		/// Gets the eqipment slot.
 		/// </summary>
 		/// <value>The eqipment slot.</value>
-		public ISEequipmentSlot eqipmentSlot
+		public ISEquipmentSlot eqipmentSlot
 		{
 			get{ return _eqipmentSlot;}
 		}
