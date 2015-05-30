@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using BurgZergArcade.Editor;
 
@@ -14,7 +14,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// <summary>
 		/// The selected item.
 		/// </summary>
-		ItemObject selectedItem;
+		ISObject selectedItem;
 	
 		/// <summary>
 		/// The selected item's texture.
@@ -70,10 +70,10 @@ namespace BurgZergArcade.ItemSystem.Editor
 			objectDatabase = DatabaseEditor.InitDatabase<ItemObjectDatabase>(DatabaseManager.settings.itemObjectDatabase);
 		
 			// set the selected item to a new Item Object
-			selectedItem = new ItemObject();
+			selectedItem = new ISObject();
 		
 			// add a new Item Object to the List
-			objectDatabase.Add(new ItemObject());
+			objectDatabase.Add(new ISObject());
 		}//OnEnable()
 
 		/// <summary>
@@ -114,7 +114,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 				
 				// if the last item's name in the database is valid then add a new one to the end
 				if(NameValid(objectDatabase.Get(objectDatabase.Count - 1).Name))
-					objectDatabase.Add(new ItemObject());
+					objectDatabase.Add(new ISObject());
 			}//if GUI.changed
 		}//GUIChanged
 

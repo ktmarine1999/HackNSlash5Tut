@@ -33,7 +33,7 @@ namespace BurgZergArcade.ItemSystem
 		/// Gets or sets the Item quality.
 		/// </summary>
 		/// <value>The quality of the Item</value>
-		ItemQuality Quality { get; set; }
+		ISQuality Quality { get; set; }
 
 		//questItem flag
 		//prefab

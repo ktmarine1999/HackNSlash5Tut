@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 namespace BurgZergArcade.ItemSystem
 {
 	public interface IISEquipable
 	{
-		ItemEequipmentSlot eqipmentSlot { get; }
+		ISEequipmentSlot eqipmentSlot { get; }
 
 		bool Equip();
 	}

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using BurgZergArcade.Editor;
 
@@ -14,7 +14,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// <summary>
 		/// The selected item.
 		/// </summary>
-		ItemQuality selectedItem;
+		ISQuality selectedItem;
 
 		/// <summary>
 		/// The selected item's texture.
@@ -53,10 +53,10 @@ namespace BurgZergArcade.ItemSystem.Editor
 			qualityDatabase = DatabaseEditor.InitDatabase<ItemQualityDatabase>(DatabaseManager.settings.itemQualityDatabase);
 
 			// set the selected item to a new quality
-			selectedItem = new ItemQuality();
+			selectedItem = new ISQuality();
 
 			// add a new quality to the List
-			qualityDatabase.Add(new ItemQuality());
+			qualityDatabase.Add(new ISQuality());
 		}//OnEnable()
 
 		/// <summary>
@@ -105,7 +105,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 
 				// if the last item's name in the database is not null or empty add a new one to the end
 				if(!string.IsNullOrEmpty(qualityDatabase.Get(qualityDatabase.Count - 1).Name))
-					qualityDatabase.Add(new ItemQuality());
+					qualityDatabase.Add(new ISQuality());
 			}//Gui.changed
 
 		}//OnGUI()
