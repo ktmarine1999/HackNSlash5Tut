@@ -1,4 +1,4 @@
-﻿using UnityEditor;
+using UnityEditor;
 using UnityEngine;
 
 namespace BurgZergArcade.Editor
@@ -13,13 +13,13 @@ namespace BurgZergArcade.Editor
 		[MenuItem("Assets/BZA/Create/Quality Database")]
 		public static void CreateItemQualityDatabase()
 		{
-			CreateAsset<BurgZergArcade.ItemSystem.ItemQualityDatabase>();
+			CreateAsset<BurgZergArcade.ItemSystem.ISQualityDatabase>();
 		}
 
 		[MenuItem("Assets/BZA/Create/Item Object Database")]
 		public static void CreateItemObjectDatabase()
 		{
-			CreateAsset<BurgZergArcade.ItemSystem.ItemObjectDatabase>();
+			CreateAsset<BurgZergArcade.ItemSystem.ISObjectDatabase>();
 		}
 
 		/// <summary>

@@ -9,7 +9,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// <summary>
 		/// The asset database this editor is for.
 		/// </summary>
-		ItemQualityDatabase qualityDatabase;
+		ISQualityDatabase qualityDatabase;
 
 		/// <summary>
 		/// The selected item.
@@ -50,7 +50,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 		void OnEnable()
 		{
 			// Initialize the asset database we are using
-			qualityDatabase = DatabaseEditor.InitDatabase<ItemQualityDatabase>(DatabaseManager.settings.itemQualityDatabase);
+			qualityDatabase = DatabaseEditor.InitDatabase<ISQualityDatabase>(DatabaseManager.settings.itemQualityDatabase);
 
 			// set the selected item to a new quality
 			selectedItem = new ISQuality();

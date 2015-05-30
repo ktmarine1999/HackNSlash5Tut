@@ -9,7 +9,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// <summary>
 		/// The asset database this editor is for.
 		/// </summary>
-		ItemObjectDatabase objectDatabase;
+		ISObjectDatabase objectDatabase;
 	
 		/// <summary>
 		/// The selected item.
@@ -67,7 +67,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 		void OnEnable()
 		{
 			// Initialize the asset database we are using
-			objectDatabase = DatabaseEditor.InitDatabase<ItemObjectDatabase>(DatabaseManager.settings.itemObjectDatabase);
+			objectDatabase = DatabaseEditor.InitDatabase<ISObjectDatabase>(DatabaseManager.settings.itemObjectDatabase);
 		
 			// set the selected item to a new Item Object
 			selectedItem = new ISObject();
