@@ -37,7 +37,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// <summary>
 		/// Create  a menue to open this editor window using cntrl+shift+w
 		/// </summary>
-		[MenuItem("BZA/Database/Quality Editor %#i")]
+		[MenuItem("BZA/Database/Item Object Editor %#i")]
 		public static void Init()
 		{
 			//Initalize this editor window easily with the DatabaseEditor class
@@ -53,7 +53,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 			// For every item in the database
 			for(int cnt = 0; cnt < objectDatabase.Count; cnt++)
 			{
-				// Set the selectedItem to the Current Quality in the database
+				// Set the selectedItem to the Current Item Object in the database
 				selectedItem = objectDatabase.Get(cnt);
 				
 				// if the selectedItem is null or the Item's name is null or empty 
@@ -73,12 +73,12 @@ namespace BurgZergArcade.ItemSystem.Editor
 		void OnEnable()
 		{
 			// Initialize the asset database we are using
-			objectDatabase = DatabaseEditor.InitDatabase<ItemObjectDatabase>(DatabaseManager.settings.itemQualityDatabase);
+			objectDatabase = DatabaseEditor.InitDatabase<ItemObjectDatabase>(DatabaseManager.settings.itemObjectDatabase);
 		
-			// set the selected item to a new quality
+			// set the selected item to a new Item Object
 			selectedItem = new ItemObject();
 		
-			// add a new quality to the List
+			// add a new Item Object to the List
 			objectDatabase.Add(new ItemObject());
 		}//OnEnable()
 
@@ -87,6 +87,9 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// </summary>
 		void OnGUI()
 		{
+			// Display the Top Tab Bar
+			TopTabBar();
+
 			//if the GUI has been changed then write the database to disk and make sure that there is a emptyspace for a new item
 			if(GUI.changed)
 			{
