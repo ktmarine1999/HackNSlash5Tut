@@ -9,24 +9,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// <summary>
 		/// The asset database this editor is for.
 		/// </summary>
-		ISObjectDatabase objectDatabase;
-	
-		/// <summary>
-		/// The selected item.
-		/// </summary>
-		ISObject selectedItem;
-	
-		/// <summary>
-		/// The selected item's texture.
-		/// </summary>
-		Texture2D selectedTexture;
-	
-		/// <summary>
-		/// The index of the selectedItem.
-		/// </summary>
-		int _selectedIndex = -1;
-	
-		const int SPRITE_BUTTON_SIZE = 46;
+		ISWeaponDatabase weaponDatabase;
 
 		/// <summary>
 		/// Create  a menue to open this editor window using cntrl+shift+w
@@ -44,21 +27,8 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// </summary>
 		void OnDestroy()
 		{
-			// For every item in the database
-			for(int cnt = 0; cnt < objectDatabase.Count; cnt++)
-			{
-				// Set the selectedItem to the Current Item Object in the database
-				selectedItem = objectDatabase.Get(cnt);
-				
-				// if the selectedItem is null or the Item's name is not valid
-				// remove the item from the database, this prevents null refrences when using this database
-				if(selectedItem == null || !NameValid(selectedItem.name))
-					objectDatabase.Remove(cnt);
-				
-			}//for loop
-			
 			// Make sure that the database is writen to disk
-			EditorUtility.SetDirty(objectDatabase);
+			EditorUtility.SetDirty(weaponDatabase);
 		}//OnDestroy()
 
 		/// <summary>
@@ -67,14 +37,8 @@ namespace BurgZergArcade.ItemSystem.Editor
 		void OnEnable()
 		{
 			// Initialize the asset database we are using
-			objectDatabase = DatabaseEditor.InitDatabase<ISObjectDatabase>(DatabaseManager.settings.itemObjectDatabase);
-		
-			// set the selected item to a new Item Object
-			selectedItem = new ISObject();
-		
-			// add a new Item Object to the List
-			objectDatabase.Add(new ISObject());
-		}//OnEnable()
+			weaponDatabase = DatabaseEditor.InitDatabase<ISWeaponDatabase>(DatabaseManager.settings.weaponDatabase);
+		}
 
 		/// <summary>
 		/// Raises the GUI event.
@@ -110,36 +74,8 @@ namespace BurgZergArcade.ItemSystem.Editor
 			if(GUI.changed)
 			{
 				// write the database to the disk
-				EditorUtility.SetDirty(objectDatabase);
-				
-				// if the last item's name in the database is valid then add a new one to the end
-				if(NameValid(objectDatabase.Get(objectDatabase.Count - 1).name))
-					objectDatabase.Add(new ISObject());
+				EditorUtility.SetDirty(weaponDatabase);
 			}//if GUI.changed
 		}//GUIChanged
-
-		/// <summary>
-		/// Is the name valid.
-		/// </summary>
-		/// <returns><c>true</c>, if name was valid, <c>false</c> otherwise.</returns>
-		/// <param name="itemName">Item name.</param>
-		bool NameValid(string itemName)
-		{
-			// If the item's name is null or empty the name is not a valid name
-			if(string.IsNullOrEmpty(itemName))
-			{
-				return false;
-			}
-			// else if the item's name == new item the name is not a valid name
-			else if(itemName.ToLower() == "new item")
-			{
-				return false;
-			}
-			// else the name is valid
-			else
-			{
-				return true;
-			}
-		}
 	}
 }

@@ -112,6 +112,9 @@ namespace BurgZergArcade.Editor
 			//Display a text field for the user to edit the Item Object database that they want to use
 			_settings.itemQualityDatabase = EditorGUILayout.TextField("Item Object Database:", settings.itemObjectDatabase);
 
+			//Display a text field for the user to edit the Weapon database that they want to use
+			_settings.weaponDatabase = EditorGUILayout.TextField("Weapon Database:", settings.weaponDatabase);
+
 
 			// if the user made changes then write the database to disk
 			if(GUI.changed)
@@ -128,6 +131,7 @@ namespace BurgZergArcade.Editor
 			settings.databaseFolder = EditorGUILayout.TextField("Database Folder", settings.databaseFolder);
 			settings.itemQualityDatabase = EditorGUILayout.TextField("Item Quality Database", settings.itemQualityDatabase);
 			settings.itemObjectDatabase = EditorGUILayout.TextField("Item Object Database", settings.itemObjectDatabase);
+			settings.weaponDatabase = EditorGUILayout.TextField("Weapon Database", settings.weaponDatabase);
 			
 			// if the user made changes then write the database to disk
 			if(GUI.changed)

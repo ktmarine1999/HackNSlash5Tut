@@ -22,6 +22,13 @@ namespace BurgZergArcade.Editor
 			CreateAsset<BurgZergArcade.ItemSystem.ISObjectDatabase>();
 		}
 
+		[MenuItem("Assets/BZA/Create/Weapon Database")]
+		public static void CreateWeaponDatabase()
+		{
+			CreateAsset<BurgZergArcade.ItemSystem.ISWeaponDatabase>();
+		}
+
+
 		/// <summary>
 		/// Create new asset from <see cref="ScriptableObject"/> type with unique name at
 		/// selected folder in project window. Asset creation can be cancelled by pressing
@@ -54,6 +61,17 @@ namespace BurgZergArcade.Editor
 		static void SetItemObjectDBActive()
 		{
 			DatabaseManager.settings.itemObjectDatabase = Selection.activeObject.name;
+			// write the changes to disk
+			EditorUtility.SetDirty(DatabaseManager.settings);
+		}
+
+		/// <summary>
+		/// Sets the selected database as the database to use.
+		/// </summary>
+		[MenuItem("Assets/BZA/Set Active/Weapon Database")]
+		static void SetWeaponDBActive()
+		{
+			DatabaseManager.settings.weaponDatabase = Selection.activeObject.name;
 			// write the changes to disk
 			EditorUtility.SetDirty(DatabaseManager.settings);
 		}

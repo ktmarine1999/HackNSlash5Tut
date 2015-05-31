@@ -24,5 +24,10 @@ namespace BurgZergArcade.Editor
 		/// The name of the item object database.
 		/// </summary>
 		public string itemObjectDatabase = "ItemObjectDB";
+
+		/// <summary>
+		/// The name of the weapon database.
+		/// </summary>
+		public string weaponDatabase = "weaponDB";
 	}
 }

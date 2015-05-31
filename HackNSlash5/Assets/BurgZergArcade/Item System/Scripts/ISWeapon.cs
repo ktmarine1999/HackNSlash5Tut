@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
 namespace BurgZergArcade.ItemSystem
 {
@@ -9,32 +10,41 @@ namespace BurgZergArcade.ItemSystem
 		/// <summary>
 		/// Theminimum damage this weapon can do.
 		/// </summary>
-		int _minDamage;
+		[SerializeField]
+		int
+			_minDamage;
 
 		/// <summary>
 		/// The durability of this weapon.
 		/// </summary>
-		int _durability;
+		[SerializeField]
+		int
+			_durability;
 
 		/// <summary>
 		/// The max durability of this weapon.
 		/// </summary>
-		int _maxDurability;
+		[SerializeField]
+		int
+			_maxDurability;
 
 		/// <summary>
 		/// The eqipment slot to equip this item in.
 		/// </summary>
-		ISEquipmentSlot _eqipmentSlot;
+		[SerializeField]
+		ISEquipmentSlot
+			_eqipmentSlot;
 
 		/// <summary>
 		/// The prefab to display this item in the game world.
 		/// </summary>
-		GameObject _prefab;
+		[SerializeField]
+		GameObject
+			_prefab;
 
 		public ISWeapon()
 		{
 			_eqipmentSlot = new BurgZergArcade.ItemSystem.ISEquipmentSlot();
-			_prefab = new GameObject();
 		}
 
 		public ISWeapon(int durability, int maxDurability, ISEquipmentSlot slot, GameObject gamePrefab)
@@ -166,5 +176,41 @@ namespace BurgZergArcade.ItemSystem
 		}
 
 		#endregion
+
+		public void OnGUI()
+		{
+			// Create a vertical group Expanding the width
+			EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(true));
+			// Display a field to edit the name
+			name = EditorGUILayout.TextField("Name", name);
+			
+			//Display a filed to edit the value
+			itemValue = int.Parse(EditorGUILayout.TextField("Value", itemValue.ToString()));
+			
+			//Display the icon
+			
+			// Display the Burden
+			burden = int.Parse(EditorGUILayout.TextField("Burden", burden.ToString()));
+			
+			// Dispay the quality from the quality database
+			
+			//Display the Min Damage
+			_minDamage = int.Parse(EditorGUILayout.TextField("Min Damage", _minDamage.ToString()));
+			
+			//Display the Durability
+			_durability = int.Parse(EditorGUILayout.TextField("Durability", _durability.ToString()));
+			
+			//Display the Max Durability
+			_maxDurability = int.Parse(EditorGUILayout.TextField("Max Durability", _maxDurability.ToString()));
+			
+			// Display the equipmentSlot again pick from the Equipment slot database
+
+
+			// Display the prefab
+
+
+			// End the vertical group 
+			EditorGUILayout.EndVertical();
+		}
 	}//class
 }//namespace
