@@ -22,7 +22,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 			_scrollPos = EditorGUILayout.BeginScrollView(_scrollPos, "Box", GUILayout.ExpandHeight(true), GUILayout.Width(_listViewWidth));
 
 			// Display the Item Objects in the database
-			
+
 
 			// end the Scroll view
 			EditorGUILayout.EndScrollView();

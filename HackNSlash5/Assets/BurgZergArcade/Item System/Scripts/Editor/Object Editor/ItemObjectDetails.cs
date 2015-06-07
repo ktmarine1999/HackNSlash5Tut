@@ -24,14 +24,14 @@ namespace BurgZergArcade.ItemSystem.Editor
 			EditorGUILayout.BeginVertical("Box", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
 
 			// Create a horizontal group expanding the width and height 
-			EditorGUILayout.BeginHorizontal(GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+			EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
 
 			//If show new weapon details
 			if(showNewWeaponDetails)
-				DisplaNewWeapon();
+				DisplayNewWeapon();
 
-			// End horizontal group 
-			EditorGUILayout.EndHorizontal();
+			// End Vertical group 
+			EditorGUILayout.EndVertical();
 
 			GUILayout.Space(50);
 
@@ -45,9 +45,13 @@ namespace BurgZergArcade.ItemSystem.Editor
 			EditorGUILayout.EndVertical();
 		}//ItemObjectDetails()
 
-		void DisplaNewWeapon()
+		void DisplayNewWeapon()
 		{
-			tempWeapon.OnGUI();
+			if(tempWeapon != null)
+			{
+				//EditorGUILayout.LabelField("New Weapon");
+				tempWeapon.OnGUI();
+			}
 		}
 
 		void DisplayButtons()
@@ -57,10 +61,11 @@ namespace BurgZergArcade.ItemSystem.Editor
 			{// Create a button to Create a new Weapon
 				if(GUILayout.Button("Create Weapon"))
 				{
-					// Set the toggel to true
-					showNewWeaponDetails = true;
 					// Set the temp weapon to a new weapon
 					tempWeapon = new ISWeapon();
+
+					// Set the toggel to true
+					showNewWeaponDetails = true;
 				}//if Create Button
 			}//if !showNewWeaponDetails
 			// Else show the save and Cancel buttons
@@ -70,12 +75,18 @@ namespace BurgZergArcade.ItemSystem.Editor
 				{
 					// Set the toggel to true
 					showNewWeaponDetails = false;
+
+					// Set tempWeapon to null to make sure the data gets cleared out
+					tempWeapon = null;
 				}//Save Button
 			
 				if(GUILayout.Button("Cancel"))
 				{
 					// Set the toggel to true
 					showNewWeaponDetails = false;
+
+					// Set tempWeapon to null to make sure the data gets cleared out
+					tempWeapon = null;
 				}//Cancle Button
 			}//else
 		}//DisplayButtons

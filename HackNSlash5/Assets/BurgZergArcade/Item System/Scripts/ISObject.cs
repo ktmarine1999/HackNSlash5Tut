@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
 namespace BurgZergArcade.ItemSystem
 {
@@ -93,13 +94,69 @@ namespace BurgZergArcade.ItemSystem
 		}
 	#endregion
 
+//		public ISObject()
+//		{
+//			_name = "New Item";
+//			_value = 0;
+//			_icon = new Sprite();
+//			_burden = 1;
+//			_quality = new ISQuality();
+//		}//ISObject
+
+		ISQualityDatabase qdb;
+		int _selectedQualityIndex = 0;
+		string[] options;
+
 		public ISObject()
 		{
-			_name = "New Item";
-			_value = 0;
-			_icon = new Sprite();
-			_burden = 1;
-			_quality = new ISQuality();
-		}//ISObject
+			// Initialize the quality database to use
+			//qdb = BurgZergArcade.Editor.DatabaseEditor.InitDatabase<ISQualityDatabase>(BurgZergArcade.Editor.DatabaseManager.settings.itemQualityDatabase);
+			qdb = ISQualityDatabase.GetDatabase<ISQualityDatabase>("BZADatabase", "ItemQualityDB");
+			// Initialize the options string to be as big as the quality db
+			options = new string[qdb.Count];
+
+			//Loop through qdb and add the names to the options 
+			for(int cnt = 0; cnt < qdb.Count; cnt++)
+			{
+				options[cnt] = qdb.Get(cnt).Name;
+			}
+		}
+
+		public virtual void OnGUI()
+		{
+			// Create a vertical group Expanding the width
+			EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(true));
+			
+			// Display a field to edit the name
+			_name = EditorGUILayout.TextField("Name", _name);
+			
+			//Display a filed to edit the value
+			_value = EditorGUILayout.IntField("Value", _value);
+
+			// Display the Burden
+			_burden = EditorGUILayout.IntField("Burden", _burden);
+
+			//Display the icon
+			DisplayIcon();
+			
+			// Dispay the quality from the quality database
+			DisplayQuality();
+
+			// End the vertical group 
+			EditorGUILayout.EndVertical();
+		}//OnGUI
+
+		public void DisplayIcon()
+		{
+			EditorGUILayout.LabelField("Icon");
+		}//DisplayIcon
+
+		public void DisplayQuality()
+		{
+			//EditorGUILayout.LabelField("Quality");
+
+			_selectedQualityIndex = EditorGUILayout.Popup("Quality", _selectedQualityIndex, options);
+
+		}//DisplayQuality
 	}//class
 }//namespace

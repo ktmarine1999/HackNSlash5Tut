@@ -177,40 +177,42 @@ namespace BurgZergArcade.ItemSystem
 
 		#endregion
 
-		public void OnGUI()
+		public override void OnGUI()
 		{
-			// Create a vertical group Expanding the width
-			EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(true));
-			// Display a field to edit the name
-			name = EditorGUILayout.TextField("Name", name);
-			
-			//Display a filed to edit the value
-			itemValue = int.Parse(EditorGUILayout.TextField("Value", itemValue.ToString()));
-			
-			//Display the icon
-			
-			// Display the Burden
-			burden = int.Parse(EditorGUILayout.TextField("Burden", burden.ToString()));
-			
-			// Dispay the quality from the quality database
-			
+			base.OnGUI();
+
+			// End the vertical group 
+			EditorGUILayout.BeginVertical();
+
 			//Display the Min Damage
-			_minDamage = int.Parse(EditorGUILayout.TextField("Min Damage", _minDamage.ToString()));
+			//EditorGUILayout.LabelField("Min Damage");
+			_minDamage = EditorGUILayout.IntField("Min Damage", _minDamage);
 			
 			//Display the Durability
-			_durability = int.Parse(EditorGUILayout.TextField("Durability", _durability.ToString()));
+			//EditorGUILayout.LabelField("Durability");
+			_durability = EditorGUILayout.IntField("Durability", _durability);
 			
 			//Display the Max Durability
-			_maxDurability = int.Parse(EditorGUILayout.TextField("Max Durability", _maxDurability.ToString()));
+			_maxDurability = EditorGUILayout.IntField("Max Durability", _maxDurability);
 			
-			// Display the equipmentSlot again pick from the Equipment slot database
-
+			// Display the equipmentSlot pick from the Equipment slot database
+			DisplayEquipmentSlot();
 
 			// Display the prefab
-
+			DisplayPrefab();
 
 			// End the vertical group 
 			EditorGUILayout.EndVertical();
-		}
+		}//OnGUI
+
+		void DisplayEquipmentSlot()
+		{
+			EditorGUILayout.LabelField("Equipment Slot");
+		}//DisplayEquipmentSlot
+
+		void DisplayPrefab()
+		{
+			EditorGUILayout.LabelField("Prefab");
+		}//Display Prefab
 	}//class
 }//namespace

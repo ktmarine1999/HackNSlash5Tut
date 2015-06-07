@@ -56,10 +56,10 @@ namespace BurgZergArcade.Editor
 		{
 			// sets a string to the full path of the settings database
 			string databaseFullPath = @"Assets/" + DATABASE_FOLDER_NAME + @"/DatabaseSettings.asset";
-
+			
 			// use AssetDatabase to load the database at databaseFullPath
 			_settings = AssetDatabase.LoadAssetAtPath<DatabaseSettings>(databaseFullPath);
-
+			
 			// if the database faild to load create it
 			if(_settings == null)
 			{
@@ -83,7 +83,7 @@ namespace BurgZergArcade.Editor
 				AssetDatabase.Refresh();
 			}
 		}
-
+		
 		/// <summary>
 		/// Raises the enable event.
 		/// </summary>
@@ -92,7 +92,7 @@ namespace BurgZergArcade.Editor
 			// make sure the settings db is initialized
 			InitSettingsDB();
 		}
-
+		
 		/// <summary>
 		/// Raises the GUI event.
 		/// </summary>
@@ -105,22 +105,22 @@ namespace BurgZergArcade.Editor
 			//Display a reminder to change the DATABASE_FOLDER_NAME
 			EditorGUILayout.LabelField("Don't forget to change the DATABASE_FOLDER_NAME in DatabaseManager to the one you want to use");
 			EditorGUILayout.EndHorizontal();
-
+			
 			//Display a text field for the user to edit the Item Quality database that they want to use
 			_settings.itemQualityDatabase = EditorGUILayout.TextField("Item Quality Database:", settings.itemQualityDatabase);
-
+			
 			//Display a text field for the user to edit the Item Object database that they want to use
-			_settings.itemQualityDatabase = EditorGUILayout.TextField("Item Object Database:", settings.itemObjectDatabase);
-
+			_settings.itemObjectDatabase = EditorGUILayout.TextField("Item Object Database:", settings.itemObjectDatabase);
+			
 			//Display a text field for the user to edit the Weapon database that they want to use
 			_settings.weaponDatabase = EditorGUILayout.TextField("Weapon Database:", settings.weaponDatabase);
-
-
+			
+			
 			// if the user made changes then write the database to disk
 			if(GUI.changed)
 				EditorUtility.SetDirty(_settings);
 		}
-
+		
 		/// <summary>
 		/// Just a fun way to change the settings for the database by going to Edit/Preferences in unity
 		/// Displays a new prefrence called BZA Prefernces

@@ -92,7 +92,7 @@ namespace BurgZergArcade
 			return database.ElementAt(index);
 		}
 
-		public U GetDatabase<U>(string databasePath, string databaseName) where U : ScriptableObject
+		public static U GetDatabase<U>(string databasePath, string databaseName) where U : ScriptableObject
 		{
 			string databaseFullPath = @"Assets/" + databasePath + "/" + databaseName + ".asset";
 
@@ -100,6 +100,7 @@ namespace BurgZergArcade
 			
 			if(db == null)
 			{
+				Debug.Log("Faild to load database, createing a new one");
 				if(!AssetDatabase.IsValidFolder(@"Assets/" + databasePath))
 				{
 					AssetDatabase.CreateFolder("Assets", databasePath);
