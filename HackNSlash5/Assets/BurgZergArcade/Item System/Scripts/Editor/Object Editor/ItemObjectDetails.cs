@@ -76,6 +76,9 @@ namespace BurgZergArcade.ItemSystem.Editor
 					// Set the toggel to true
 					showNewWeaponDetails = false;
 
+					// Add the tempWeapon to the weapons database
+					weaponDatabase.Add(tempWeapon);
+
 					// Set tempWeapon to null to make sure the data gets cleared out
 					tempWeapon = null;
 				}//Save Button
