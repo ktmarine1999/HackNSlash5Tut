@@ -16,18 +16,23 @@ namespace BurgZergArcade.Editor
 		public string databaseFolder;
 
 		/// <summary>
-		/// The name of the item quality database
+		/// The name of the item system quality database
 		/// </summary>
-		public string itemQualityDatabase = "ItemQualityDB";
+		public string ISQualityDatabaseName = "ISQualityDB";
+
+		/// <summary>
+		/// The name of the item  system equipment database
+		/// </summary>
+		public string ISEquipmentSlotDatabaseName = "ISEquipmentSlotDB";
 
 		/// <summary>
 		/// The name of the item object database.
 		/// </summary>
-		public string itemObjectDatabase = "ItemObjectDB";
+		public string ISObjectDatabaseName = "ISObjectDB";
 
 		/// <summary>
-		/// The name of the weapon database.
+		/// The name of the item system weapon database.
 		/// </summary>
-		public string weaponDatabase = "weaponDB";
+		public string ISWeaponDatabaseName = "ISWeaponDB";
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using BurgZergArcade.Editor;
 
 namespace BurgZergArcade.ItemSystem.Editor
 {
@@ -24,17 +25,17 @@ namespace BurgZergArcade.ItemSystem.Editor
 		void DisplayQualities()
 		{
 			// if the list does not contain any items then return
-			if(!(qualityDatabase.Count > 0))
+			if(!(DatabaseManager.qualityDatabase.Count > 0))
 				return;
 
 			// For every item in the database
-			for(int cnt = 0; cnt < qualityDatabase.Count; cnt++)
+			for(int cnt = 0; cnt < DatabaseManager.qualityDatabase.Count; cnt++)
 			{
 				// Contain each Item in its own Box style group
 				EditorGUILayout.BeginHorizontal("Box");
 
 				// Set the selectedItem to the Current Quality in the database
-				selectedItem = qualityDatabase.Get(cnt);
+				selectedItem = DatabaseManager.qualityDatabase.Get(cnt);
 
 				// Display and update the quality icon
 				QualityIcon(cnt);
@@ -47,7 +48,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 
 				// If the Quality isn't the new blank quality (the last one in the database
 				//Display Delete quality and reset cnt to keep it in range of the list
-				if(cnt != qualityDatabase.Count - 1)
+				if(cnt != DatabaseManager.qualityDatabase.Count - 1)
 					cnt = DeleteCurrentQuality(cnt);
 
 				//End the name and delete button group
@@ -117,7 +118,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 				                               "Cancel"))
 				{
 					// since the user comfirmed it is ok delete the quality
-					qualityDatabase.Remove(currentIndex);
+					DatabaseManager.qualityDatabase.Remove(currentIndex);
 					// return the previous index since this on no longer exists
 					return currentIndex - 1;
 				}//Delete dialog

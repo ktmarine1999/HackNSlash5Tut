@@ -7,11 +7,6 @@ namespace BurgZergArcade.ItemSystem.Editor
 	public partial class ItemQualtiyDatabaseEditor : EditorWindow
 	{
 		/// <summary>
-		/// The asset database this editor is for.
-		/// </summary>
-		ISQualityDatabase qualityDatabase;
-
-		/// <summary>
 		/// The selected item.
 		/// </summary>
 		ISQuality selectedItem;
@@ -49,14 +44,11 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// </summary>
 		void OnEnable()
 		{
-			// Initialize the asset database we are using
-			qualityDatabase = DatabaseEditor.InitDatabase<ISQualityDatabase>(DatabaseManager.settings.itemQualityDatabase);
-
 			// set the selected item to a new quality
 			selectedItem = new ISQuality();
 
 			// add a new quality to the List
-			qualityDatabase.Add(new ISQuality());
+			DatabaseManager.qualityDatabase.Add(new ISQuality());
 		}//OnEnable()
 
 		/// <summary>
@@ -66,20 +58,20 @@ namespace BurgZergArcade.ItemSystem.Editor
 		void OnDestroy()
 		{
 			// For every item in the database
-			for(int cnt = 0; cnt < qualityDatabase.Count; cnt++)
+			for(int cnt = 0; cnt < DatabaseManager.qualityDatabase.Count; cnt++)
 			{
 				// Set the selectedItem to the Current Quality in the database
-				selectedItem = qualityDatabase.Get(cnt);
+				selectedItem = DatabaseManager.qualityDatabase.Get(cnt);
 
 				// if the selectedItem is null or the Item's name is null or empty 
 				// remove the item from the database, this prevents null refrences when using this database
 				if(selectedItem == null || string.IsNullOrEmpty(selectedItem.Name))
-					qualityDatabase.Remove(cnt);
+					DatabaseManager.qualityDatabase.Remove(cnt);
 
 			}//for loop
 
 			// Make sure that the database is writen to disk
-			EditorUtility.SetDirty(qualityDatabase);
+			EditorUtility.SetDirty(DatabaseManager.qualityDatabase);
 		}//OnDestroy()
 
 		/// <summary>
@@ -101,11 +93,11 @@ namespace BurgZergArcade.ItemSystem.Editor
 			if(GUI.changed)
 			{
 				// write the database to the disk
-				EditorUtility.SetDirty(qualityDatabase);
+				EditorUtility.SetDirty(DatabaseManager.qualityDatabase);
 
 				// if the last item's name in the database is not null or empty add a new one to the end
-				if(!string.IsNullOrEmpty(qualityDatabase.Get(qualityDatabase.Count - 1).Name))
-					qualityDatabase.Add(new ISQuality());
+				if(!string.IsNullOrEmpty(DatabaseManager.qualityDatabase.Get(DatabaseManager.qualityDatabase.Count - 1).Name))
+					DatabaseManager.qualityDatabase.Add(new ISQuality());
 			}//Gui.changed
 
 		}//OnGUI()
@@ -117,7 +109,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 		void BottomBar()
 		{
 			//Display a label that tell's us how many items we have in the quality database
-			EditorGUILayout.LabelField("Qualities: " + (qualityDatabase.Count - 1).ToString());
+			EditorGUILayout.LabelField("Qualities: " + (DatabaseManager.qualityDatabase.Count - 1).ToString());
 		}//BottomBar()
 	}//class
 }//namespace

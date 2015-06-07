@@ -7,11 +7,6 @@ namespace BurgZergArcade.ItemSystem.Editor
 	public partial class ItemObjectEditor : EditorWindow
 	{
 		/// <summary>
-		/// The asset database this editor is for.
-		/// </summary>
-		ISWeaponDatabase weaponDatabase;
-
-		/// <summary>
 		/// Create  a menue to open this editor window using cntrl+shift+w
 		/// </summary>
 		[MenuItem("BZA/Database/Item Object Editor %#i")]
@@ -28,18 +23,9 @@ namespace BurgZergArcade.ItemSystem.Editor
 		void OnDestroy()
 		{
 			// Make sure that the database is writen to disk
-			EditorUtility.SetDirty(weaponDatabase);
+			EditorUtility.SetDirty(DatabaseManager.weaponDatabase);
 		}//OnDestroy()
-
-		/// <summary>
-		/// Raises the enable event.
-		/// </summary>
-		void OnEnable()
-		{
-			// Initialize the asset database we are using
-			weaponDatabase = DatabaseEditor.InitDatabase<ISWeaponDatabase>(DatabaseManager.settings.weaponDatabase);
-		}
-
+		
 		/// <summary>
 		/// Raises the GUI event.
 		/// </summary>
@@ -74,7 +60,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 			if(GUI.changed)
 			{
 				// write the database to the disk
-				EditorUtility.SetDirty(weaponDatabase);
+				EditorUtility.SetDirty(DatabaseManager.weaponDatabase);
 			}//if GUI.changed
 		}//GUIChanged
 	}

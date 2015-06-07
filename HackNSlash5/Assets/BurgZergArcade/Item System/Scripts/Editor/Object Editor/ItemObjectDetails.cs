@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using BurgZergArcade.Editor;
 
 namespace BurgZergArcade.ItemSystem.Editor
 {
@@ -77,7 +78,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 					showNewWeaponDetails = false;
 
 					// Add the tempWeapon to the weapons database
-					weaponDatabase.Add(tempWeapon);
+					DatabaseManager.weaponDatabase.Add(tempWeapon);
 
 					// Set tempWeapon to null to make sure the data gets cleared out
 					tempWeapon = null;

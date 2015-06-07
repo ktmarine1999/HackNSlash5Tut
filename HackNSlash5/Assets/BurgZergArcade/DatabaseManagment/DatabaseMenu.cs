@@ -10,19 +10,25 @@ namespace BurgZergArcade.Editor
 	public static partial class DatabaseEditor
 	{
 		#region Create Databases
-		[MenuItem("Assets/BZA/Create/Quality Database")]
-		public static void CreateItemQualityDatabase()
+		[MenuItem("Assets/BZA/Create/Item System/Quality Database")]
+		public static void CreateISQualityDatabase()
 		{
 			CreateAsset<BurgZergArcade.ItemSystem.ISQualityDatabase>();
 		}
 
-		[MenuItem("Assets/BZA/Create/Item Object Database")]
+		[MenuItem("Assets/BZA/Create/Item System/Equipment Slot Database")]
+		public static void CreateISEquipmentSlotDatabase()
+		{
+			CreateAsset<BurgZergArcade.ItemSystem.ISEquipmentSlotDatabase>();
+		}
+
+		[MenuItem("Assets/BZA/Create/Item System/Object Database")]
 		public static void CreateItemObjectDatabase()
 		{
 			CreateAsset<BurgZergArcade.ItemSystem.ISObjectDatabase>();
 		}
 
-		[MenuItem("Assets/BZA/Create/Weapon Database")]
+		[MenuItem("Assets/BZA/Create/Item System/Weapon Database")]
 		public static void CreateWeaponDatabase()
 		{
 			CreateAsset<BurgZergArcade.ItemSystem.ISWeaponDatabase>();
@@ -46,10 +52,10 @@ namespace BurgZergArcade.Editor
 		/// <summary>
 		/// Sets the selected database as the database to use.
 		/// </summary>
-		[MenuItem("Assets/BZA/Set Active/Quality Database")]
-		static void SetQualityDBActive()
+		[MenuItem("Assets/BZA/Set Active/Item System/Quality Database")]
+		static void SetISQualityDBActive()
 		{
-			DatabaseManager.settings.itemQualityDatabase = Selection.activeObject.name;
+			DatabaseManager.settings.ISQualityDatabaseName = Selection.activeObject.name;
 			// write the changes to disk
 			EditorUtility.SetDirty(DatabaseManager.settings);
 		}
@@ -57,10 +63,10 @@ namespace BurgZergArcade.Editor
 		/// <summary>
 		/// Sets the selected database as the database to use.
 		/// </summary>
-		[MenuItem("Assets/BZA/Set Active/Item Object Database")]
-		static void SetItemObjectDBActive()
+		[MenuItem("Assets/BZA/Set Active/Item System/Equipment Slot Database")]
+		static void SetISEquipmentSlotDBActive()
 		{
-			DatabaseManager.settings.itemObjectDatabase = Selection.activeObject.name;
+			DatabaseManager.settings.ISEquipmentSlotDatabaseName = Selection.activeObject.name;
 			// write the changes to disk
 			EditorUtility.SetDirty(DatabaseManager.settings);
 		}
@@ -68,10 +74,21 @@ namespace BurgZergArcade.Editor
 		/// <summary>
 		/// Sets the selected database as the database to use.
 		/// </summary>
-		[MenuItem("Assets/BZA/Set Active/Weapon Database")]
-		static void SetWeaponDBActive()
+		[MenuItem("Assets/BZA/Set Active/Item System/Object Database")]
+		static void SetISObjectDBActive()
 		{
-			DatabaseManager.settings.weaponDatabase = Selection.activeObject.name;
+			DatabaseManager.settings.ISObjectDatabaseName = Selection.activeObject.name;
+			// write the changes to disk
+			EditorUtility.SetDirty(DatabaseManager.settings);
+		}
+
+		/// <summary>
+		/// Sets the selected database as the database to use.
+		/// </summary>
+		[MenuItem("Assets/BZA/Set Active/Item System/Weapon Database")]
+		static void SetISWeaponDBActive()
+		{
+			DatabaseManager.settings.ISWeaponDatabaseName = Selection.activeObject.name;
 			// write the changes to disk
 			EditorUtility.SetDirty(DatabaseManager.settings);
 		}
