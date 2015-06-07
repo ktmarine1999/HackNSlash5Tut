@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: DatabaseSettings
   m_EditorClassIdentifier: 
   databaseFolder: BZADatabase
-  ISQualityDatabaseName: ISQualityDB
+  ISQualityDatabaseName: ItemQualityDB
   ISEquipmentSlotDatabaseName: ISEquipmentSlotDB
   ISObjectDatabaseName: ISObjectDB
   ISWeaponDatabaseName: ISWeaponDB

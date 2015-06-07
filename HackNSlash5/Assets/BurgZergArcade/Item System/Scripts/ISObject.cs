@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEditor;
+using BurgZergArcade.Editor;
 
 namespace BurgZergArcade.ItemSystem
 {
@@ -103,23 +104,11 @@ namespace BurgZergArcade.ItemSystem
 //			_quality = new ISQuality();
 //		}//ISObject
 
-		ISQualityDatabase qdb;
 		int _selectedQualityIndex = 0;
-		string[] options;
 
 		public ISObject()
 		{
-			// Initialize the quality database to use
-			//qdb = BurgZergArcade.Editor.DatabaseEditor.InitDatabase<ISQualityDatabase>(BurgZergArcade.Editor.DatabaseManager.settings.itemQualityDatabase);
-			qdb = ISQualityDatabase.GetDatabase<ISQualityDatabase>("BZADatabase", "ItemQualityDB");
-			// Initialize the options string to be as big as the quality db
-			options = new string[qdb.Count];
 
-			//Loop through qdb and add the names to the options 
-			for(int cnt = 0; cnt < qdb.Count; cnt++)
-			{
-				options[cnt] = qdb.Get(cnt).Name;
-			}
 		}
 
 		public virtual void OnGUI()
@@ -155,9 +144,9 @@ namespace BurgZergArcade.ItemSystem
 		{
 			//EditorGUILayout.LabelField("Quality");
 
-			_selectedQualityIndex = EditorGUILayout.Popup("Quality", _selectedQualityIndex, options);
+			_selectedQualityIndex = EditorGUILayout.Popup("Quality", _selectedQualityIndex, DatabaseManager.qualityNames());
 
-			quality = qdb.Get(_selectedQualityIndex);
+			quality = DatabaseManager.qualityDatabase.Get(_selectedQualityIndex);
 
 		}//DisplayQuality
 	}//class

@@ -100,6 +100,20 @@ namespace BurgZergArcade.Editor
 				return _qualityDatabase;
 			}
 		}
+
+		public static string[] qualityNames()
+		{
+			// Initialize the options string to be as big as the db
+			string[] options = new string[qualityDatabase.Count];
+			
+			//Loop through qdb and add the names to the options 
+			for(int cnt = 0; cnt < qualityDatabase.Count; cnt++)
+			{
+				options[cnt] = qualityDatabase.Get(cnt).Name;
+			}
+			
+			return options;
+		}
 		#endregion
 
 		#region Item System Euipment Slot DB

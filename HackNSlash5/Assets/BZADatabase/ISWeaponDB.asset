@@ -11,4 +11,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5890bd52d53041438687209c1e101bb, type: 3}
   m_Name: ISWeaponDB
   m_EditorClassIdentifier: 
-  database: []
+  database:
+  - _name: asd
+    _value: 0
+    _icon: {fileID: 0}
+    _burden: 0
+    _quality:
+      _name: Rare
+      _icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    _minDamage: 0
+    _durability: 0
+    _maxDurability: 0
+    _eqipmentSlot:
+      _name: Name Me
+      _icon: {fileID: 0}
+    _prefab: {fileID: 0}
