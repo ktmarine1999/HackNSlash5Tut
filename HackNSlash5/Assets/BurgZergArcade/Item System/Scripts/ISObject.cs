@@ -157,6 +157,8 @@ namespace BurgZergArcade.ItemSystem
 
 			_selectedQualityIndex = EditorGUILayout.Popup("Quality", _selectedQualityIndex, options);
 
+			quality = qdb.Get(_selectedQualityIndex);
+
 		}//DisplayQuality
 	}//class
 }//namespace
