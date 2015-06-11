@@ -17,7 +17,7 @@ namespace BurgZergArcade.Editor
 		[MenuItem("BZA/Database/Database Manager %#m")]
 		public static void Init()
 		{
-			DatabaseEditor.InitEditorWindow<DatabaseManagerEditor>();
+			DatabaseEditor.InitEditorWindow<DatabaseManagerEditor>(new Vector2(600, 100), "DB Manager");
 		}
 
 		/// <summary>
