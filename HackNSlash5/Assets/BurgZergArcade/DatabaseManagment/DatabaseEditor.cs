@@ -26,7 +26,7 @@ namespace BurgZergArcade.Editor
 			// set the minimum size of the window to the size passed in
 			window.minSize = minSize;
 			// set the title of the window to the string passed in
-			window.title = title;
+			window.titleContent.text = title;
 			// show the window
 			window.Show();
 			// return the window just in case you need it.
