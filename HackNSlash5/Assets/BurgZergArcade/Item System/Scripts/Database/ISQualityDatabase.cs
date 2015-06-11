@@ -6,6 +6,7 @@ using System.Linq;
 
 namespace BurgZergArcade.ItemSystem
 {
+	[CreateAssetMenu(fileName = "ISQualityDatabase", menuName = "Item System/Quality Database", order = 1000)]
 	public class ISQualityDatabase : ScriptableObjectDatabase<ISQuality>
 	{
 	}
