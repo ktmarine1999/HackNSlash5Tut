@@ -11,11 +11,6 @@ namespace BurgZergArcade.Editor
 	public class DatabaseSettings : ScriptableObject
 	{
 		/// <summary>
-		/// The folder that the databases reside in.
-		/// </summary>
-		public string databaseFolder;
-
-		/// <summary>
 		/// The name of the item system quality database
 		/// </summary>
 		public string ISQualityDatabaseName = "ISQualityDB";

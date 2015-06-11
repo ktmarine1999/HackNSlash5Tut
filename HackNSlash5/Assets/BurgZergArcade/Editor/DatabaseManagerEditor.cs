@@ -28,11 +28,8 @@ namespace BurgZergArcade.Editor
 			// Group the database folder and a lable reminder together on the same row;
 			EditorGUILayout.BeginHorizontal();
 
-			//Display a text field for the user to edit the database folder name that they want to use
-			DatabaseManager.settings.databaseFolder = EditorGUILayout.TextField("Database Folder:", DatabaseManager.settings.databaseFolder);
-
 			//Display a reminder to change the DATABASE_FOLDER_NAME
-			EditorGUILayout.LabelField("Don't forget to change the DATABASE_FOLDER_NAME in DatabaseManager to the one you want to use");
+			EditorGUILayout.LabelField("DATABASE_FOLDER_NAME in DatabaseManager class is used to get the main folder for all databases");
 			EditorGUILayout.EndHorizontal();
 			
 			//Display a text field for the user to edit the Item Quality database that they want to use
@@ -57,7 +54,7 @@ namespace BurgZergArcade.Editor
 		[PreferenceItem("BZA Preferences")]
 		static void PreferencesGUI()
 		{
-			DatabaseManager.settings.databaseFolder = EditorGUILayout.TextField("Database Folder", DatabaseManager.settings.databaseFolder);
+			EditorGUILayout.LabelField("DATABASE_FOLDER_NAME in DatabaseManager class is used to get the main folder for all databases");
 			DatabaseManager.settings.ISQualityDatabaseName = EditorGUILayout.TextField("Item Quality Database", DatabaseManager.settings.ISQualityDatabaseName);
 			DatabaseManager.settings.ISObjectDatabaseName = EditorGUILayout.TextField("Item Object Database", DatabaseManager.settings.ISObjectDatabaseName);
 			DatabaseManager.settings.ISWeaponDatabaseName = EditorGUILayout.TextField("Weapon Database", DatabaseManager.settings.ISWeaponDatabaseName);

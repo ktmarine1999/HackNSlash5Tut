@@ -15,7 +15,7 @@ namespace BurgZergArcade.Editor
 		/// <summary>
 		/// The Folder that all your databases will reside in.
 		/// </summary>
-		const string DATABASE_FOLDER_NAME = "BZADatabase";
+		public const string DATABASE_FOLDER_NAME = "BZADatabase";
 
 		#region Settings DB
 		/// <summary>
@@ -64,8 +64,6 @@ namespace BurgZergArcade.Editor
 				}
 				// create A ScriptableObject Instance and set it to the _settings variable
 				_settings = ScriptableObject.CreateInstance<DatabaseSettings>();
-				// set the database folder name to the one we are using;
-				_settings.databaseFolder = DATABASE_FOLDER_NAME;
 				// write the database to disk
 				EditorUtility.SetDirty(_settings);
 				// since the database didn't exist create it

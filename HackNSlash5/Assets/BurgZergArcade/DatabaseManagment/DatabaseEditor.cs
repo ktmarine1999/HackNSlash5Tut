@@ -84,10 +84,10 @@ namespace BurgZergArcade.Editor
 			string databaseFullPath = @"Assets/";
 
 			//Check to make sure that the db Folder is not null or empty
-			if(string.IsNullOrEmpty(DatabaseManager.settings.databaseFolder))
+			if(string.IsNullOrEmpty(DatabaseManager.DATABASE_FOLDER_NAME))
 				databaseFullPath += databaseName + ".asset";
 			else
-				databaseFullPath += DatabaseManager.settings.databaseFolder + "/" + databaseName + ".asset";
+				databaseFullPath += DatabaseManager.DATABASE_FOLDER_NAME + "/" + databaseName + ".asset";
 
 			// Load the database that was passed in
 			T db = AssetDatabase.LoadAssetAtPath<T>(databaseFullPath);
@@ -98,13 +98,13 @@ namespace BurgZergArcade.Editor
 				// Log a message that no database was loaded
 				Debug.Log("Failed to load " + databaseFullPath);
 				// First check if the database folder is there
-				if(!AssetDatabase.IsValidFolder(@"Assets/" + DatabaseManager.settings.databaseFolder))
+				if(!AssetDatabase.IsValidFolder(@"Assets/" + DatabaseManager.DATABASE_FOLDER_NAME))
 				{
 					// Log a message that the path needs created
-					Debug.Log("Path " + @"Assets/" + DatabaseManager.settings.databaseFolder + " is not valid");
+					Debug.Log("Path " + @"Assets/" + DatabaseManager.DATABASE_FOLDER_NAME + " is not valid");
 
 					// If not then create the database folder
-					AssetDatabase.CreateFolder("Assets", DatabaseManager.settings.databaseFolder);
+					AssetDatabase.CreateFolder("Assets", DatabaseManager.DATABASE_FOLDER_NAME);
 				}
 
 				// Create a new instance of the database
