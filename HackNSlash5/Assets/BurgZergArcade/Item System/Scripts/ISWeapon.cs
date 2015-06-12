@@ -212,7 +212,7 @@ namespace BurgZergArcade.ItemSystem
 
 		void DisplayPrefab()
 		{
-			EditorGUILayout.LabelField("Prefab");
+			_prefab = EditorGUILayout.ObjectField("Prefab", _prefab, typeof(GameObject), false) as GameObject;
 		}//Display Prefab
 	}//class
 }//namespace
