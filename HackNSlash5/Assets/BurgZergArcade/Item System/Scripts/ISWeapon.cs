@@ -5,7 +5,7 @@ using UnityEditor;
 namespace BurgZergArcade.ItemSystem
 {
 	[System.Serializable]
-	public class ISWeapon : ISObject, IISWeapon, IISDestructable, IISEquipable, IISGameObject
+	public class ISWeapon : ISObject, IISWeapon, IISDestructable, IISGameObject
 	{
 		/// <summary>
 		/// Theminimum damage this weapon can do.
@@ -41,6 +41,8 @@ namespace BurgZergArcade.ItemSystem
 		[SerializeField]
 		GameObject
 			_prefab;
+
+		public EquipmentSlot equipmentSlot;
 
 		public ISWeapon()
 		{
@@ -146,26 +148,24 @@ namespace BurgZergArcade.ItemSystem
 		#endregion
 
 		#region IISEquipable implementation
-		/// <summary>
-		/// Gets the eqipment slot.
-		/// </summary>
-		/// <value>The eqipment slot.</value>
-		public ISEquipmentSlot eqipmentSlot
-		{
-			get{ return _eqipmentSlot;}
-		}
-
-		/// <summary>
-		/// Equip this weapon.
-		/// </summary>
-		/// <returns>true if this wepon equiped scusessfully.</returns>
-		public bool Equip()
-		{
-			throw new System.NotImplementedException();
-		}
+		
+//		public ISEquipmentSlot eqipmentSlot
+//		{
+//			get
+//			{
+//				return _eqipmentSlot;
+//			}
+//		}
+//
+//		public bool Equip()
+//		{
+//			throw new System.NotImplementedException();
+//		}
+		
 		#endregion
 
 		#region IISGameObject implementation
+
 		/// <summary>
 		/// Gets the prefab.
 		/// </summary>
@@ -207,7 +207,7 @@ namespace BurgZergArcade.ItemSystem
 
 		void DisplayEquipmentSlot()
 		{
-			EditorGUILayout.LabelField("Equipment Slot");
+			equipmentSlot = (EquipmentSlot)EditorGUILayout.EnumPopup("Equipment Slot", equipmentSlot);
 		}//DisplayEquipmentSlot
 
 		void DisplayPrefab()
