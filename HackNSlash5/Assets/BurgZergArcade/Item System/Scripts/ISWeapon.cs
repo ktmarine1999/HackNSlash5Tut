@@ -47,6 +47,7 @@ namespace BurgZergArcade.ItemSystem
 		public ISWeapon()
 		{
 			_eqipmentSlot = new BurgZergArcade.ItemSystem.ISEquipmentSlot();
+			equipmentSlot = EquipmentSlot.Hands;
 		}
 
 		public ISWeapon(int durability, int maxDurability, ISEquipmentSlot slot, GameObject gamePrefab)
@@ -55,6 +56,7 @@ namespace BurgZergArcade.ItemSystem
 			_maxDurability = maxDurability;
 			_eqipmentSlot = slot;
 			_prefab = gamePrefab;
+			equipmentSlot = EquipmentSlot.Hands;
 		}
 
 		#region IISWeapon implementation
