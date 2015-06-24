@@ -104,7 +104,7 @@ namespace BurgZergArcade.ItemSystem
 		public void TakeDamage(int amount)
 		{
 			// if this item is indestrucable then return no need to do anythins
-			if(_maxDurability == -1)
+			if(_maxDurability == -100)
 				return;
 
 			// reduce durability by the amount
@@ -135,7 +135,7 @@ namespace BurgZergArcade.ItemSystem
 		public void Break()
 		{
 			// if this item is indestrucable then return no need to do anythins
-			if(_maxDurability == -1)
+			if(_maxDurability == -100)
 				return;
 
 			// set _durability to zero
