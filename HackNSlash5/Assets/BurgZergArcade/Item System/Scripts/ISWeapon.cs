@@ -8,7 +8,7 @@ namespace BurgZergArcade.ItemSystem
 	public class ISWeapon : ISObject, IISWeapon, IISDestructable, IISGameObject
 	{
 		/// <summary>
-		/// Theminimum damage this weapon can do.
+		/// The minimum damage this weapon can do.
 		/// </summary>
 		[SerializeField]
 		int

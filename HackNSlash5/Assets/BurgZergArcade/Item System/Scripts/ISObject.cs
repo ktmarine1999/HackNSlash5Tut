@@ -137,7 +137,7 @@ namespace BurgZergArcade.ItemSystem
 
 		public void DisplayIcon()
 		{
-			EditorGUILayout.LabelField("Icon");
+			_icon = EditorGUILayout.ObjectField("Icon", _icon, typeof(Sprite), false) as Sprite;
 		}//DisplayIcon
 
 		public void DisplayQuality()
