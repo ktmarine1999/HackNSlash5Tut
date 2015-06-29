@@ -29,13 +29,6 @@ namespace BurgZergArcade.ItemSystem
 			_maxDurability;
 
 		/// <summary>
-		/// The eqipment slot to equip this item in.
-		/// </summary>
-		[SerializeField]
-		ISEquipmentSlot
-			_eqipmentSlot;
-
-		/// <summary>
 		/// The prefab to display this item in the game world.
 		/// </summary>
 		[SerializeField]
@@ -45,18 +38,32 @@ namespace BurgZergArcade.ItemSystem
 		public EquipmentSlot equipmentSlot;
 
 		public ISWeapon()
+			:base()
 		{
-			_eqipmentSlot = new BurgZergArcade.ItemSystem.ISEquipmentSlot();
+			name = "New Weapon";
 			equipmentSlot = EquipmentSlot.Hands;
 		}
 
-		public ISWeapon(int durability, int maxDurability, ISEquipmentSlot slot, GameObject gamePrefab)
+		public ISWeapon(int durability, int maxDurability, EquipmentSlot slot, GameObject gamePrefab)
 		{
 			_durability = durability;
 			_maxDurability = maxDurability;
-			_eqipmentSlot = slot;
+			equipmentSlot = slot;
 			_prefab = gamePrefab;
-			equipmentSlot = EquipmentSlot.Hands;
+		}
+
+		public ISWeapon(ISWeapon weapon)
+		{
+			Clone(weapon);
+		}
+
+		public void Clone(ISWeapon weapon)
+		{
+			base.Clone(weapon);
+			_durability = weapon._durability;
+			_maxDurability = weapon._maxDurability;
+			equipmentSlot = weapon.equipmentSlot;
+			_prefab = weapon._prefab;
 		}
 
 		#region IISWeapon implementation
