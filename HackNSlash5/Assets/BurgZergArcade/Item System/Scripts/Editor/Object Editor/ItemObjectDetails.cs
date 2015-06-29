@@ -96,26 +96,46 @@ namespace BurgZergArcade.ItemSystem.Editor
 			{
 				if(GUILayout.Button("Save"))
 				{
-					if(_selectedIndex = -1)
+					if(_selectedIndex == -1)
 						// Add the tempWeapon to the weapons database
 						DatabaseManager.weaponDatabase.Add(tempWeapon);
 					else
 						// Update the selected weapon
 						DatabaseManager.weaponDatabase.Replace(_selectedIndex, tempWeapon);
 
-					// Set the toggel to true
+					// Set the toggel to false
 					showNewWeaponDetails = false;
 
-					// Set the DisplayState to Details
+					// Set the DisplayState to NONE
 					displayState = DisplayState.NONE;
 
 					// Set tempWeapon to null to make sure the data gets cleared out
 					tempWeapon = null;
 				}//Save Button
+
+				//If displayState == DisplayState.DETAILS and we are editing a weapon we need a delete button
+				if(displayState == DisplayState.DETAILS && _selectedIndex > -1)
+				{
+					if(GUILayout.Button("Delete"))
+					{
+						//delete the current selected index put of the database
+						DatabaseManager.weaponDatabase.Remove(_selectedIndex);
+
+						// Set the toggel to false
+						showNewWeaponDetails = false;
+						
+						// Set the DisplayState to NONE
+						displayState = DisplayState.NONE;
+						
+						// Set tempWeapon to null to make sure the data gets cleared out
+						tempWeapon = null;
+					}//Delete Button
+
+				}//displayState.DETAILS
 			
 				if(GUILayout.Button("Cancel"))
 				{
-					// Set the toggel to true
+					// Set the toggel to false
 					showNewWeaponDetails = false;
 
 					// Set the DisplayState to Details
