@@ -95,21 +95,39 @@ namespace BurgZergArcade.ItemSystem
 		}
 	#endregion
 
-//		public ISObject()
-//		{
-//			_name = "New Item";
-//			_value = 0;
-//			_icon = new Sprite();
-//			_burden = 1;
-//			_quality = new ISQuality();
-//		}//ISObject
-
-		int _selectedQualityIndex = 0;
-
 		public ISObject()
 		{
+			_name = "New Item";
+			_value = 0;
+			_icon = new Sprite();
+			_burden = 1;
+			_quality = new ISQuality();
+		}//ISObject
 
+		public ISObject(string Name, int Value, Sprite Icon, int Burden, ISQuality Quality)
+		{
+			_name = Name;
+			_value = Value;
+			_icon = Icon;
+			_burden = Burden;
+			_quality = Quality;
 		}
+
+		public ISObject(ISObject isObject)
+		{
+			Clone(isObject);
+		}
+
+		public void Clone(ISObject isObject)
+		{
+			_name = isObject._name;
+			_value = isObject._value;
+			_icon = isObject._icon;
+			_burden = isObject._burden;
+			_quality = isObject._quality;
+		}
+
+		int _selectedQualityIndex = 0;
 
 		public virtual void OnGUI()
 		{
