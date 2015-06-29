@@ -33,7 +33,8 @@ namespace BurgZergArcade.ItemSystem.Editor
 				{
 					Debug.Log(DatabaseManager.weaponDatabase.Get(cnt).name + " : " + cnt);
 					_selectedIndex = cnt;
-					tempWeapon = DatabaseManager.weaponDatabase.Get(cnt);
+					//Clone the weapon so we are not working with the copy in the database, in order to save these values have to click save
+					tempWeapon = new ISWeapon(DatabaseManager.weaponDatabase.Get(cnt));
 					showNewWeaponDetails = true;
 					displayState = DisplayState.DETAILS;
 				}
