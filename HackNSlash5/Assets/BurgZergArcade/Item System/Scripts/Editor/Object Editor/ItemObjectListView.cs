@@ -16,6 +16,8 @@ namespace BurgZergArcade.ItemSystem.Editor
 		int _listViewButtonWidth = 190;
 		int _listViewButtonHeight = 25;
 
+		int _selectedIndex = -1;
+
 		/// <summary>
 		/// List all of the Items in the database
 		/// </summary>
@@ -29,7 +31,11 @@ namespace BurgZergArcade.ItemSystem.Editor
 			{
 				if(GUILayout.Button(DatabaseManager.weaponDatabase.Get(cnt).name, "Box", GUILayout.Width(_listViewButtonWidth), GUILayout.Height(_listViewButtonHeight)))
 				{
-
+					Debug.Log(DatabaseManager.weaponDatabase.Get(cnt).name + " : " + cnt);
+					_selectedIndex = cnt;
+					tempWeapon = DatabaseManager.weaponDatabase.Get(cnt);
+					showNewWeaponDetails = true;
+					displayState = DisplayState.DETAILS;
 				}
 			}
 

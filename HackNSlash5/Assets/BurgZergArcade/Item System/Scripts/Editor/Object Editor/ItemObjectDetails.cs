@@ -6,6 +6,13 @@ namespace BurgZergArcade.ItemSystem.Editor
 {
 	public partial class ItemObjectEditor
 	{
+		enum DisplayState
+		{
+			NONE,
+			DETAILS
+		}
+		;
+
 		/// <summary>
 		/// The temp weapon to edit weapon that gets created to create a new weapon.
 		/// </summary>
@@ -16,6 +23,8 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// </summary>
 		bool showNewWeaponDetails = false;
 
+		DisplayState displayState = DisplayState.NONE;
+
 		/// <summary>
 		/// List all of the Items in the database
 		/// </summary>
@@ -23,13 +32,20 @@ namespace BurgZergArcade.ItemSystem.Editor
 		{
 			// Create a vertical group Expanding the width and height
 			EditorGUILayout.BeginVertical("Box", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
-
 			// Create a horizontal group expanding the width and height 
 			EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
 
-			//If show new weapon details
-			if(showNewWeaponDetails)
-				DisplayNewWeapon();
+			EditorGUILayout.LabelField("State: " + displayState);
+
+			switch(displayState)
+			{
+				case DisplayState.DETAILS:
+					if(showNewWeaponDetails)
+						DisplayNewWeapon();
+					break;
+				default:
+					break;
+			}
 
 			// End Vertical group 
 			EditorGUILayout.EndVertical();
@@ -65,8 +81,14 @@ namespace BurgZergArcade.ItemSystem.Editor
 					// Set the temp weapon to a new weapon
 					tempWeapon = new ISWeapon();
 
+					// Set the selected index to -1 indicating this weapon needs added to the database when saved
+					_selectedIndex = -1;
+
 					// Set the toggel to true
 					showNewWeaponDetails = true;
+
+					// Set the DisplayState to Details
+					displayState = DisplayState.DETAILS;
 				}//if Create Button
 			}//if !showNewWeaponDetails
 			// Else show the save and Cancel buttons
@@ -74,11 +96,18 @@ namespace BurgZergArcade.ItemSystem.Editor
 			{
 				if(GUILayout.Button("Save"))
 				{
+					if(_selectedIndex = -1)
+						// Add the tempWeapon to the weapons database
+						DatabaseManager.weaponDatabase.Add(tempWeapon);
+					else
+						// Update the selected weapon
+						DatabaseManager.weaponDatabase.Replace(_selectedIndex, tempWeapon);
+
 					// Set the toggel to true
 					showNewWeaponDetails = false;
 
-					// Add the tempWeapon to the weapons database
-					DatabaseManager.weaponDatabase.Add(tempWeapon);
+					// Set the DisplayState to Details
+					displayState = DisplayState.NONE;
 
 					// Set tempWeapon to null to make sure the data gets cleared out
 					tempWeapon = null;
@@ -88,6 +117,9 @@ namespace BurgZergArcade.ItemSystem.Editor
 				{
 					// Set the toggel to true
 					showNewWeaponDetails = false;
+
+					// Set the DisplayState to Details
+					displayState = DisplayState.NONE;
 
 					// Set tempWeapon to null to make sure the data gets cleared out
 					tempWeapon = null;
