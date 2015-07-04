@@ -11,4 +11,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5890bd52d53041438687209c1e101bb, type: 3}
   m_Name: ISWeaponDB
   m_EditorClassIdentifier: 
-  database: []
+  database:
+  - _name: Sword
+    _value: 0
+    _icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    _burden: 0
+    _quality:
+      _name: Common
+      _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    _minDamage: 1
+    _durability: 0
+    _maxDurability: -100
+    _prefab: {fileID: 0}
+    equipmentSlot: 3
+  - _name: Long Sword
+    _value: 20
+    _icon: {fileID: 0}
+    _burden: 2
+    _quality:
+      _name: Common
+      _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    _minDamage: 10
+    _durability: 0
+    _maxDurability: -100
+    _prefab: {fileID: 0}
+    equipmentSlot: 3
+  - _name: Short Sowrd
+    _value: 20
+    _icon: {fileID: 0}
+    _burden: 2
+    _quality:
+      _name: Common
+      _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    _minDamage: 5
+    _durability: 100
+    _maxDurability: 100
+    _prefab: {fileID: 0}
+    equipmentSlot: 3
+  - _name: Dagger
+    _value: 2
+    _icon: {fileID: 0}
+    _burden: 1
+    _quality:
+      _name: Common
+      _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    _minDamage: 2
+    _durability: 100
+    _maxDurability: 100
+    _prefab: {fileID: 0}
+    equipmentSlot: 3

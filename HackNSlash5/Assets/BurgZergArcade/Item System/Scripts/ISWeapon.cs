@@ -44,8 +44,9 @@ namespace BurgZergArcade.ItemSystem
 			equipmentSlot = EquipmentSlot.Hands;
 		}
 
-		public ISWeapon(int durability, int maxDurability, EquipmentSlot slot, GameObject gamePrefab)
+		public ISWeapon(int minDamage, int durability, int maxDurability, EquipmentSlot slot, GameObject gamePrefab)
 		{
+			_minDamage = minDamage;
 			_durability = durability;
 			_maxDurability = maxDurability;
 			equipmentSlot = slot;
@@ -60,6 +61,7 @@ namespace BurgZergArcade.ItemSystem
 		public void Clone(ISWeapon weapon)
 		{
 			base.Clone(weapon);
+			_minDamage = weapon._minDamage;
 			_durability = weapon._durability;
 			_maxDurability = weapon._maxDurability;
 			equipmentSlot = weapon.equipmentSlot;
