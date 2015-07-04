@@ -23,6 +23,10 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// </summary>
 		private void ListView()
 		{
+			// Only display the list if the display state == DisplayState.NONE
+			if(displayState != DisplayState.NONE)
+				return;
+
 			// Contain the Item Object in a scroll view
 			_scrollPos = EditorGUILayout.BeginScrollView(_scrollPos, "Box", GUILayout.ExpandHeight(true), GUILayout.Width(_listViewWidth));
 
