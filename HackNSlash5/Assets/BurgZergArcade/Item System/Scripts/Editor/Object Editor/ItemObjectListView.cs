@@ -35,7 +35,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 			{
 				if(GUILayout.Button(DatabaseManager.weaponDatabase.Get(cnt).name, "Box", GUILayout.Width(_listViewButtonWidth), GUILayout.Height(_listViewButtonHeight)))
 				{
-					Debug.Log(DatabaseManager.weaponDatabase.Get(cnt).name + " : " + cnt);
+					//Debug.Log(DatabaseManager.weaponDatabase.Get(cnt).name + " : " + cnt);
 					_selectedIndex = cnt;
 					//Clone the weapon so we are not working with the copy in the database, in order to save these values have to click save
 					tempWeapon = new ISWeapon(DatabaseManager.weaponDatabase.Get(cnt));
