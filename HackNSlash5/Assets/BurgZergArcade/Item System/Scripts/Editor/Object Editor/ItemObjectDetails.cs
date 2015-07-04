@@ -111,6 +111,9 @@ namespace BurgZergArcade.ItemSystem.Editor
 
 					// Set tempWeapon to null to make sure the data gets cleared out
 					tempWeapon = null;
+
+					// set the focus to be null. Makes it so their is no control focused next time you enter
+					GUI.FocusControl(null); 
 				}//Save Button
 
 				//If displayState == DisplayState.DETAILS and we are editing a weapon we need a delete button
@@ -129,6 +132,9 @@ namespace BurgZergArcade.ItemSystem.Editor
 						
 						// Set tempWeapon to null to make sure the data gets cleared out
 						tempWeapon = null;
+
+						// set the focus to be null. Makes it so their is no control focused next time you enter
+						GUI.FocusControl(null); 
 					}//Delete Button
 
 				}//displayState.DETAILS
@@ -143,6 +149,9 @@ namespace BurgZergArcade.ItemSystem.Editor
 
 					// Set tempWeapon to null to make sure the data gets cleared out
 					tempWeapon = null;
+
+					// set the focus to be null. Makes it so their is no control focused next time you enter
+					GUI.FocusControl(null); 
 				}//Cancle Button
 			}//else
 		}//DisplayButtons
