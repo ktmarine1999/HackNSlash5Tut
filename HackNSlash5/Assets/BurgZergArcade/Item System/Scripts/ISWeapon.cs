@@ -42,6 +42,10 @@ namespace BurgZergArcade.ItemSystem
 		{
 			name = "New Weapon";
 			equipmentSlot = EquipmentSlot.Hands;
+			_minDamage = 1;
+
+			// all  new weapons are created as indestructable
+			_maxDurability = -100;
 		}
 
 		public ISWeapon(int minDamage, int durability, int maxDurability, EquipmentSlot slot, GameObject gamePrefab)
