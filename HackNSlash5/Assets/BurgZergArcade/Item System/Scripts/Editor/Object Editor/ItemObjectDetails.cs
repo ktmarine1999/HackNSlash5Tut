@@ -121,20 +121,28 @@ namespace BurgZergArcade.ItemSystem.Editor
 				{
 					if(GUILayout.Button("Delete"))
 					{
-						//delete the current selected index put of the database
-						DatabaseManager.weaponDatabase.Remove(_selectedIndex);
-
-						// Set the toggel to false
-						showNewWeaponDetails = false;
-						
-						// Set the DisplayState to NONE
-						displayState = DisplayState.NONE;
-						
-						// Set tempWeapon to null to make sure the data gets cleared out
-						tempWeapon = null;
-
-						// set the focus to be null. Makes it so their is no control focused next time you enter
-						GUI.FocusControl(null); 
+						// Display a Are you sure Dialog and delete the quality to prevent accidental deletion
+						if(EditorUtility.DisplayDialog("Delete Weapon",
+						                               "Are you sure you want to delete " + DatabaseManager.weaponDatabase.Get(_selectedIndex).name + "From the database",
+						                               "Delete",
+						                               "Cancel"))
+						{
+							// since the user comfirmed it is ok delete the Weapon
+							//delete the current selected index put of the database
+							DatabaseManager.weaponDatabase.Remove(_selectedIndex);
+							
+							// Set the toggel to false
+							showNewWeaponDetails = false;
+							
+							// Set the DisplayState to NONE
+							displayState = DisplayState.NONE;
+							
+							// Set tempWeapon to null to make sure the data gets cleared out
+							tempWeapon = null;
+							
+							// set the focus to be null. Makes it so their is no control focused next time you enter
+							GUI.FocusControl(null); 
+						}//Delete dialog
 					}//Delete Button
 
 				}//displayState.DETAILS
