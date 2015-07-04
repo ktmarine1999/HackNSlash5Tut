@@ -101,7 +101,6 @@ namespace BurgZergArcade.ItemSystem
 			_value = 0;
 			_icon = new Sprite();
 			_burden = 1;
-			_quality = new ISQuality();
 		}//ISObject
 
 		public ISObject(string Name, int Value, Sprite Icon, int Burden, ISQuality Quality)
@@ -126,8 +125,6 @@ namespace BurgZergArcade.ItemSystem
 			_burden = isObject._burden;
 			_quality = isObject._quality;
 		}
-
-		int _selectedQualityIndex = 0;
 
 		public virtual void OnGUI()
 		{
@@ -160,11 +157,19 @@ namespace BurgZergArcade.ItemSystem
 
 		public void DisplayQuality()
 		{
+			int selectedIndex = 0;
+
 			//EditorGUILayout.LabelField("Quality");
+			if(_quality != null)
+				selectedIndex = DatabaseManager.qualityDatabase.GetIndex(_quality.Name);
+			else
+				selectedIndex = 0;
 
-			_selectedQualityIndex = EditorGUILayout.Popup("Quality", _selectedQualityIndex, DatabaseManager.qualityNames());
+			//Debug.Log(selectedIndex.ToString());
 
-			quality = DatabaseManager.qualityDatabase.Get(_selectedQualityIndex);
+			selectedIndex = EditorGUILayout.Popup("Quality", selectedIndex, DatabaseManager.qualityNames());
+
+			quality = DatabaseManager.qualityDatabase.Get(selectedIndex);
 
 		}//DisplayQuality
 	}//class

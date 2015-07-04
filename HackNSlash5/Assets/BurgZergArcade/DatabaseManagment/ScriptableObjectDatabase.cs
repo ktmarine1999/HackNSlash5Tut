@@ -12,7 +12,7 @@ namespace BurgZergArcade
 		/// The database.
 		/// </summary>
 		[SerializeField]
-		List<T>
+		protected List<T>
 			database = new List<T>();
 		
 		/// <summary>
