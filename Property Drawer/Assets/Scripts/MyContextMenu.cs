@@ -8,8 +8,12 @@ using System.Collections;
 /// </summary>
 public class MyContextMenu : MonoBehaviour
 {
-
-	public int lives = 10;
+	// Use this attribute to add a context menu to a field that calls a named method.
+	[ContextMenuItem("Add", "AddMethod", order = 0)]
+	[ContextMenuItem("Subtract", "RemoveMethod", order = 1)]
+	[ContextMenuItem("Reset", "ResetMethod", order = 2)]
+	public int
+		lives = 10;
 
 	[ContextMenu("Add A Life")]
 	void AddMethod()
