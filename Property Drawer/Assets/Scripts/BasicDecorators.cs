@@ -9,6 +9,11 @@ public class BasicDecorators : MonoBehaviour
 	private string
 		myName = "Name Me";
 
+	// Makes a variable not show up in the inspector but be serialized.
+	[HideInInspector]
+	public string
+		desc = "Here is a public string that I want to hide in the inspector.";
+
 	// Attribute used to make a float or int variable in a script be restricted to a specific range.
 	// When this attribute is used, the float or int will be shown as a slider in the Inspector instead of the default number field.
 	[Range(0, 100)]
