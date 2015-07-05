@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   database:
   - _name: Sword
-    _value: 0
+    _value: 1
     _icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-    _burden: 0
+    _burden: 2
     _quality:
       _name: Common
       _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
@@ -23,7 +23,7 @@ MonoBehaviour:
     _durability: 0
     _maxDurability: -100
     _prefab: {fileID: 0}
-    equipmentSlot: 3
+    equipmentSlot: 1
   - _name: Long Sword
     _value: 20
     _icon: {fileID: 0}
@@ -32,10 +32,10 @@ MonoBehaviour:
       _name: Common
       _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     _minDamage: 10
-    _durability: 0
-    _maxDurability: -100
+    _durability: 100
+    _maxDurability: 100
     _prefab: {fileID: 0}
-    equipmentSlot: 3
+    equipmentSlot: 1
   - _name: Short Sowrd
     _value: 20
     _icon: {fileID: 0}
@@ -47,15 +47,15 @@ MonoBehaviour:
     _durability: 100
     _maxDurability: 100
     _prefab: {fileID: 0}
-    equipmentSlot: 3
+    equipmentSlot: 1
   - _name: Dagger
-    _value: 2
+    _value: 12
     _icon: {fileID: 0}
     _burden: 1
     _quality:
-      _name: Common
-      _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    _minDamage: 2
+      _name: Uncommon
+      _icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    _minDamage: 1
     _durability: 100
     _maxDurability: 100
     _prefab: {fileID: 0}
