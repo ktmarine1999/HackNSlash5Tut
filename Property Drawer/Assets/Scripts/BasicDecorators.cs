@@ -22,7 +22,7 @@ public class BasicDecorators : MonoBehaviour
 	public string
 		editBox = "";
 
-	// Attribute to make a string be edited with a multi-line textfield.
+	// Attribute to make a string be edited with a multi-line textfield.	
 	[Multiline]
 	public string
 		editBox2 = "";
