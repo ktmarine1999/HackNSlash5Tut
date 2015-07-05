@@ -14,9 +14,12 @@ public class BasicDecorators : MonoBehaviour
 	public string
 		desc = "Here is a public string that I want to hide in the inspector.";
 
+	const float minHealth = 0f;
+	const float maxHealth = 200f;
+
 	// Attribute used to make a float or int variable in a script be restricted to a specific range.
 	// When this attribute is used, the float or int will be shown as a slider in the Inspector instead of the default number field.
-	[Range(0, 100)]
+	[Range(minHealth, maxHealth)]
 	public int
 		health;
 
