@@ -14,6 +14,14 @@ public class BasicDecorators : MonoBehaviour
 	public string
 		desc = "Here is a public string that I want to hide in the inspector.";
 
+	// Attribute to make a string be edited with a height-flexible and scrollable text area.
+	// You can specify the minimum and maximum lines for the TextArea, 
+	// and the field will expand according to the size of the text.
+	// A scrollbar will appear if the text is bigger than the area available.
+	[TextArea(3, 5)]
+	public string
+		editBox = "";
+
 	const float minHealth = 0f;
 	const float maxHealth = 200f;
 
