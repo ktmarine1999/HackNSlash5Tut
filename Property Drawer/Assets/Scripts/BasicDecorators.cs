@@ -22,6 +22,11 @@ public class BasicDecorators : MonoBehaviour
 	public string
 		editBox = "";
 
+	// Attribute to make a string be edited with a multi-line textfield.
+	[Multiline]
+	public string
+		editBox2 = "";
+
 	const float minHealth = 0f;
 	const float maxHealth = 200f;
 
