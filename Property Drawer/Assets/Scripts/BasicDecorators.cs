@@ -46,6 +46,12 @@ public class BasicDecorators : MonoBehaviour
 		race;
 	public int age;
 
+	// Specify a tooltip for a field.
+	[Space(15)]
+	[Tooltip("This is the objects position in the game world")]
+	public Vector3
+		vec3;
+
 	// Use this for initialization
 	void Start()
 	{
