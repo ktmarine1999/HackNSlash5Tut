@@ -1,0 +1,5 @@
+Scimitar - 250 tris.
+Shield - 56 tris.
+Axe - 388 tris.
+Mace - 618 tris.
+Sword - 184 tris.
