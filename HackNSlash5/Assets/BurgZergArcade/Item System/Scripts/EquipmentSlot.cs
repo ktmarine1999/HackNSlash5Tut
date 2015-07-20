@@ -7,8 +7,7 @@ namespace BurgZergArcade.ItemSystem
 	public enum EquipmentSlot
 	{
 		None,
-		Weapon_OneHanded_MainHand,
-		Weapon_OneHanded_OffHand,
+		Weapon_OneHanded,
 		Weapon_TwoHanded,
 		Armor_Head,
 		Armor_Torso,

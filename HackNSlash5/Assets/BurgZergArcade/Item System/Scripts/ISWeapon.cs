@@ -41,7 +41,7 @@ namespace BurgZergArcade.ItemSystem
 			:base()
 		{
 			name = "New Weapon";
-			equipmentSlot = EquipmentSlot.Weapon_OneHanded_MainHand;
+			equipmentSlot = EquipmentSlot.Weapon_OneHanded;
 			_minDamage = 1;
 
 			// all  new weapons are created as indestructable
