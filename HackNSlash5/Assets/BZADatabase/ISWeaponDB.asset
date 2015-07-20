@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   database:
   - _name: Sword
-    _value: 1
+    _value: 10
     _icon: {fileID: 21300000, guid: a4eeb9c26c3c16e469eb5b1039512d80, type: 3}
     _burden: 2
     _quality:
@@ -23,18 +23,6 @@ MonoBehaviour:
     _durability: 0
     _maxDurability: -100
     _prefab: {fileID: 100000, guid: fa8c0bbedbd3c5940807e37181991f3c, type: 2}
-    equipmentSlot: 1
-  - _name: Long Sword
-    _value: 20
-    _icon: {fileID: 21300000, guid: a4eeb9c26c3c16e469eb5b1039512d80, type: 3}
-    _burden: 2
-    _quality:
-      _name: Common
-      _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    _minDamage: 10
-    _durability: 100
-    _maxDurability: 100
-    _prefab: {fileID: 100000, guid: 578c61424f0e6d14d873e5ab5298839e, type: 2}
     equipmentSlot: 1
   - _name: Short Sowrd
     _value: 20
@@ -48,15 +36,75 @@ MonoBehaviour:
     _maxDurability: 100
     _prefab: {fileID: 100000, guid: b63bacb86d310124bbe9ba17e5c916e9, type: 2}
     equipmentSlot: 1
-  - _name: Dagger
-    _value: 12
-    _icon: {fileID: 21300000, guid: a4eeb9c26c3c16e469eb5b1039512d80, type: 3}
-    _burden: 1
+  - _name: Axe
+    _value: 10
+    _icon: {fileID: 0}
+    _burden: 2
     _quality:
-      _name: Uncommon
-      _icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+      _name: Common
+      _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     _minDamage: 1
-    _durability: 100
-    _maxDurability: 100
-    _prefab: {fileID: 100000, guid: 16e32a35adb80834e9391fb4bfe5d30e, type: 2}
-    equipmentSlot: 3
+    _durability: 0
+    _maxDurability: -100
+    _prefab: {fileID: 100000, guid: 116349d69f9413a48adec302c4eef458, type: 2}
+    equipmentSlot: 1
+  - _name: Bow
+    _value: 10
+    _icon: {fileID: 0}
+    _burden: 2
+    _quality:
+      _name: Common
+      _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    _minDamage: 1
+    _durability: 0
+    _maxDurability: -100
+    _prefab: {fileID: 100000, guid: 63ee3f8c01cc9d54ba686dcac248a1dc, type: 2}
+    equipmentSlot: 1
+  - _name: Medieval Axe
+    _value: 10
+    _icon: {fileID: 0}
+    _burden: 2
+    _quality:
+      _name: Common
+      _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    _minDamage: 1
+    _durability: 0
+    _maxDurability: -100
+    _prefab: {fileID: 102582, guid: 7e4441ec432c9ab46b8cf744716c6a15, type: 2}
+    equipmentSlot: 1
+  - _name: Medieval Mace
+    _value: 10
+    _icon: {fileID: 0}
+    _burden: 2
+    _quality:
+      _name: Common
+      _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    _minDamage: 1
+    _durability: 0
+    _maxDurability: -100
+    _prefab: {fileID: 161016, guid: 0382e26610007e84caab7b1c42f2b8fd, type: 2}
+    equipmentSlot: 1
+  - _name: Medieval Scimitar
+    _value: 10
+    _icon: {fileID: 0}
+    _burden: 2
+    _quality:
+      _name: Common
+      _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    _minDamage: 1
+    _durability: 0
+    _maxDurability: -100
+    _prefab: {fileID: 115138, guid: 24d398139b23ce143b4abe30f06b43e8, type: 2}
+    equipmentSlot: 1
+  - _name: Medieval Sword
+    _value: 10
+    _icon: {fileID: 0}
+    _burden: 2
+    _quality:
+      _name: Common
+      _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    _minDamage: 1
+    _durability: 0
+    _maxDurability: -100
+    _prefab: {fileID: 156320, guid: 9b70312b150d04f418a6a5e20c952375, type: 2}
+    equipmentSlot: 1
