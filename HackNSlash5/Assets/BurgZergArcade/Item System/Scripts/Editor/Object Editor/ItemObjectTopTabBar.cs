@@ -11,7 +11,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 			EditorGUILayout.BeginHorizontal("Box", GUILayout.ExpandWidth(true));
 			WeaponsTab();
 			ArmorTab();
-			ConsumablesTab();
+			ConsumableTab();
 			AboutTab();
 			EditorGUILayout.EndHorizontal();
 		}
@@ -24,7 +24,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 			// Displays a weapons button at the top and if it is clicked edits the weapons database
 			if(GUILayout.Button("Weapons"))
 			{
-
+                tabState = TabState.WEAPON;
 			}
 		}//Weapons Tab
 
@@ -36,19 +36,19 @@ namespace BurgZergArcade.ItemSystem.Editor
 			// Displays a Armor button at the top and if it is clicked edits the Armor database
 			if(GUILayout.Button("Armor"))
 			{
-				
+                tabState = TabState.ARMOR;
 			}
 		}//Armor Tab
 
 		/// <summary>
 		/// The Consumables tab.
 		/// </summary>
-		void ConsumablesTab()
+		void ConsumableTab()
 		{
 			// Displays a Consumables button at the top and if it is clicked edits the Consumables database
 			if(GUILayout.Button("Consumables"))
 			{
-				
+                tabState = TabState.CONSUMABLE;
 			}
 		}//Consumables Tab
 
@@ -60,7 +60,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 			// Displays a About button at the top and if it is clicked displays the about screen
 			if(GUILayout.Button("About"))
 			{
-				
+                tabState = TabState.ABOUT;
 			}
 		}//About Tab
 	}//class

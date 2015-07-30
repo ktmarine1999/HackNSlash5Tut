@@ -6,6 +6,37 @@ namespace BurgZergArcade.ItemSystem.Editor
 {
 	public partial class ItemObjectEditor : EditorWindow
 	{
+        /// <summary>
+        /// Which Tab we are in
+        /// </summary>
+        enum TabState
+        {
+            WEAPON,
+            ARMOR,
+            CONSUMABLE,
+            ABOUT
+        }
+
+        TabState tabState;
+
+        /// <summary>
+        /// What state to display
+        /// </summary>
+        enum DisplayState
+        {
+            NONE,
+            DETAILS
+        }
+
+        /// <summary>
+        /// What to display
+        /// </summary>
+        DisplayState displayState;
+
+        int _listViewWidth = 200;
+        int _listViewButtonWidth = 190;
+        int _listViewButtonHeight = 25;
+
 		/// <summary>
 		/// Create  a menu to open this editor window using cntrl+shift+w
 		/// </summary>
@@ -15,6 +46,12 @@ namespace BurgZergArcade.ItemSystem.Editor
 			//Initalize this editor window easily with the DatabaseEditor class
 			DatabaseEditor.InitEditorWindow<ItemObjectEditor>(new Vector2(800, 600), "Item System");
 		}//Init()
+
+        void OnEnable()
+        {
+            tabState = TabState.WEAPON;
+            displayState = DisplayState.NONE;
+        }
 
 		/// <summary>
 		/// Raises the destroy event.
@@ -36,11 +73,39 @@ namespace BurgZergArcade.ItemSystem.Editor
 
 			// Group the List View and Object Details Horizontaly
 			EditorGUILayout.BeginHorizontal();
-			// Display the List of the item objects
-			ListView();
 
-			// Display the Details about the selected object
-			ItemObjectDetails();
+            switch (tabState)
+            {
+                case TabState.WEAPON:
+                    EditorGUILayout.LabelField("Weapon");
+                    // Display the List of the Weapon objects
+                    WeaponListView();
+                    // Display the Details about the selected weapon
+                    WeaponDetails();
+                    break;
+                case TabState.ARMOR:
+                    EditorGUILayout.LabelField("Armor");
+                    // Display the List of the Armor objects
+                    ArmorListView();
+                    // Display the Details about the selected armor
+                    ArmorDetails();
+                    break;
+                case TabState.CONSUMABLE:
+                    EditorGUILayout.LabelField("Consumable");
+                    // Display the List of the Consumable objects
+                    //ConsumableListView();
+                    // Display the Details about the selected consumable
+                    //ConsumableDetails();
+                    break;
+                case TabState.ABOUT:
+                    EditorGUILayout.LabelField("About");
+                    //AboutView();
+                    break;
+                default:
+                    EditorGUILayout.LabelField("Default");
+                    break;
+            }
+
 			EditorGUILayout.EndHorizontal();
 
 			// Display the bottom Status bar
