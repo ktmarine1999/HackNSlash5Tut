@@ -7,7 +7,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 	public partial class ItemObjectEditor : EditorWindow
 	{
 		/// <summary>
-		/// Create  a menue to open this editor window using cntrl+shift+w
+		/// Create  a menu to open this editor window using cntrl+shift+w
 		/// </summary>
 		[MenuItem("BZA/Database/Item Object Editor %#i")]
 		public static void Init()
