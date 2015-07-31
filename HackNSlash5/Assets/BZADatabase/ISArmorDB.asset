@@ -23,3 +23,14 @@ MonoBehaviour:
     _maxDurability: -100
     _prefab: {fileID: 110664, guid: a09d0ed2aa67c934ca6ae1eae33e6c33, type: 2}
     equipmentSlot: 3
+  - _name: Gloves
+    _value: 1
+    _icon: {fileID: 0}
+    _burden: 1
+    _quality:
+      _name: Common
+      _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    _durability: 0
+    _maxDurability: -100
+    _prefab: {fileID: 110664, guid: a09d0ed2aa67c934ca6ae1eae33e6c33, type: 2}
+    equipmentSlot: 3

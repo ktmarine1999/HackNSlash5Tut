@@ -10,11 +10,5 @@ namespace BurgZergArcade.ItemSystem
 		/// </summary>
 		/// <value>The eqipment slot to equip this item in.</value>
 		ISEquipmentSlot eqipmentSlot { get; }
-
-		/// <summary>
-		/// Equip this item.
-		/// </summary>
-		/// <returns>true if this item equiped scusessfully.</returns>
-		bool Equip();
 	}
 }

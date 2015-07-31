@@ -10,11 +10,5 @@ namespace BurgZergArcade.ItemSystem
 		/// </summary>
 		/// <value>The max items allowed in a stack.</value>
 		int maxStack{ get; }
-
-		/// <summary>
-		/// Stack the specified amount.
-		/// </summary>
-		/// <param name="amount">The number of items to stack.</param>
-		int stack(int amount);
 	}
 }

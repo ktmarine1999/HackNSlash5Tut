@@ -22,8 +22,6 @@ public class Demo1 : MonoBehaviour
 		// Get the weapon we want to spawn from the database
 		ISWeapon isw = database.Get(index);
 
-        Debug.Log("Testing");
-
 		// Instantuate the weapon in the game world
 		GameObject weaponGO = Instantiate(isw.prefab);
 		// Set the gameobjects name

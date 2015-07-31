@@ -91,30 +91,5 @@ namespace BurgZergArcade
 		{
 			return database.ElementAt(index);
 		}
-
-		public static U GetDatabase<U>(string databasePath, string databaseName) where U : ScriptableObject
-		{
-			string databaseFullPath = @"Assets/" + databasePath + "/" + databaseName + ".asset";
-
-			U db = AssetDatabase.LoadAssetAtPath<U>(databaseFullPath) as U;
-			
-			if(db == null)
-			{
-				Debug.Log("Faild to load database, createing a new one");
-				if(!AssetDatabase.IsValidFolder(@"Assets/" + databasePath))
-				{
-					AssetDatabase.CreateFolder("Assets", databasePath);
-				}
-				
-				db = ScriptableObject.CreateInstance<U>() as U;
-				AssetDatabase.CreateAsset(db, databaseFullPath);
-				AssetDatabase.SaveAssets();
-				AssetDatabase.Refresh();
-				EditorUtility.FocusProjectWindow();
-				Selection.activeObject = db;
-			}
-			
-			return db;
-		}
 	}
 }

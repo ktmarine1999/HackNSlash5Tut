@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace BurgZergArcade.ItemSystem
+namespace BurgZergArcade.InventorySystem
 {
 	public interface IISWeapon
 	{
@@ -10,5 +10,11 @@ namespace BurgZergArcade.ItemSystem
 		/// </summary>
 		/// <value>The minimum damage this weapon can do.</value>
 		int minDamage{ get; set; }
+
+		/// <summary>
+		/// Use this weapon to attack.
+		/// </summary>
+		/// <returns>amount of damage to do when attacking</returns>
+		int Attack();
 	}//class
 }//namespace
