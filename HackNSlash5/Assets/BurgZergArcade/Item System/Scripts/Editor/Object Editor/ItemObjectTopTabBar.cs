@@ -21,8 +21,11 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// </summary>
 		void WeaponsTab()
 		{
+            if (tabState == TabState.WEAPON || displayState == DisplayState.DETAILS)
+                GUILayout.Label("Weapons", "Button", GUILayout.ExpandWidth(true));
+
 			// Displays a weapons button at the top and if it is clicked edits the weapons database
-			if(GUILayout.Button("Weapons"))
+			else if(GUILayout.Button("Weapons", "Box", GUILayout.ExpandWidth(true)))
 			{
                 tabState = TabState.WEAPON;
                 ResetDisplayState();
@@ -34,8 +37,11 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// </summary>
 		void ArmorTab()
 		{
+            if (tabState == TabState.ARMOR || displayState == DisplayState.DETAILS)
+                GUILayout.Label("Armor", "Button", GUILayout.ExpandWidth(true)); 
+
 			// Displays a Armor button at the top and if it is clicked edits the Armor database
-			if(GUILayout.Button("Armor"))
+            else if (GUILayout.Button("Armor", "Box", GUILayout.ExpandWidth(true)))
 			{
                 tabState = TabState.ARMOR;
                 ResetDisplayState();
@@ -47,8 +53,11 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// </summary>
 		void ConsumableTab()
 		{
+            if (tabState == TabState.CONSUMABLE || displayState == DisplayState.DETAILS)
+                GUILayout.Label("Consumables", "Button", GUILayout.ExpandWidth(true));
+
 			// Displays a Consumables button at the top and if it is clicked edits the Consumables database
-			if(GUILayout.Button("Consumables"))
+            else if (GUILayout.Button("Consumables", "Box", GUILayout.ExpandWidth(true)))
 			{
                 tabState = TabState.CONSUMABLE;
                 ResetDisplayState();
@@ -60,8 +69,11 @@ namespace BurgZergArcade.ItemSystem.Editor
 		/// </summary>
 		void AboutTab()
 		{
+            if (tabState == TabState.ABOUT || displayState == DisplayState.DETAILS)
+                GUILayout.Label("About", "Button", GUILayout.ExpandWidth(true));
+
 			// Displays a About button at the top and if it is clicked displays the about screen
-			if(GUILayout.Button("About"))
+            else if (GUILayout.Button("About", "Box", GUILayout.ExpandWidth(true)))
 			{
                 tabState = TabState.ABOUT;
                 ResetDisplayState();

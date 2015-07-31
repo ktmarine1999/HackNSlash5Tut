@@ -129,7 +129,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 			// Make sure that the database is writen to disk
 			EditorUtility.SetDirty(DatabaseManager.weaponDatabase);
             EditorUtility.SetDirty(DatabaseManager.armorDatabase);
-            //EditorUtility.SetDirty(DatabaseManager.weaponDatabase);
+            EditorUtility.SetDirty(DatabaseManager.consumableDatabase);
 		}//OnDestroy()
 		
 		/// <summary>
@@ -152,14 +152,12 @@ namespace BurgZergArcade.ItemSystem.Editor
                     ItemDetails<ISWeapon>(DatabaseManager.weaponDatabase, "Weapon", ref tempWeapon, ref showNewWeaponDetails, ref _weaponSelectedIndex);
                     break;
                 case TabState.ARMOR:
-                    EditorGUILayout.LabelField("Armor");
                     // Display the List of the Armor objects
                     ListView<ISArmor>(DatabaseManager.armorDatabase, ref tempArmor, ref _armorListScrollPos, ref _armorSelectedIndex, ref showNewArmorDetails);
                     // Display the Details about the selected armor
                     ItemDetails<ISArmor>(DatabaseManager.armorDatabase, "Armor", ref tempArmor, ref showNewArmorDetails, ref _armorSelectedIndex);
                     break;
                 case TabState.CONSUMABLE:
-                    EditorGUILayout.LabelField("Consumable");
                     // Display the List of the Consumable objects
                     ListView<ISConsumable>(DatabaseManager.consumableDatabase, ref tempConsumable, ref _consumableListScrollPos, ref _consumableSelectedIndex, ref showNewConsumableDetails);
                     // Display the Details about the selected consumable
