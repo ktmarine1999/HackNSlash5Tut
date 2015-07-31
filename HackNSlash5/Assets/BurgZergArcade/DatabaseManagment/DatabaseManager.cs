@@ -107,7 +107,7 @@ namespace BurgZergArcade.Editor
 			//Loop through qdb and add the names to the options 
 			for(int cnt = 0; cnt < qualityDatabase.Count; cnt++)
 			{
-				options[cnt] = qualityDatabase.Get(cnt).Name;
+				options[cnt] = qualityDatabase.Get(cnt).name;
 			}
 			
 			return options;
@@ -185,5 +185,53 @@ namespace BurgZergArcade.Editor
 			}
 		}
 		#endregion
+
+        #region Item System Armor DB
+        /// <summary>
+        /// The ISWeaponDatabase, contains all of the ISWeapons to use.
+        /// </summary>
+        private static ISArmorDatabase _armorDatabase;
+
+        /// <summary>
+        /// Gets the ISWeaponDatabase scriptableObject.
+        /// </summary>
+        /// <value>The ISWeaponDatabase, contains all of the ISWeapons to use</value>
+        public static ISArmorDatabase armorDatabase
+        {
+            get
+            {
+                // If _settings is null then 
+                // Initalize it
+                if (_armorDatabase == null)
+                    _armorDatabase = DatabaseEditor.InitDatabase<ISArmorDatabase>(DatabaseManager.settings.ISArmorDatabaseName);
+
+                return _armorDatabase;
+            }
+        }
+        #endregion
+
+        #region Item System Consumable DB
+        /// <summary>
+        /// The ISWeaponDatabase, contains all of the ISWeapons to use.
+        /// </summary>
+        private static ISConsumableDatabase _consumableDatabase;
+
+        /// <summary>
+        /// Gets the ISWeaponDatabase scriptableObject.
+        /// </summary>
+        /// <value>The ISWeaponDatabase, contains all of the ISWeapons to use</value>
+        public static ISConsumableDatabase consumableDatabase
+        {
+            get
+            {
+                // If _settings is null then 
+                // Initalize it
+                if (_consumableDatabase == null)
+                    _consumableDatabase = DatabaseEditor.InitDatabase<ISConsumableDatabase>(DatabaseManager.settings.ISConsumableDatabaseName);
+
+                return _consumableDatabase;
+            }
+        }
+        #endregion
 	}//class
 }//namespace

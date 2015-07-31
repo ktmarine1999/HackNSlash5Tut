@@ -25,6 +25,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 			if(GUILayout.Button("Weapons"))
 			{
                 tabState = TabState.WEAPON;
+                ResetDisplayState();
 			}
 		}//Weapons Tab
 
@@ -37,6 +38,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 			if(GUILayout.Button("Armor"))
 			{
                 tabState = TabState.ARMOR;
+                ResetDisplayState();
 			}
 		}//Armor Tab
 
@@ -49,6 +51,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 			if(GUILayout.Button("Consumables"))
 			{
                 tabState = TabState.CONSUMABLE;
+                ResetDisplayState();
 			}
 		}//Consumables Tab
 
@@ -61,7 +64,17 @@ namespace BurgZergArcade.ItemSystem.Editor
 			if(GUILayout.Button("About"))
 			{
                 tabState = TabState.ABOUT;
+                ResetDisplayState();
 			}
 		}//About Tab
+
+        void ResetDisplayState()
+        {
+            displayState = DisplayState.NONE;
+
+            showNewWeaponDetails = false;
+            showNewArmorDetails = false;
+            showNewConsumableDetails = false;
+        }
 	}//class
 }//namespace

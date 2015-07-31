@@ -6,15 +6,8 @@ using BurgZergArcade.Editor;
 namespace BurgZergArcade.ItemSystem
 {
 	[System.Serializable]
-	public class ISObject : IISObject
+    public class ISObject : DatabaseObject, IISObject
 	{
-		/// <summary>
-		/// The name of the Item.
-		/// </summary>
-		[SerializeField]
-		string
-			_name;
-
 		/// <summary>
 		/// The gold value of the Item.
 		/// </summary>
@@ -44,16 +37,6 @@ namespace BurgZergArcade.ItemSystem
 			_quality;
 
 	#region IISObject implementation
-		/// <summary>
-		/// Gets or sets the name of the Item.
-		/// </summary>
-		/// <value>The name of the Item.</value>
-		public string name
-		{
-			get { return _name; }
-			set { _name = value; }
-		}
-
 		/// <summary>
 		/// Gets or sets the Item value.
 		/// </summary>
@@ -126,7 +109,7 @@ namespace BurgZergArcade.ItemSystem
 			_quality = isObject._quality;
 		}
 
-		public virtual void OnGUI()
+		public override void OnGUI()
 		{
 			// Create a vertical group Expanding the width
 			EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(true));
@@ -161,7 +144,7 @@ namespace BurgZergArcade.ItemSystem
 
 			//EditorGUILayout.LabelField("Quality");
 			if(_quality != null)
-				selectedIndex = DatabaseManager.qualityDatabase.GetIndex(_quality.Name);
+				selectedIndex = DatabaseManager.qualityDatabase.GetIndex(_quality.name);
 			else
 				selectedIndex = 0;
 

@@ -9,7 +9,7 @@ namespace BurgZergArcade.ItemSystem
 		/// Gets or sets the qulity name.
 		/// </summary>
 		/// <value>The name of the qulity.</value>
-		string Name { get; set; }
+		string name { get; set; }
 
 		/// <summary>
 		/// Gets or sets the icon.

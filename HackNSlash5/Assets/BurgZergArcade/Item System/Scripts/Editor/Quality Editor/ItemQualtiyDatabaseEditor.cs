@@ -65,7 +65,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 
 				// if the selectedItem is null or the Item's name is null or empty 
 				// remove the item from the database, this prevents null refrences when using this database
-				if(selectedItem == null || string.IsNullOrEmpty(selectedItem.Name))
+				if(selectedItem == null || string.IsNullOrEmpty(selectedItem.name))
 					DatabaseManager.qualityDatabase.Remove(cnt);
 
 			}//for loop
@@ -96,7 +96,7 @@ namespace BurgZergArcade.ItemSystem.Editor
 				EditorUtility.SetDirty(DatabaseManager.qualityDatabase);
 
 				// if the last item's name in the database is not null or empty add a new one to the end
-				if(!string.IsNullOrEmpty(DatabaseManager.qualityDatabase.Get(DatabaseManager.qualityDatabase.Count - 1).Name))
+				if(!string.IsNullOrEmpty(DatabaseManager.qualityDatabase.Get(DatabaseManager.qualityDatabase.Count - 1).name))
 					DatabaseManager.qualityDatabase.Add(new ISQuality());
 			}//Gui.changed
 

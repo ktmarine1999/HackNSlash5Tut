@@ -29,5 +29,15 @@ namespace BurgZergArcade.Editor
 		/// The name of the item system weapon database.
 		/// </summary>
 		public string ISWeaponDatabaseName = "ISWeaponDB";
+
+        /// <summary>
+        /// The name of the item system armor database.
+        /// </summary>
+        public string ISArmorDatabaseName = "ISArmorDB";
+
+        /// <summary>
+        /// The name of the item system consumable database.
+        /// </summary>
+        public string ISConsumableDatabaseName = "ISConsumableDB";
 	}
 }

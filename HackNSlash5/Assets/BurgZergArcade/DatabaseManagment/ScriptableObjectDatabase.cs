@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace BurgZergArcade
 {
-	public class ScriptableObjectDatabase<T> : ScriptableObject where T: class
+	public class ScriptableObjectDatabase<T> : ScriptableObject where T: DatabaseObject
 	{
 		/// <summary>
 		/// The database.

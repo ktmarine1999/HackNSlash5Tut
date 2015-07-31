@@ -34,6 +34,12 @@ namespace BurgZergArcade.Editor
 			CreateAsset<BurgZergArcade.ItemSystem.ISWeaponDatabase>();
 		}
 
+        [MenuItem("Assets/BZA/Create/Item System/Armor Database")]
+        public static void CreateArmorDatabase()
+        {
+            CreateAsset<BurgZergArcade.ItemSystem.ISArmorDatabase>();
+        }
+
 
 		/// <summary>
 		/// Create new asset from <see cref="ScriptableObject"/> type with unique name at
@@ -92,6 +98,17 @@ namespace BurgZergArcade.Editor
 			// write the changes to disk
 			EditorUtility.SetDirty(DatabaseManager.settings);
 		}
+
+        /// <summary>
+        /// Sets the selected database as the database to use.
+        /// </summary>
+        [MenuItem("Assets/BZA/Set Active/Item System/Armor Database")]
+        static void SetISArmorDBActive()
+        {
+            DatabaseManager.settings.ISArmorDatabaseName = Selection.activeObject.name;
+            // write the changes to disk
+            EditorUtility.SetDirty(DatabaseManager.settings);
+        }
 		#endregion
 	}//class
 }//namespace

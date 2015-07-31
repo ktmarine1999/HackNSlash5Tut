@@ -14,7 +14,8 @@ namespace BurgZergArcade.ItemSystem.Editor
 			EditorGUILayout.BeginHorizontal("Box", GUILayout.ExpandWidth(true));
 			
 			// Display the  selected Status
-			EditorGUILayout.LabelField("Bottom Bar");
+			EditorGUILayout.LabelField("Tab State: " + tabState);
+            EditorGUILayout.LabelField("Display State: " + displayState);
 			
 			
 			// end the Scroll view
