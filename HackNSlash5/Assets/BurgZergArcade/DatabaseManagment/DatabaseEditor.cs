@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.IO;
 
 namespace BurgZergArcade.Editor
@@ -10,6 +12,7 @@ namespace BurgZergArcade.Editor
 	/// </summary>
 	public static partial class DatabaseEditor
 	{
+#if UNITY_EDITOR
 		#region Editor window
 		/// <summary>
 		/// Inits the editor window.
@@ -123,5 +126,6 @@ namespace BurgZergArcade.Editor
 			
 			return db;
 		}// Init Database
+#endif
 	}//class
 }//namespace

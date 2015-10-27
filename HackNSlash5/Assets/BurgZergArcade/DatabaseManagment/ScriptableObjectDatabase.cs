@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
 using UnityEditor;
+#endif
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,14 +17,7 @@ namespace BurgZergArcade
 		protected List<T>
 			database = new List<T>();
 		
-		/// <summary>
-		/// Gets the number of elements in the database.
-		/// </summary>
-		public int Count
-		{
-			get { return database.Count; }
-		}
-		
+#if UNITY_EDITOR
 		/// <summary>
 		/// Add the specified item.
 		/// </summary>
@@ -82,7 +77,15 @@ namespace BurgZergArcade
 			// Write the database to disk
 			EditorUtility.SetDirty(this);
 		}
-		
+#endif
+        /// <summary>
+        /// Gets the number of elements in the database.
+        /// </summary>
+        public int Count
+        {
+            get { return database.Count; }
+        }
+
 		/// <summary>
 		/// Get an element at the specified index.
 		/// </summary>

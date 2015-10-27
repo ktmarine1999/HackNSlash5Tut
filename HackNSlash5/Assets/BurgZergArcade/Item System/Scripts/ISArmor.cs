@@ -1,6 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿#if UNITY_EDITOR
 using UnityEditor;
+#endif
+using UnityEngine;
 
 namespace BurgZergArcade.ItemSystem
 {
@@ -161,6 +162,7 @@ namespace BurgZergArcade.ItemSystem
 
         #endregion
 
+#if UNITY_EDITOR
         public override void OnGUI()
         {
             base.OnGUI();
@@ -194,5 +196,6 @@ namespace BurgZergArcade.ItemSystem
         {
             _prefab = EditorGUILayout.ObjectField("Prefab", _prefab, typeof(GameObject), false) as GameObject;
         }//Display Prefab
+#endif
     }//class
 }//namespace

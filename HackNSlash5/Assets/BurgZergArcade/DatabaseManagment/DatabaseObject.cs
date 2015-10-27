@@ -24,15 +24,17 @@ namespace BurgZergArcade
         public DatabaseObject() { }
 
         public DatabaseObject(DatabaseObject dbObject)
-		{
+        {
             Clone(dbObject);
-		}
+        }
 
         public void Clone(DatabaseObject dbObject)
-		{
+        {
             _name = dbObject._name;
-		}
+        }
 
+#if UNITY_EDITOR
         public virtual void OnGUI() { }
+#endif
     }//class
 }//namespace
