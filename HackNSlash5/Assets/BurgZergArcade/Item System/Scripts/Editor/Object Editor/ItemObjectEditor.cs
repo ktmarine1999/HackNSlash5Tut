@@ -19,89 +19,18 @@ namespace BurgZergArcade.ItemSystem.Editor
         }
 
         TabState tabState;
-
-        /// <summary>
-        /// What state to display
-        /// </summary>
-        enum DisplayState
-        {
-            NONE,
-            DETAILS
-        }
-
-        /// <summary>
-        /// What to display
-        /// </summary>
-        DisplayState displayState;
         #endregion
 
         #region Weapon
-        /// <summary>
-        /// The temp weapon to edit weapon that gets created to create a new weapon.
-        /// </summary>
-        ISWeapon tempWeapon;
-
-        /// <summary>
-        /// The scroll position.
-        /// Used in ListView when display the List;
-        /// </summary>
-        Vector2 _weaponListScrollPos = Vector2.zero;
-
-        /// <summary>
-        /// The selected weapon index
-        /// </summary>
-        int _weaponSelectedIndex = -1;
-
-        /// <summary>
-        /// The show new weapon details.
-        /// </summary>
-        bool showNewWeaponDetails = false;
+        ItemObjectCatagory<ISWeapon> weaponItem;
         #endregion
 
         #region Armor
-        /// <summary>
-        /// The temp armor to edit armor that gets created to create a new armor.
-        /// </summary>
-        ISArmor tempArmor;
-
-        /// <summary>
-        /// The scroll position.
-        /// Used in ListView when display the List;
-        /// </summary>
-        Vector2 _armorListScrollPos = Vector2.zero;
-
-        /// <summary>
-        /// The selected armor index
-        /// </summary>
-        int _armorSelectedIndex = -1;
-
-        /// <summary>
-        /// The show new armor details.
-        /// </summary>
-        bool showNewArmorDetails = false;
+        ItemObjectCatagory<ISArmor> armorItem;
         #endregion
 
         #region Consumable
-        /// <summary>
-        /// The temp Consumable to edit Consumable that gets created to create a new Consumable.
-        /// </summary>
-        ISConsumable tempConsumable;
-
-        /// <summary>
-        /// The scroll position.
-        /// Used in ListView when display the List;
-        /// </summary>
-        Vector2 _consumableListScrollPos = Vector2.zero;
-
-        /// <summary>
-        /// The selected armor index
-        /// </summary>
-        int _consumableSelectedIndex = -1;
-
-        /// <summary>
-        /// The show new Consumable details.
-        /// </summary>
-        bool showNewConsumableDetails = false;
+        ItemObjectCatagory<ISConsumable> consumableItem;
         #endregion
 
         /// <summary>
@@ -117,7 +46,10 @@ namespace BurgZergArcade.ItemSystem.Editor
         void OnEnable()
         {
             tabState = TabState.WEAPON;
-            displayState = DisplayState.NONE;
+
+            weaponItem = new ItemObjectCatagory<ISWeapon>(DatabaseManager.weaponDatabase, "Weapon");
+            armorItem = new ItemObjectCatagory<ISArmor>(DatabaseManager.armorDatabase, "Armor");
+            consumableItem = new ItemObjectCatagory<ISConsumable>(DatabaseManager.consumableDatabase, "Consumable");
         }
 
 		/// <summary>
@@ -147,21 +79,27 @@ namespace BurgZergArcade.ItemSystem.Editor
             {
                 case TabState.WEAPON:
                     // Display the List of the Weapon objects
-                    ListView<ISWeapon>(DatabaseManager.weaponDatabase, ref tempWeapon, ref _weaponListScrollPos, ref _weaponSelectedIndex, ref showNewWeaponDetails);
+                    weaponItem.ListView();
+                    //ListView<ISWeapon>(DatabaseManager.weaponDatabase, ref tempWeapon, ref _weaponListScrollPos, ref _weaponSelectedIndex, ref showNewWeaponDetails);
                     // Display the Details about the selected weapon
-                    ItemDetails<ISWeapon>(DatabaseManager.weaponDatabase, "Weapon", ref tempWeapon, ref showNewWeaponDetails, ref _weaponSelectedIndex);
+                    //ItemDetails<ISWeapon>(DatabaseManager.weaponDatabase, "Weapon", ref tempWeapon, ref showNewWeaponDetails, ref _weaponSelectedIndex);
+                    weaponItem.ItemDetails();
                     break;
                 case TabState.ARMOR:
                     // Display the List of the Armor objects
-                    ListView<ISArmor>(DatabaseManager.armorDatabase, ref tempArmor, ref _armorListScrollPos, ref _armorSelectedIndex, ref showNewArmorDetails);
+                    armorItem.ListView();
+                    //ListView<ISArmor>(DatabaseManager.armorDatabase, ref tempArmor, ref _armorListScrollPos, ref _armorSelectedIndex, ref showNewArmorDetails);
                     // Display the Details about the selected armor
-                    ItemDetails<ISArmor>(DatabaseManager.armorDatabase, "Armor", ref tempArmor, ref showNewArmorDetails, ref _armorSelectedIndex);
+                    //ItemDetails<ISArmor>(DatabaseManager.armorDatabase, "Armor", ref tempArmor, ref showNewArmorDetails, ref _armorSelectedIndex);
+                    armorItem.ItemDetails();
                     break;
                 case TabState.CONSUMABLE:
                     // Display the List of the Consumable objects
-                    ListView<ISConsumable>(DatabaseManager.consumableDatabase, ref tempConsumable, ref _consumableListScrollPos, ref _consumableSelectedIndex, ref showNewConsumableDetails);
+                    consumableItem.ListView();
+                    //ListView<ISConsumable>(DatabaseManager.consumableDatabase, ref tempConsumable, ref _consumableListScrollPos, ref _consumableSelectedIndex, ref showNewConsumableDetails);
                     // Display the Details about the selected consumable
-                    ItemDetails<ISConsumable>(DatabaseManager.consumableDatabase, "Consumable", ref tempConsumable, ref showNewConsumableDetails, ref _consumableSelectedIndex);
+                    //ItemDetails<ISConsumable>(DatabaseManager.consumableDatabase, "Consumable", ref tempConsumable, ref showNewConsumableDetails, ref _consumableSelectedIndex);
+                    consumableItem.ItemDetails();
                     break;
                 case TabState.ABOUT:
                     EditorGUILayout.LabelField("About");

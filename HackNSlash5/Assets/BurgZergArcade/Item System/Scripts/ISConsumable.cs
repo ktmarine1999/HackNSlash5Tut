@@ -20,7 +20,7 @@ namespace BurgZergArcade.ItemSystem
         public ISConsumable()
             : base()
         {
-            name = "New Armor";
+            name = "New Consumable";
         }
 
         public ISConsumable(int maxStack, GameObject gamePrefab)

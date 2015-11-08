@@ -1,5 +1,5 @@
-using BurgZergArcade.Editor;
 #if UNITY_EDITOR
+using BurgZergArcade.Editor;
 using UnityEditor;
 #endif
 using UnityEngine;
@@ -9,33 +9,31 @@ namespace BurgZergArcade.ItemSystem
     [System.Serializable]
     public class ISObject : DatabaseObject, IISObject
     {
+        #region IISObject
         /// <summary>
         /// The gold value of the Item.
         /// </summary>
         [SerializeField]
-        int
-            _value;
+        int _value;
 
         /// <summary>
         /// The icon to use to display the Item.
         /// </summary>
         [SerializeField]
-        Sprite
-            _icon;
+        Sprite _icon;
 
         /// <summary>
         /// How much of a burden is this Item on the player.
         /// </summary>
         [SerializeField]
-        int
-            _burden;
+        int _burden;
 
         /// <summary>
         /// The quality of the Item
         /// </summary>
         [SerializeField]
-        ISQuality
-            _quality;
+        ISQuality _quality;
+        #endregion
 
         #region IISObject implementation
         /// <summary>
@@ -81,7 +79,9 @@ namespace BurgZergArcade.ItemSystem
 
         public ISObject()
         {
+            // DatabaseManagment/DatabaseObject
             _name = "New Item";
+
             _value = 0;
             _icon = new Sprite();
             _burden = 1;

@@ -19,6 +19,8 @@ MonoBehaviour:
     _quality:
       _name: Common
       _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    _curArmor: 0
+    _maxArmor: 0
     _durability: 0
     _maxDurability: -100
     _prefab: {fileID: 110664, guid: a09d0ed2aa67c934ca6ae1eae33e6c33, type: 2}
@@ -30,6 +32,8 @@ MonoBehaviour:
     _quality:
       _name: Common
       _icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    _curArmor: 0
+    _maxArmor: 0
     _durability: 0
     _maxDurability: -100
     _prefab: {fileID: 110664, guid: a09d0ed2aa67c934ca6ae1eae33e6c33, type: 2}

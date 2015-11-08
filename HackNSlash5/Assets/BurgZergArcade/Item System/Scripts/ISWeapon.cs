@@ -8,45 +8,51 @@ namespace BurgZergArcade.ItemSystem
     [System.Serializable]
     public class ISWeapon : ISObject, IISWeapon, IISDestructable, IISGameObject
     {
+        #region IISWeapon
         /// <summary>
         /// The minimum damage this weapon can do.
         /// </summary>
         [SerializeField]
-        int
-            _minDamage;
+        int _minDamage;
+        #endregion
 
+        #region IISDestructable
         /// <summary>
         /// The durability of this weapon.
         /// </summary>
         [SerializeField]
-        int
-            _durability;
+        int _durability;
 
         /// <summary>
         /// The max durability of this weapon.
         /// </summary>
         [SerializeField]
-        int
-            _maxDurability;
+        int _maxDurability;
+         #endregion
 
+        #region IISGameObject
         /// <summary>
         /// The prefab to display this item in the game world.
         /// </summary>
         [SerializeField]
-        GameObject
-            _prefab;
+        GameObject _prefab;
+        #endregion
 
         public EquipmentSlot equipmentSlot;
 
         public ISWeapon()
             : base()
         {
-            name = "New Weapon";
-            equipmentSlot = EquipmentSlot.Weapon_OneHanded;
-            _minDamage = 1;
+            // DatabaseManagment/DatabaseObject
+            _name = "New Weapon";
 
+            _minDamage = 1;
+            equipmentSlot = EquipmentSlot.Weapon_OneHanded;
+
+            // IISDestructable
             // all  new weapons are created as indestructable
             _maxDurability = -100;
+            _durability = 1;
         }
 
         public ISWeapon(int minDamage, int durability, int maxDurability, EquipmentSlot slot, GameObject gamePrefab)
@@ -188,9 +194,13 @@ namespace BurgZergArcade.ItemSystem
         /// <value>The prefab to display this item in the game world.</value>
         public GameObject prefab
         {
-            get { return _prefab; }
+            get
+            {
+                if (!_prefab)
+                    _prefab = new GameObject();
+                return _prefab;
+            }
         }
-
         #endregion
 
 #if UNITY_EDITOR
@@ -201,12 +211,10 @@ namespace BurgZergArcade.ItemSystem
             // End the vertical group 
             EditorGUILayout.BeginVertical();
 
-            //Display the Min Damage
-            //EditorGUILayout.LabelField("Min Damage");
+            // Display the Min Damage
             _minDamage = EditorGUILayout.IntField("Min Damage", _minDamage);
 
-            //Display the Durability
-            //EditorGUILayout.LabelField("Durability");
+            // Display the Durability
             _durability = EditorGUILayout.IntField("Durability", _durability);
 
             //Display the Max Durability

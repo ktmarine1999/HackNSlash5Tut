@@ -5,6 +5,6 @@ namespace BurgZergArcade.ItemSystem
 {
     public interface IISArmor
     {
-       
+        Vector2 armor { get; set; }
     }//class
 }//namespace

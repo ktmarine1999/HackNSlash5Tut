@@ -8,41 +8,63 @@ namespace BurgZergArcade.ItemSystem
     [System.Serializable]
     public class ISArmor : ISObject, IISArmor, IISDestructable, IISGameObject
     {
+        #region IISArmor
         /// <summary>
-        /// The durability of this weapon.
+        /// The Current defense rating of this armor
         /// </summary>
         [SerializeField]
-        int
-            _durability;
+        int _curArmor;
 
         /// <summary>
-        /// The max durability of this weapon.
+        /// The max defense rating of this armor
         /// </summary>
         [SerializeField]
-        int
-            _maxDurability;
+        int _maxArmor;
+        #endregion
 
+        #region IISDestructable
+        /// <summary>
+        /// The durability of this armor.
+        /// </summary>
+        [SerializeField]
+        int _durability;
+
+        /// <summary>
+        /// The max durability of this armor.
+        /// </summary>
+        [SerializeField]
+        int _maxDurability;
+        #endregion
+
+        #region IISGameObject
         /// <summary>
         /// The prefab to display this item in the game world.
         /// </summary>
         [SerializeField]
-        GameObject
-            _prefab;
+        GameObject _prefab;
+        #endregion
 
         public EquipmentSlot equipmentSlot;
 
         public ISArmor()
             : base()
         {
+            // DatabaseManagment/DatabaseObject
             name = "New Armor";
+
+            _curArmor = 0;
+            _maxArmor = 0;
             equipmentSlot = EquipmentSlot.Armor_Head;
 
+            // IISDestructable
             // all  new weapons are created as indestructable
             _maxDurability = -100;
+            _durability = 1;
         }
 
-        public ISArmor(int minDamage, int durability, int maxDurability, EquipmentSlot slot, GameObject gamePrefab)
+        public ISArmor(Vector2 armorRating, int durability, int maxDurability, EquipmentSlot slot, GameObject gamePrefab)
         {
+            armor = armorRating;
             _durability = durability;
             _maxDurability = maxDurability;
             equipmentSlot = slot;
@@ -57,11 +79,32 @@ namespace BurgZergArcade.ItemSystem
         public void Clone(ISArmor armor)
         {
             base.Clone(armor);
+            _curArmor = armor._curArmor;
+            _maxArmor = armor._maxArmor;
             _durability = armor._durability;
             _maxDurability = armor._maxDurability;
             equipmentSlot = armor.equipmentSlot;
             _prefab = armor._prefab;
         }
+
+        #region IISArmor Members
+        public Vector2 armor
+        {
+            get
+            {
+                return new Vector2(_curArmor, _maxArmor);
+            }
+            set
+            {
+                //max is always greater than 0
+                //cur is never less then 0
+                //cur is never greater than max
+                _maxArmor = Mathf.Max(0, (int)value.y);
+
+                _curArmor = Mathf.Clamp((int)value.x, 1, _maxArmor);
+            }
+        }
+        #endregion
 
         #region IISDestructable implementation
         /// <summary>
@@ -119,7 +162,7 @@ namespace BurgZergArcade.ItemSystem
         /// </summary>
         public void Break()
         {
-            // if this item is indestrucable then return no need to do anythins
+            // if this item is indestrucable then return no need to do anything
             if (_maxDurability == -100)
                 return;
 
@@ -150,16 +193,19 @@ namespace BurgZergArcade.ItemSystem
         #endregion
 
         #region IISGameObject implementation
-
         /// <summary>
         /// Gets the prefab.
         /// </summary>
         /// <value>The prefab to display this item in the game world.</value>
         public GameObject prefab
         {
-            get { return _prefab; }
+            get 
+            {
+                if (!_prefab)
+                    _prefab = new GameObject();
+                return _prefab;
+            }
         }
-
         #endregion
 
 #if UNITY_EDITOR
@@ -170,8 +216,11 @@ namespace BurgZergArcade.ItemSystem
             // End the vertical group 
             EditorGUILayout.BeginVertical();
 
-            //Display the Durability
-            //EditorGUILayout.LabelField("Durability");
+            // Display the armor rating
+            _curArmor = EditorGUILayout.IntField("Armor", _curArmor);
+            _maxArmor = EditorGUILayout.IntField("Max Armor", _maxArmor);
+
+            // Display the Durability
             _durability = EditorGUILayout.IntField("Durability", _durability);
 
             //Display the Max Durability
