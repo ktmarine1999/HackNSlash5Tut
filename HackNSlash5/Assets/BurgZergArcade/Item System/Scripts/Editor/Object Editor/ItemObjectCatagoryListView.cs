@@ -29,11 +29,16 @@ namespace BurgZergArcade.ItemSystem.Editor
                 {
                     _selectedIndex = cnt;
 
-                    //Debug.Log(_database.GetType().ToString());
-
                     //Clone the Item so we are not working with the copy in the _database, in order to save these values have to click save
+                    //_tempObject = new T(_database.Get(cnt)) as T; 
+                    // error CS0304: Cannot create an instance of the variable type 'T' because it doesn't have the new() constraint
+                    // workaround
                     if (_database is ISWeaponDatabase)
                     {
+                        //_tempObject = new ISWeapon(_database.Get(cnt)) as T;
+                        // error CS1502: The best overloaded method match for `BurgZergArcade.ItemSystem.ISWeapon.ISWeapon(BurgZergArcade.ItemSystem.ISWeapon)' has some invalid arguments
+                        // error CS1503: Argument `#1' cannot convert `T' expression to type `BurgZergArcade.ItemSystem.ISWeapon'
+                        // work around
                         _tempObject = new ISWeapon(DatabaseManager.weaponDatabase.Get(cnt)) as T;
                     }
                     else if (_database is ISArmorDatabase)
