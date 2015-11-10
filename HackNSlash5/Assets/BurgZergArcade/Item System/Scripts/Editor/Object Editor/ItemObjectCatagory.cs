@@ -7,7 +7,7 @@ namespace BurgZergArcade.ItemSystem.Editor
         /// <summary>
         /// The temp object to edit that gets created to create a new object.
         /// </summary>
-        T tempObject;
+        T _tempObject;
 
         ScriptableObjectDatabase<T> _database;
 

@@ -34,15 +34,15 @@ namespace BurgZergArcade.ItemSystem.Editor
                     //Clone the Item so we are not working with the copy in the _database, in order to save these values have to click save
                     if (_database is ISWeaponDatabase)
                     {
-                        tempObject = new ISWeapon(DatabaseManager.weaponDatabase.Get(cnt)) as T;
+                        _tempObject = new ISWeapon(DatabaseManager.weaponDatabase.Get(cnt)) as T;
                     }
                     else if (_database is ISArmorDatabase)
                     {
-                        tempObject = new ISArmor(DatabaseManager.armorDatabase.Get(cnt)) as T;
+                        _tempObject = new ISArmor(DatabaseManager.armorDatabase.Get(cnt)) as T;
                     }
                     else if (_database is ISConsumableDatabase)
                     {
-                        tempObject = new ISConsumable(DatabaseManager.consumableDatabase.Get(cnt)) as T;
+                        _tempObject = new ISConsumable(DatabaseManager.consumableDatabase.Get(cnt)) as T;
                     }
 
                     _showDetails = true;
