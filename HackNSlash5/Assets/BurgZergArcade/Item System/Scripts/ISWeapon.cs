@@ -215,7 +215,7 @@ namespace BurgZergArcade.ItemSystem
             _minDamage = EditorGUILayout.IntField("Min Damage", _minDamage);
 
             // Display the Durability
-            _durability = EditorGUILayout.IntField("Durability", _durability);
+            _durability = EditorGUILayout.IntField("Current Durability", _durability);
 
             //Display the Max Durability
             _maxDurability = EditorGUILayout.IntField("Max Durability", _maxDurability);

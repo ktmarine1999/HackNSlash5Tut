@@ -217,11 +217,11 @@ namespace BurgZergArcade.ItemSystem
             EditorGUILayout.BeginVertical();
 
             // Display the armor rating
-            _curArmor = EditorGUILayout.IntField("Armor", _curArmor);
+            _curArmor = EditorGUILayout.IntField("Current Armor", _curArmor);
             _maxArmor = EditorGUILayout.IntField("Max Armor", _maxArmor);
 
             // Display the Durability
-            _durability = EditorGUILayout.IntField("Durability", _durability);
+            _durability = EditorGUILayout.IntField("Current Durability", _durability);
 
             //Display the Max Durability
             _maxDurability = EditorGUILayout.IntField("Max Durability", _maxDurability);
