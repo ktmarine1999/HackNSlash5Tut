@@ -78,28 +78,13 @@ namespace BurgZergArcade.ItemSystem.Editor
             switch (tabState)
             {
                 case TabState.WEAPON:
-                    // Display the List of the Weapon objects
-                    weaponItem.ListView();
-                    //ListView<ISWeapon>(DatabaseManager.weaponDatabase, ref tempWeapon, ref _weaponListScrollPos, ref _weaponSelectedIndex, ref showNewWeaponDetails);
-                    // Display the Details about the selected weapon
-                    //ItemDetails<ISWeapon>(DatabaseManager.weaponDatabase, "Weapon", ref tempWeapon, ref showNewWeaponDetails, ref _weaponSelectedIndex);
-                    weaponItem.ItemDetails();
+                    weaponItem.OnGUI();
                     break;
                 case TabState.ARMOR:
-                    // Display the List of the Armor objects
-                    armorItem.ListView();
-                    //ListView<ISArmor>(DatabaseManager.armorDatabase, ref tempArmor, ref _armorListScrollPos, ref _armorSelectedIndex, ref showNewArmorDetails);
-                    // Display the Details about the selected armor
-                    //ItemDetails<ISArmor>(DatabaseManager.armorDatabase, "Armor", ref tempArmor, ref showNewArmorDetails, ref _armorSelectedIndex);
-                    armorItem.ItemDetails();
+                    armorItem.OnGUI();
                     break;
                 case TabState.CONSUMABLE:
-                    // Display the List of the Consumable objects
-                    consumableItem.ListView();
-                    //ListView<ISConsumable>(DatabaseManager.consumableDatabase, ref tempConsumable, ref _consumableListScrollPos, ref _consumableSelectedIndex, ref showNewConsumableDetails);
-                    // Display the Details about the selected consumable
-                    //ItemDetails<ISConsumable>(DatabaseManager.consumableDatabase, "Consumable", ref tempConsumable, ref showNewConsumableDetails, ref _consumableSelectedIndex);
-                    consumableItem.ItemDetails();
+                    consumableItem.OnGUI();
                     break;
                 case TabState.ABOUT:
                     EditorGUILayout.LabelField("About");
