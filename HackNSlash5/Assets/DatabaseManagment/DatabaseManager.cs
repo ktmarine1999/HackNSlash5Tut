@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using BurgZergArcade.ItemSystem;
 
-namespace BurgZergArcade.Editor
+namespace DatabaseManagment.Editor
 {
     /// <summary>
     /// Database manager.

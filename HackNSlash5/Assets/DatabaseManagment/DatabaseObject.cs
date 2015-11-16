@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace BurgZergArcade
+namespace DatabaseManagment
 {
     [System.Serializable]
     public class DatabaseObject

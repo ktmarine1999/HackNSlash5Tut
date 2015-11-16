@@ -1,5 +1,4 @@
-﻿using BurgZergArcade.Editor;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace BurgZergArcade.ItemSystem.Editor

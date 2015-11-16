@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BurgZergArcade
+namespace DatabaseManagment
 {
 	public class ScriptableObjectDatabase<T> : ScriptableObject where T: DatabaseObject
 	{
@@ -16,13 +16,31 @@ namespace BurgZergArcade
 		[SerializeField]
 		protected List<T>
 			items = new List<T>();
-		
+
+        /// <summary>
+        /// Gets the number of elements in the database.
+        /// </summary>
+        public int Count
+        {
+            get { return items.Count; }
+        }
+
+        /// <summary>
+        /// Get an element at the specified index.
+        /// </summary>
+        /// <param name="index">The index to get an element at.</param>
+        public T Get(int index)
+        {
+            return items.ElementAt(index);
+        }
+
+        #region IF Unity Editor
 #if UNITY_EDITOR
-		/// <summary>
-		/// Add the specified item.
-		/// </summary>
-		/// <param name="item">Item.</param>
-		public void Add(T item)
+        /// <summary>
+        /// Add the specified item.
+        /// </summary>
+        /// <param name="item">Item.</param>
+        public void Add(T item)
 		{
 			// Add the item to the database
 			items.Add(item);
@@ -78,21 +96,6 @@ namespace BurgZergArcade
 			EditorUtility.SetDirty(this);
 		}
 #endif
-        /// <summary>
-        /// Gets the number of elements in the database.
-        /// </summary>
-        public int Count
-        {
-            get { return items.Count; }
-        }
-
-		/// <summary>
-		/// Get an element at the specified index.
-		/// </summary>
-		/// <param name="index">The index to get an element at.</param>
-		public T Get(int index)
-		{
-			return items.ElementAt(index);
-		}
+        #endregion
 	}
 }

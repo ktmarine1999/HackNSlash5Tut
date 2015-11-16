@@ -4,7 +4,7 @@ using UnityEditor;
 #endif
 using System.IO;
 
-namespace BurgZergArcade.Editor
+namespace DatabaseManagment.Editor
 {
 	/// <summary>
 	/// Database editor.
