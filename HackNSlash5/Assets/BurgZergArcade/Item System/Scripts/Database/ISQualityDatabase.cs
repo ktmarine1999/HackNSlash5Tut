@@ -7,7 +7,7 @@ namespace BurgZergArcade.ItemSystem
 	{
 		public int GetIndex(string name)
 		{
-			return database.FindIndex(a => a.name == name);
+			return items.FindIndex(a => a.name == name);
 		}
 	}
 }

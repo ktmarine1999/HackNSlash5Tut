@@ -15,7 +15,7 @@ namespace BurgZergArcade
 		/// </summary>
 		[SerializeField]
 		protected List<T>
-			database = new List<T>();
+			items = new List<T>();
 		
 #if UNITY_EDITOR
 		/// <summary>
@@ -25,7 +25,7 @@ namespace BurgZergArcade
 		public void Add(T item)
 		{
 			// Add the item to the database
-			database.Add(item);
+			items.Add(item);
 			// Write the database to disk
 			EditorUtility.SetDirty(this);
 		}
@@ -37,7 +37,7 @@ namespace BurgZergArcade
 		/// <param name="item">The item to insert.</param>
 		public void Insert(int index, T item)
 		{
-			database.Insert(index, item);
+			items.Insert(index, item);
 			// Write the database to disk
 			EditorUtility.SetDirty(this);
 		}
@@ -49,7 +49,7 @@ namespace BurgZergArcade
 		public void Remove(T item)
 		{
 			// remove the item from the database
-			database.Remove(item);
+			items.Remove(item);
 			// Write the database to disk
 			EditorUtility.SetDirty(this);
 		}
@@ -61,7 +61,7 @@ namespace BurgZergArcade
 		public void Remove(int index)
 		{
 			// remove the item from the database
-			database.RemoveAt(index);
+			items.RemoveAt(index);
 			// Write the database to disk
 			EditorUtility.SetDirty(this);
 		}
@@ -73,7 +73,7 @@ namespace BurgZergArcade
 		/// <param name="item">The item to put at the index.</param>
 		public void Replace(int index, T item)
 		{
-			database[index] = item;
+			items[index] = item;
 			// Write the database to disk
 			EditorUtility.SetDirty(this);
 		}
@@ -83,7 +83,7 @@ namespace BurgZergArcade
         /// </summary>
         public int Count
         {
-            get { return database.Count; }
+            get { return items.Count; }
         }
 
 		/// <summary>
@@ -92,7 +92,7 @@ namespace BurgZergArcade
 		/// <param name="index">The index to get an element at.</param>
 		public T Get(int index)
 		{
-			return database.ElementAt(index);
+			return items.ElementAt(index);
 		}
 	}
 }
