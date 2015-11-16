@@ -48,7 +48,7 @@ namespace BurgZergArcade.ItemSystem.Editor
             selectedItem = new ISQuality();
 
             // add a new quality to the List
-            DatabaseManager.qualityDatabase.Add(new ISQuality());
+            //DatabaseManager.qualityDatabase.Add(new ISQuality());
         }//OnEnable()
 
         /// <summary>

@@ -121,11 +121,11 @@ namespace BurgZergArcade.ItemSystem.Editor
             {
                 if (selectedIndex == -1)
                 {
-                    database.Add(tempItem);
+                    database.Items.Add(tempItem);
                 }
                 else
                 {
-                    database.Replace(selectedIndex, tempItem);
+                    //database.Items.Replace(selectedIndex, tempItem);
                 }
                 
                 showDetails = false;

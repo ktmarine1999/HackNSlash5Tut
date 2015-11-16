@@ -4,20 +4,20 @@ using UnityEngine;
 
 namespace BurgZergArcade.ItemSystem.Editor
 {
-    public class ISObjectDatabaseType<D, T> where D : ScriptableObjectDatabase<T> where T : ISObject
+    public partial class ISObjectDatabaseType<D, T> where D : ScriptableObjectDatabase<T> where T : ISObject
     {
         [SerializeField]
         D database;
 
         [SerializeField]
-        string dbName;
+        string databaseName;
 
         [SerializeField]
-        string dbPath = @"Database";
+        string databasePath;
 
-        public ISObjectDatabaseType(string n)
+        public ISObjectDatabaseType(string dbName)
         {
-            dbName = n;
+            databaseName = dbName;
         }
 
         public void OnEnabled()
@@ -26,12 +26,7 @@ namespace BurgZergArcade.ItemSystem.Editor
                 LoadDatabase();
         }
 
-        private void LoadDatabase()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnGui()
+        public void OnGUI()
         {
 
         }
