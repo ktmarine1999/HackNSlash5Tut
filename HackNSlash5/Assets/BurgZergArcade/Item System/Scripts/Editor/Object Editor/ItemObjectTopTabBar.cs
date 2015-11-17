@@ -83,9 +83,9 @@ namespace BurgZergArcade.ItemSystem.Editor
 
         void ResetDisplayState()
         {
-            weaponItem = new ItemObjectCatagory<ISWeapon>(DatabaseManager.weaponDatabase, "Weapon");
-            armorItem = new ItemObjectCatagory<ISArmor>(DatabaseManager.armorDatabase, "Armor");
-            consumableItem = new ItemObjectCatagory<ISConsumable>(DatabaseManager.consumableDatabase, "Consumable");
+            weaponDatabase = new ISObjectDatabaseType<ISWeaponDatabase, ISWeapon>(DatabaseManager.weaponDatabase, "Weapon");
+            armorDatabase = new ISObjectDatabaseType<ISArmorDatabase, ISArmor>(DatabaseManager.armorDatabase, "Armor");
+            consumableDatabase = new ISObjectDatabaseType<ISConsumableDatabase, ISConsumable>(DatabaseManager.consumableDatabase, "Consumable");
         }
     }//class
 }//namespace

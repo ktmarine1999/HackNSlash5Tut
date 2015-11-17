@@ -1,9 +1,11 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
+using UnityEditor;
+using DatabaseManagment;
 
 namespace BurgZergArcade.ItemSystem.Editor
 {
-    public partial class ItemObjectCatagory<T>
+    public partial class ISObjectDatabaseType<D, T> where D : ScriptableObjectDatabase<T> where T : DatabaseObject, new()
     {
         /// <summary>
         /// Displays the items Details verticaly in a box with button laid out horizontaly underneath.
@@ -18,7 +20,7 @@ namespace BurgZergArcade.ItemSystem.Editor
         ///  EndHorizontal
         /// EndVertical
         /// </summary>
-        protected virtual void DetailsView()
+        void DetailsView()
         {
             // Create a vertical group Expanding the width and height
             EditorGUILayout.BeginVertical("Box", GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
@@ -49,7 +51,7 @@ namespace BurgZergArcade.ItemSystem.Editor
         /// if tempItem is not null
         ///  call the temp itemes OnGUI function
         /// </summary>
-        protected void DisplayItemDetails()
+        void DisplayItemDetails()
         {
             if (tempItem != null)
                 tempItem.OnGUI();
@@ -67,14 +69,14 @@ namespace BurgZergArcade.ItemSystem.Editor
         ///  Cancel Button
         ///  
         /// </summary>
-        protected virtual void DisplayItemButtons()
+        void DisplayItemButtons()
         {
             // If not showing Item details then display the create Item button
             if (!showDetails)
             {
                 ButtonCreate();
             }//if !showDetails
-            // Else show the save, dlete, and Cancel buttons
+             // Else show the save, dlete, and Cancel buttons
             else
             {
                 ButtonSave();
@@ -94,11 +96,11 @@ namespace BurgZergArcade.ItemSystem.Editor
         ///  sets showDeyails to true
         ///  sets the focused GUI control to null (Makes it so their is no control focused next time you enter)
         /// </summary>
-        protected virtual void ButtonCreate()
+        void ButtonCreate()
         {
             if (GUILayout.Button("Create " + itemtype))
             {
-                CreateNewItem();
+                tempItem = new T();
                 selectedIndex = -1;
                 showDetails = true;
                 GUI.FocusControl(null);
@@ -115,19 +117,19 @@ namespace BurgZergArcade.ItemSystem.Editor
         ///  sets tempItem to null (no longer need the information stored here)
         ///  sets the focused GUI control to null (Makes it so their is no control focused next time you enter)
         /// </summary>
-        protected virtual void ButtonSave()
+        void ButtonSave()
         {
             if (GUILayout.Button("Save"))
             {
                 if (selectedIndex == -1)
                 {
-                    database.Items.Add(tempItem);
+                    Add(tempItem);
                 }
                 else
                 {
-                    //database.Items.Replace(selectedIndex, tempItem);
+                    Replace(selectedIndex, tempItem);
                 }
-                
+
                 showDetails = false;
                 tempItem = null;
                 GUI.FocusControl(null);
@@ -144,7 +146,7 @@ namespace BurgZergArcade.ItemSystem.Editor
         ///   sets tempItem to null (no longer need the information stored here)
         ///   sets the focused GUI control to null (Makes it so their is no control focused next time you enter)
         /// </summary>
-        protected virtual void ButtonDelete()
+        void ButtonDelete()
         {
             if (GUILayout.Button("Delete"))
             {
@@ -154,7 +156,7 @@ namespace BurgZergArcade.ItemSystem.Editor
                                                "Delete",
                                                "Cancel"))
                 {
-                    database.Remove(selectedIndex);
+                    Remove(selectedIndex);
                     showDetails = false;
                     tempItem = null;
                     GUI.FocusControl(null);
@@ -170,7 +172,7 @@ namespace BurgZergArcade.ItemSystem.Editor
         ///  sets tempItem to null (no longer need the information stored here)
         ///  sets the focused GUI control to null (Makes it so their is no control focused next time you enter)
         /// </summary>
-        protected virtual void ButtonCancel()
+        void ButtonCancel()
         {
             if (GUILayout.Button("Cancel"))
             {
@@ -179,5 +181,5 @@ namespace BurgZergArcade.ItemSystem.Editor
                 GUI.FocusControl(null);
             }//if Cancel Button
         }//Cancle Button
-    }//class
-}//namespace
+    }
+}

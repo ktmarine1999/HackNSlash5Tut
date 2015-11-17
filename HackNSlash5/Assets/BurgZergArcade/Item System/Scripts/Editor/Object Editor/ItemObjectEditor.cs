@@ -22,15 +22,15 @@ namespace BurgZergArcade.ItemSystem.Editor
         #endregion
 
         #region Weapon
-        ItemObjectCatagory<ISWeapon> weaponItem;
+        ISObjectDatabaseType<ISWeaponDatabase, ISWeapon> weaponDatabase;
         #endregion
 
         #region Armor
-        ItemObjectCatagory<ISArmor> armorItem;
+        ISObjectDatabaseType<ISArmorDatabase, ISArmor> armorDatabase;
         #endregion
 
         #region Consumable
-        ItemObjectCatagory<ISConsumable> consumableItem;
+        ISObjectDatabaseType<ISConsumableDatabase, ISConsumable> consumableDatabase;
         #endregion
 
         /// <summary>
@@ -47,9 +47,9 @@ namespace BurgZergArcade.ItemSystem.Editor
         {
             tabState = TabState.WEAPON;
 
-            weaponItem = new ItemObjectCatagory<ISWeapon>(DatabaseManager.weaponDatabase, "Weapon");
-            armorItem = new ItemObjectCatagory<ISArmor>(DatabaseManager.armorDatabase, "Armor");
-            consumableItem = new ItemObjectCatagory<ISConsumable>(DatabaseManager.consumableDatabase, "Consumable");
+            weaponDatabase = new ISObjectDatabaseType<ISWeaponDatabase, ISWeapon>(DatabaseManager.weaponDatabase, "Weapon");
+            armorDatabase = new ISObjectDatabaseType<ISArmorDatabase, ISArmor>(DatabaseManager.armorDatabase, "Armor");
+            consumableDatabase = new ISObjectDatabaseType<ISConsumableDatabase, ISConsumable>(DatabaseManager.consumableDatabase, "Consumable");
         }
 
         /// <summary>
@@ -78,13 +78,13 @@ namespace BurgZergArcade.ItemSystem.Editor
             switch (tabState)
             {
                 case TabState.WEAPON:
-                    weaponItem.OnGUI();
+                    weaponDatabase.OnGUI();
                     break;
                 case TabState.ARMOR:
-                    armorItem.OnGUI();
+                    armorDatabase.OnGUI();
                     break;
                 case TabState.CONSUMABLE:
-                    consumableItem.OnGUI();
+                    consumableDatabase.OnGUI();
                     break;
                 case TabState.ABOUT:
                     EditorGUILayout.LabelField("About");
