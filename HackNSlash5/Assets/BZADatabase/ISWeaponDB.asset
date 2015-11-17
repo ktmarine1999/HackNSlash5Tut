@@ -11,4 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5890bd52d53041438687209c1e101bb, type: 3}
   m_Name: ISWeaponDB
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - _name: New Weapon
+    _value: 2
+    _icon: {fileID: 0}
+    _burden: 1
+    _quality:
+      _name: Common
+      _icon: {fileID: 21300000, guid: 979ebd494dee4ff45826fbbc68fb8748, type: 3}
+    _minDamage: 1
+    _durability: 1
+    _maxDurability: -100
+    _prefab: {fileID: 100000, guid: 7a5297bf8184f62448c44c2ca2a58887, type: 3}
+    equipmentSlot: 1
