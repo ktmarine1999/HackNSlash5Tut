@@ -88,23 +88,11 @@ namespace BurgZergArcade.ItemSystem
             _burden = 1;
         }//ISObject
 
-        public ISObject(string Name, int Value, Sprite Icon, int Burden, ISQuality Quality)
+        public override void Clone<T>(T dbObject)
         {
-            _name = Name;
-            _value = Value;
-            _icon = Icon;
-            _burden = Burden;
-            _quality = Quality;
-        }
+            base.Clone<T>(dbObject);
 
-        public ISObject(ISObject isObject)
-        {
-            Clone(isObject);
-        }
-
-        public void Clone(ISObject isObject)
-        {
-            _name = isObject._name;
+            ISObject isObject = dbObject as ISObject;
             _value = isObject._value;
             _icon = isObject._icon;
             _burden = isObject._burden;
@@ -114,26 +102,19 @@ namespace BurgZergArcade.ItemSystem
 #if UNITY_EDITOR
         public override void OnGUI()
         {
-            // Create a vertical group Expanding the width
-            EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(true));
 
-            // Display a field to edit the name
-            _name = EditorGUILayout.TextField("Name", _name);
+            base.OnGUI();
 
+            EditorGUILayout.LabelField("***ISObject Members***");
             //Display a filed to edit the value
             _value = EditorGUILayout.IntField("Value", _value);
-
             // Display the Burden
             _burden = EditorGUILayout.IntField("Burden", _burden);
-
             //Display the icon
             DisplayIcon();
-
             // Dispay the quality from the quality database
             DisplayQuality();
-
-            // End the vertical group 
-            EditorGUILayout.EndVertical();
+            GUILayout.Space(50);
         }//OnGUI
 
         public void DisplayIcon()
@@ -145,13 +126,10 @@ namespace BurgZergArcade.ItemSystem
         {
             int selectedIndex = 0;
 
-            //EditorGUILayout.LabelField("Quality");
             if (_quality != null)
                 selectedIndex = DatabaseManager.qualityDatabase.GetIndex(_quality.name);
             else
                 selectedIndex = 0;
-
-            //Debug.Log(selectedIndex.ToString());
 
             selectedIndex = EditorGUILayout.Popup("Quality", selectedIndex, DatabaseManager.qualityNames());
 

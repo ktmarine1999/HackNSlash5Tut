@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - _name: Common
-    _icon: {fileID: 21300000, guid: 979ebd494dee4ff45826fbbc68fb8748, type: 3}
+    _icon: {fileID: 21300000, guid: 3796a3996de37ad45927e2c8170fcf6f, type: 3}

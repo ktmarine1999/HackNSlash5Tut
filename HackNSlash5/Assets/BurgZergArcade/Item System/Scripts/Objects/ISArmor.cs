@@ -52,6 +52,7 @@ namespace BurgZergArcade.ItemSystem
             // DatabaseManagment/DatabaseObject
             name = "New Armor";
 
+            // ISArmor
             _curArmor = 0;
             _maxArmor = 0;
             equipmentSlot = EquipmentSlot.Armor_Head;
@@ -62,23 +63,11 @@ namespace BurgZergArcade.ItemSystem
             _durability = 1;
         }
 
-        public ISArmor(Vector2 armorRating, int durability, int maxDurability, EquipmentSlot slot, GameObject gamePrefab)
+        public override void Clone<T>(T dbObject)
         {
-            armor = armorRating;
-            _durability = durability;
-            _maxDurability = maxDurability;
-            equipmentSlot = slot;
-            _prefab = gamePrefab;
-        }
+            base.Clone<T>(dbObject);
 
-        public ISArmor(ISArmor armor)
-        {
-            Clone(armor);
-        }
-
-        public void Clone(ISArmor armor)
-        {
-            base.Clone(armor);
+            ISArmor armor = dbObject as ISArmor;
             _curArmor = armor._curArmor;
             _maxArmor = armor._maxArmor;
             _durability = armor._durability;
@@ -175,23 +164,6 @@ namespace BurgZergArcade.ItemSystem
         }
         #endregion
 
-        #region IISEquipable implementation
-
-        //		public ISEquipmentSlot eqipmentSlot
-        //		{
-        //			get
-        //			{
-        //				return _eqipmentSlot;
-        //			}
-        //		}
-        //
-        //		public bool Equip()
-        //		{
-        //			throw new System.NotImplementedException();
-        //		}
-
-        #endregion
-
         #region IISGameObject implementation
         /// <summary>
         /// Gets the prefab.
@@ -213,27 +185,18 @@ namespace BurgZergArcade.ItemSystem
         {
             base.OnGUI();
 
-            // End the vertical group 
-            EditorGUILayout.BeginVertical();
-
+            EditorGUILayout.LabelField("***ISArmor Members***");
             // Display the armor rating
             _curArmor = EditorGUILayout.IntField("Current Armor", _curArmor);
             _maxArmor = EditorGUILayout.IntField("Max Armor", _maxArmor);
-
             // Display the Durability
             _durability = EditorGUILayout.IntField("Current Durability", _durability);
-
             //Display the Max Durability
             _maxDurability = EditorGUILayout.IntField("Max Durability", _maxDurability);
-
             // Display the equipmentSlot pick from the Equipment slot database
             DisplayEquipmentSlot();
-
             // Display the prefab
             DisplayPrefab();
-
-            // End the vertical group 
-            EditorGUILayout.EndVertical();
         }//OnGUI
 
         void DisplayEquipmentSlot()

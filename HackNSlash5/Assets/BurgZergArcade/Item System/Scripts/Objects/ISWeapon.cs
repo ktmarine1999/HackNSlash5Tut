@@ -46,6 +46,7 @@ namespace BurgZergArcade.ItemSystem
             // DatabaseManagment/DatabaseObject
             _name = "New Weapon";
 
+            // ISWeapon
             _minDamage = 1;
             equipmentSlot = EquipmentSlot.Weapon_OneHanded;
 
@@ -55,23 +56,12 @@ namespace BurgZergArcade.ItemSystem
             _durability = 1;
         }
 
-        public ISWeapon(int minDamage, int durability, int maxDurability, EquipmentSlot slot, GameObject gamePrefab)
+        public override void Clone<T>(T dbObject)
         {
-            _minDamage = minDamage;
-            _durability = durability;
-            _maxDurability = maxDurability;
-            equipmentSlot = slot;
-            _prefab = gamePrefab;
-        }
+            base.Clone<T>(dbObject);
 
-        public ISWeapon(ISWeapon weapon)
-        {
-            Clone(weapon);
-        }
+            ISWeapon weapon = dbObject as ISWeapon;
 
-        public void Clone(ISWeapon weapon)
-        {
-            base.Clone(weapon);
             _minDamage = weapon._minDamage;
             _durability = weapon._durability;
             _maxDurability = weapon._maxDurability;
@@ -169,25 +159,7 @@ namespace BurgZergArcade.ItemSystem
         }
         #endregion
 
-        #region IISEquipable implementation
-
-        //		public ISEquipmentSlot eqipmentSlot
-        //		{
-        //			get
-        //			{
-        //				return _eqipmentSlot;
-        //			}
-        //		}
-        //
-        //		public bool Equip()
-        //		{
-        //			throw new System.NotImplementedException();
-        //		}
-
-        #endregion
-
         #region IISGameObject implementation
-
         /// <summary>
         /// Gets the prefab.
         /// </summary>
@@ -208,26 +180,17 @@ namespace BurgZergArcade.ItemSystem
         {
             base.OnGUI();
 
-            // End the vertical group 
-            EditorGUILayout.BeginVertical();
-
+            EditorGUILayout.LabelField("***ISWeapon Members***");
             // Display the Min Damage
             _minDamage = EditorGUILayout.IntField("Min Damage", _minDamage);
-
             // Display the Durability
             _durability = EditorGUILayout.IntField("Current Durability", _durability);
-
             //Display the Max Durability
             _maxDurability = EditorGUILayout.IntField("Max Durability", _maxDurability);
-
             // Display the equipmentSlot pick from the Equipment slot database
             DisplayEquipmentSlot();
-
             // Display the prefab
             DisplayPrefab();
-
-            // End the vertical group 
-            EditorGUILayout.EndVertical();
         }//OnGUI
 
         void DisplayEquipmentSlot()

@@ -15,7 +15,8 @@ namespace BurgZergArcade.ItemSystem.Editor
             WEAPON,
             ARMOR,
             CONSUMABLE,
-            ABOUT
+            QUALITY,
+            NONE
         }
 
         TabState tabState;
@@ -33,6 +34,10 @@ namespace BurgZergArcade.ItemSystem.Editor
         ISObjectDatabaseType<ISConsumableDatabase, ISConsumable> consumableDatabase;
         #endregion
 
+        #region Consumable
+        ISObjectDatabaseType<ISQualityDatabase, ISQuality> qualityDatabase;
+        #endregion
+
         /// <summary>
 		/// Create  a menu to open this editor window using cntrl+shift+w
 		/// </summary>
@@ -45,11 +50,12 @@ namespace BurgZergArcade.ItemSystem.Editor
 
         void OnEnable()
         {
-            tabState = TabState.WEAPON;
+            tabState = TabState.QUALITY;
 
             weaponDatabase = new ISObjectDatabaseType<ISWeaponDatabase, ISWeapon>(DatabaseManager.weaponDatabase, "Weapon");
             armorDatabase = new ISObjectDatabaseType<ISArmorDatabase, ISArmor>(DatabaseManager.armorDatabase, "Armor");
             consumableDatabase = new ISObjectDatabaseType<ISConsumableDatabase, ISConsumable>(DatabaseManager.consumableDatabase, "Consumable");
+            qualityDatabase = new ISObjectDatabaseType<ISQualityDatabase, ISQuality>(DatabaseManager.qualityDatabase, "Quality");
         }
 
         /// <summary>
@@ -62,6 +68,7 @@ namespace BurgZergArcade.ItemSystem.Editor
             EditorUtility.SetDirty(DatabaseManager.weaponDatabase);
             EditorUtility.SetDirty(DatabaseManager.armorDatabase);
             EditorUtility.SetDirty(DatabaseManager.consumableDatabase);
+            EditorUtility.SetDirty(DatabaseManager.qualityDatabase);
         }//OnDestroy()
 
         /// <summary>
@@ -86,9 +93,8 @@ namespace BurgZergArcade.ItemSystem.Editor
                 case TabState.CONSUMABLE:
                     consumableDatabase.OnGUI();
                     break;
-                case TabState.ABOUT:
-                    EditorGUILayout.LabelField("About");
-                    AboutView();
+                case TabState.QUALITY:
+                    qualityDatabase.OnGUI();
                     break;
                 default:
                     EditorGUILayout.LabelField("Default");
@@ -100,7 +106,6 @@ namespace BurgZergArcade.ItemSystem.Editor
             // Display the bottom Status bar
             BottomBar();
 
-            //
             GUIChanged();
         }//OnGUI()
 
@@ -113,10 +118,11 @@ namespace BurgZergArcade.ItemSystem.Editor
             // If any controls changed the value of the input data.
             if (GUI.changed)
             {
-                // write the database to the disk
+                // Make sure that the database is writen to disk
                 EditorUtility.SetDirty(DatabaseManager.weaponDatabase);
                 EditorUtility.SetDirty(DatabaseManager.armorDatabase);
-                //EditorUtility.SetDirty(DatabaseManager.weaponDatabase);
+                EditorUtility.SetDirty(DatabaseManager.consumableDatabase);
+                EditorUtility.SetDirty(DatabaseManager.qualityDatabase);
             }//if GUI.changed
         }//GUIChanged
     }

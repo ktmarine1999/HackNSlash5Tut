@@ -1,4 +1,5 @@
-﻿using DatabaseManagment.Editor;
+﻿using System;
+using DatabaseManagment.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace BurgZergArcade.ItemSystem.Editor
             WeaponsTab();
             ArmorTab();
             ConsumableTab();
-            AboutTab();
+            QualityTab();
             EditorGUILayout.EndHorizontal();
         }
 
@@ -66,20 +67,20 @@ namespace BurgZergArcade.ItemSystem.Editor
         }//Consumables Tab
 
         /// <summary>
-        /// The About tab.
+        /// The Quality tab.
         /// </summary>
-        void AboutTab()
+        void QualityTab()
         {
-            if (tabState == TabState.ABOUT)
-                GUILayout.Label("About", "Button", GUILayout.ExpandWidth(true));
+            if (tabState == TabState.QUALITY)
+                GUILayout.Label("Quality", "Button", GUILayout.ExpandWidth(true));
 
-            // Displays a About button at the top and if it is clicked displays the about screen
-            else if (GUILayout.Button("About", "Box", GUILayout.ExpandWidth(true)))
+            // Displays a quality button at the top and if it is clicked edits the qulity database
+            else if (GUILayout.Button("Quality", "Box", GUILayout.ExpandWidth(true)))
             {
-                tabState = TabState.ABOUT;
+                tabState = TabState.QUALITY;
                 ResetDisplayState();
             }
-        }//About Tab
+        }
 
         void ResetDisplayState()
         {

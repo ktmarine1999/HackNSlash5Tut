@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using DatabaseManagment.Editor;
 
 namespace BurgZergArcade.ItemSystem.Editor
 {
@@ -12,12 +13,28 @@ namespace BurgZergArcade.ItemSystem.Editor
 		{
 			// Create a horizontal group box style expanding the width. 
 			EditorGUILayout.BeginHorizontal("Box", GUILayout.ExpandWidth(true));
-			
-			// Display the  selected Status
-			EditorGUILayout.LabelField("Tab State: " + tabState);
-			
-			// end the Scroll view
-			EditorGUILayout.EndHorizontal();
+
+            switch (tabState)
+            {
+                case TabState.WEAPON:
+                    EditorGUILayout.LabelField("Weapons: " + (DatabaseManager.weaponDatabase.Count).ToString());
+                    break;
+                case TabState.ARMOR:
+                    EditorGUILayout.LabelField("Armors: " + (DatabaseManager.armorDatabase.Count).ToString());
+                    break;
+                case TabState.CONSUMABLE:
+                    EditorGUILayout.LabelField("Consumables: " + (DatabaseManager.consumableDatabase.Count).ToString());
+                    break;
+                case TabState.QUALITY:
+                    EditorGUILayout.LabelField("Qualities: " + (DatabaseManager.qualityDatabase.Count).ToString());
+                    break;
+                default:
+                    EditorGUILayout.LabelField("Tab State: " + tabState);
+                    break;
+            }
+
+            // end the Scroll view
+            EditorGUILayout.EndHorizontal();
 		}//ItemObjectDetails()
 	}//class
 }//namespace

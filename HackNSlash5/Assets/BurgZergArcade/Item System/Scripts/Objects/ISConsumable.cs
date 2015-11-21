@@ -8,35 +8,31 @@ namespace BurgZergArcade.ItemSystem
     [System.Serializable]
     public class ISConsumable : ISObject, IISConsumable, IISStackable, IISGameObject
     {
+        /// <summary>
+        /// The max number that can be stacked in the inventory
+        /// </summary>
+        [SerializeField]
         int _maxStack;
 
         /// <summary>
         /// The prefab to display this item in the game world.
         /// </summary>
         [SerializeField]
-        GameObject
-            _prefab;
+        GameObject _prefab;
 
         public ISConsumable()
             : base()
         {
             name = "New Consumable";
+            _maxStack = 10;
         }
 
-        public ISConsumable(int maxStack, GameObject gamePrefab)
+        public override void Clone<T>(T dbObject)
         {
-            _maxStack = maxStack;
-            _prefab = gamePrefab;
-        }
+            base.Clone<T>(dbObject);
 
-        public ISConsumable(ISConsumable consumable)
-        {
-            Clone(consumable);
-        }
+            ISConsumable consumable = dbObject as ISConsumable;
 
-        public void Clone(ISConsumable consumable)
-        {
-            base.Clone(consumable);
             _maxStack = consumable._maxStack;
             _prefab = consumable._prefab;
         }
@@ -72,16 +68,10 @@ namespace BurgZergArcade.ItemSystem
         {
             base.OnGUI();
 
-            // End the vertical group 
-            EditorGUILayout.BeginVertical();
-
+            EditorGUILayout.LabelField("***ISConsumable Members***");
             _maxStack = EditorGUILayout.IntField("Max per stack:", _maxStack);
-
             // Display the prefab
             DisplayPrefab();
-
-            // End the vertical group 
-            EditorGUILayout.EndVertical();
         }//OnGUI
 
         void DisplayPrefab()

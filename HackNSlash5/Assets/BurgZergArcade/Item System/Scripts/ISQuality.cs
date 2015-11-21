@@ -1,4 +1,7 @@
 using DatabaseManagment;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace BurgZergArcade.ItemSystem
@@ -10,8 +13,7 @@ namespace BurgZergArcade.ItemSystem
 		/// The icon representation of the qulity.
 		/// </summary>
 		[SerializeField]
-        Sprite
-            _icon;
+        Sprite _icon;
 
         #region IISQuality implementation
         /// <summary>
@@ -31,10 +33,22 @@ namespace BurgZergArcade.ItemSystem
             _icon = new Sprite();
         }
 
-        public ISQuality(string name, Sprite sprite)
+        public override void Clone<T>(T dbObject)
         {
-            _name = name;
-            _icon = sprite;
-        }//ISQuality
+            base.Clone<T>(dbObject);
+
+            ISQuality quality = dbObject as ISQuality;
+            _icon = quality._icon;
+        }
+
+#if UNITY_EDITOR
+        public override void OnGUI()
+        {
+            base.OnGUI();
+
+            EditorGUILayout.LabelField("***ISQuality Members***");
+            _icon = EditorGUILayout.ObjectField("Icon", _icon, typeof(Sprite), false) as Sprite;
+        }
+#endif
     }//class
 }//namespace

@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+#endif
+using UnityEngine;
 
 namespace DatabaseManagment
 {
@@ -23,18 +26,19 @@ namespace DatabaseManagment
 
         public DatabaseObject() { }
 
-        public DatabaseObject(DatabaseObject dbObject)
-        {
-            Clone(dbObject);
-        }
-
-        public void Clone(DatabaseObject dbObject)
+        public virtual void Clone<T>(T dbObject) where T : DatabaseObject
         {
             _name = dbObject._name;
         }
 
 #if UNITY_EDITOR
-        public virtual void OnGUI() { }
+        public virtual void OnGUI()
+        {
+            EditorGUILayout.LabelField("***DatabaseObject Members***");
+            // Display a field to edit the name
+            _name = EditorGUILayout.TextField("Name", _name);
+            GUILayout.Space(50);
+        }
 #endif
     }//class
 }//namespace

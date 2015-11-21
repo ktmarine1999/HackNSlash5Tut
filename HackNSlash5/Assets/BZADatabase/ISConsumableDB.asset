@@ -12,11 +12,21 @@ MonoBehaviour:
   m_Name: ISConsumableDB
   m_EditorClassIdentifier: 
   items:
-  - _name: New Consumable
+  - _name: New Consumable 1
     _value: 1
     _icon: {fileID: 21300000, guid: fa0c219867d3b7b48bdefe7bc0498b20, type: 3}
     _burden: 1
     _quality:
       _name: Common
-      _icon: {fileID: 21300000, guid: 979ebd494dee4ff45826fbbc68fb8748, type: 3}
+      _icon: {fileID: 21300000, guid: 3796a3996de37ad45927e2c8170fcf6f, type: 3}
+    _maxStack: 20
     _prefab: {fileID: 110664, guid: a09d0ed2aa67c934ca6ae1eae33e6c33, type: 2}
+  - _name: New Consumable
+    _value: 20
+    _icon: {fileID: 0}
+    _burden: 1
+    _quality:
+      _name: Common
+      _icon: {fileID: 21300000, guid: 3796a3996de37ad45927e2c8170fcf6f, type: 3}
+    _maxStack: 30
+    _prefab: {fileID: 0}
