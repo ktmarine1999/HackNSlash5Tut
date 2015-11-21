@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfebd0f89118cc9489d63366c7c47ae4, type: 3}
+  m_Name: DatabasesToUse
+  m_EditorClassIdentifier: 
+  _equipmentSlotDatabase: {fileID: 0}
+  _qualityDatabase: {fileID: 11400000, guid: 6e6cc680fa0243d479fea98c3216114e, type: 2}
+  _weaponDatabase: {fileID: 11400000, guid: e377463e90126e94cb5044d346149757, type: 2}
+  _armorDatabase: {fileID: 11400000, guid: bbafc305182d72b499e65b0a085176dd, type: 2}
+  _consumableDatabase: {fileID: 11400000, guid: 425c39b4c2e377d4da524adbe15cbdd9,
+    type: 2}

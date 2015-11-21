@@ -1,4 +1,5 @@
 #if UNITY_EDITOR
+using BurgZergArcade.ItemSystem;
 using UnityEditor;
 #endif
 using UnityEngine;
@@ -25,12 +26,6 @@ namespace DatabaseManagment.Editor
             CreateAsset<BurgZergArcade.ItemSystem.ISEquipmentSlotDatabase>();
         }
 
-        [MenuItem("Assets/BZA/Create/Item System/Object Database")]
-        public static void CreateItemObjectDatabase()
-        {
-            CreateAsset<BurgZergArcade.ItemSystem.ISObjectDatabase>();
-        }
-
         [MenuItem("Assets/BZA/Create/Item System/Weapon Database")]
         public static void CreateWeaponDatabase()
         {
@@ -41,6 +36,12 @@ namespace DatabaseManagment.Editor
         public static void CreateArmorDatabase()
         {
             CreateAsset<BurgZergArcade.ItemSystem.ISArmorDatabase>();
+        }
+
+        [MenuItem("Assets/BZA/Create/Item System/Consumable Database")]
+        public static void CreateConsumableDatabase()
+        {
+            CreateAsset<BurgZergArcade.ItemSystem.ISConsumableDatabase>();
         }
 
 
@@ -57,62 +58,23 @@ namespace DatabaseManagment.Editor
         }
         #endregion
 
-        #region Set selected database to the active database
         /// <summary>
         /// Sets the selected database as the database to use.
         /// </summary>
-        [MenuItem("Assets/BZA/Set Active/Item System/Quality Database")]
-        static void SetISQualityDBActive()
+        [MenuItem("Assets/BZA/Set as Database To Use")]
+        static void SetISDBActive()
         {
-            DatabaseManager.settings.ISQualityDatabaseName = Selection.activeObject.name;
-            // write the changes to disk
-            EditorUtility.SetDirty(DatabaseManager.settings);
+            if (Selection.activeObject is ISQualityDatabase)
+                DatabaseManager.qualityDatabase = Selection.activeObject as ISQualityDatabase;
+            if (Selection.activeObject is ISEquipmentSlotDatabase)
+                DatabaseManager.equipmentSlotDatabase = Selection.activeObject as ISEquipmentSlotDatabase;
+            if (Selection.activeObject is ISWeaponDatabase)
+                DatabaseManager.weaponDatabase = Selection.activeObject as ISWeaponDatabase;
+            if (Selection.activeObject is ISArmorDatabase)
+                DatabaseManager.armorDatabase = Selection.activeObject as ISArmorDatabase;
+            if (Selection.activeObject is ISConsumableDatabase)
+                DatabaseManager.consumableDatabase = Selection.activeObject as ISConsumableDatabase;
         }
-
-        /// <summary>
-        /// Sets the selected database as the database to use.
-        /// </summary>
-        [MenuItem("Assets/BZA/Set Active/Item System/Equipment Slot Database")]
-        static void SetISEquipmentSlotDBActive()
-        {
-            DatabaseManager.settings.ISEquipmentSlotDatabaseName = Selection.activeObject.name;
-            // write the changes to disk
-            EditorUtility.SetDirty(DatabaseManager.settings);
-        }
-
-        /// <summary>
-        /// Sets the selected database as the database to use.
-        /// </summary>
-        [MenuItem("Assets/BZA/Set Active/Item System/Object Database")]
-        static void SetISObjectDBActive()
-        {
-            DatabaseManager.settings.ISObjectDatabaseName = Selection.activeObject.name;
-            // write the changes to disk
-            EditorUtility.SetDirty(DatabaseManager.settings);
-        }
-
-        /// <summary>
-        /// Sets the selected database as the database to use.
-        /// </summary>
-        [MenuItem("Assets/BZA/Set Active/Item System/Weapon Database")]
-        static void SetISWeaponDBActive()
-        {
-            DatabaseManager.settings.ISWeaponDatabaseName = Selection.activeObject.name;
-            // write the changes to disk
-            EditorUtility.SetDirty(DatabaseManager.settings);
-        }
-
-        /// <summary>
-        /// Sets the selected database as the database to use.
-        /// </summary>
-        [MenuItem("Assets/BZA/Set Active/Item System/Armor Database")]
-        static void SetISArmorDBActive()
-        {
-            DatabaseManager.settings.ISArmorDatabaseName = Selection.activeObject.name;
-            // write the changes to disk
-            EditorUtility.SetDirty(DatabaseManager.settings);
-        }
-        #endregion
 #endif
     }//class
 }//namespace
