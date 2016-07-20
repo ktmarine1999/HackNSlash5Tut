@@ -56,7 +56,7 @@ namespace DatabaseManagment.Editor
         }
         #endregion
 
-        #region Item System Euipment Slot DB
+        #region Item System Equipment Slot DB
         /// <summary>
         /// Gets the ISEquipmentSlotDatabase scriptableObject.
         /// </summary>
